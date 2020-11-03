@@ -13,6 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
+});
+
+Route::get('/business-news', function () {
+    return view('frontend.business-news');
+});
+
+Route::get('/news-on-click', function () {
+    return view('frontend.news-on-click');
+});
+
+Route::get('/startups', function () {
+	return view('frontend.startups');
+});
+
+Route::get('/startup', function () {
+	return view('frontend.startup');
+});
+
+Route::get('/employee', function () {
+	return view('frontend.employee');
+});
+
+Route::get('/freelancers', function () {
+    return view('frontend.freelancers');
 });

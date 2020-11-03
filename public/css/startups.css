@@ -1,0 +1,72 @@
+
+.startups-main-wrapper {
+	padding: 175px 0;
+}
+
+.startups-main-title {
+	color: #dda326;
+	font: 45.51px 'intro';
+}
+
+.startups-main-title:hover {
+	color: #dda326;
+	text-decoration: initial;
+}
+
+.top {
+	margin-top: 50px;
+}
+
+.top-title {
+	color: #000;
+	font: 45.51px 'intro';
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.startups-main-route-wrapper {
+	display: inline-flex;
+}
+
+.startups-main-route-wrapper-first {
+	margin-top: 60px;
+}
+
+.startups-main-route {
+	background-color: #ffd600;
+	border: 1px solid #000;
+	color: #000;
+	font: 18.88px 'intro';
+	text-transform: uppercase;
+	padding: 16px 22px;
+}
+
+.startups-main-route:hover {
+	color: #fff;
+	text-decoration: initial;
+	transition: 0.3s;
+}
+
+.startups-main-top-startups {
+	background-color: #f5f5f5;
+	padding: 17px;
+	margin-top: 50px;
+	position: relative;
+	height: 374px;
+}
+
+.startups-main-top-startups-name,
+.startups-main-top-startups-summ {
+	color: #000;
+	font: 25px 'intro';
+	position: absolute;
+	left: 17px;
+}
+
+.startups-main-top-startups-name {
+	bottom: 40px;
+}
+
+.startups-main-top-startups-summ {
+	bottom: 17px;
+}

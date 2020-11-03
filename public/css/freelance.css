@@ -1,0 +1,97 @@
+.freelance-wrapper {
+	padding: 190px 0 149px 0;
+}
+
+.freelance-title {
+	color: #000;
+	text-transform: uppercase;
+	text-align: center;
+	margin-bottom: 15px;
+	font: 38.12px 'intro';
+}
+
+.freelance-title span {
+	color: #dda326;
+}
+
+.freelance-info-text {
+	color: #6d6e71;
+	text-transform: uppercase;
+	text-align: center;
+	font: 14.73px 'intro';
+	margin-bottom: 74px;
+}
+
+.categories-title {
+	color: #dda326;
+	text-transform: uppercase;
+	text-align: center;
+	font: 25px 'intro';
+	margin-bottom: 27px;
+}
+
+.freelance-categories-lists li {
+	background-color: #ffd600;
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	padding: 10px 15px;
+}
+
+.freelance-categories-lists li a {
+	color: #fff;
+	font: 14px 'intro';
+}
+
+.freelance-categories-lists li a:hover {
+	color: #000;
+	text-decoration: initial;
+	transition: .3s;
+}
+
+.freelance-card {
+	margin-bottom: 26px;
+}
+
+.inner-card-block {
+	background-color: #f5f5f5;
+	border-radius: 7px;
+	padding: 38px 0;
+	text-align: center;
+}
+
+.freelancer-name {
+	color: #6d6e71;
+	font: bold 20.79px 'Open Sans';
+	text-transform: capitalize;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+
+.freelancer-position {
+	color: #dda326;
+	font: 14.73px 'intro';
+	text-transform: uppercase;
+}
+
+.social {
+	padding: 18px 0;
+	text-align: center;
+}
+
+.facebook-icon,
+.instagramm-icon {
+	background-repeat: no-repeat;
+	background-position: center center;
+	display: inline-block;
+	width: 20px;
+	height: 19px;
+}
+
+.facebook-icon {
+	background-image: url(../img/facebook-icon.png);
+	margin-right: 20px;
+}
+
+.instagramm-icon {
+	background-image: url(../img/instagramm-icon.png);
+}

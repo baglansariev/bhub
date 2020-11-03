@@ -1,0 +1,179 @@
+
+.content-wrapper {
+	padding-top: 118px;
+	padding-bottom: 78px;
+}
+
+.video {
+	border: 1px solid #000;
+	/*width: 562px;*/
+	height: 373px;
+	color: #000;
+	font: 102px 'intro';
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.news {
+	background-color: #272425;
+	border: 1px solid #000;
+	padding: 19px 12px;
+	font-family: 'intro-regular';
+}
+
+.news-title {
+	color: #fff;
+	font-size: 16px;
+	margin-bottom: 38px;
+}
+
+.finds-wrap {
+	margin-top: 84px;
+}
+
+.find-an-investor,
+.find-an-employer {
+	background-color: #dda326;
+	border: 1px solid #000;
+	border-radius: initial !important;
+	width: 100%;
+	font: 18px 'intro';
+	color: #fff;
+	padding: 9px 0;
+}
+
+.investros-and-employers-section {
+	background: url(../img/building.png) no-repeat center bottom;
+	background-size: contain;
+	background-color: #343942;
+	width: 100%;
+	max-width: 2096px;
+	padding: 98px 0 250px 0;
+	/*height: 500px;*/
+}
+
+.iae-section-right-inner {
+	background-color: #272425;
+	border: 1px solid #000;
+	width: 100%;
+	height: 180px;
+}
+
+.iae-title {
+	font: 30px 'intro';
+	margin-bottom: 65px;
+}
+
+.iae-title span {
+	color: #dda326;
+}
+
+.iae-description {
+	line-height: 25px;
+}
+
+.our-partners {
+	background-color: #fff;
+	padding-bottom: 156px;
+}
+
+.title-our-partners {
+	color: #000;
+	font: 78.15px 'intro';
+	padding: 102px 0;
+	text-align: center;
+}
+
+.title-our-partners span {
+	color: #dda326;
+}
+
+.our-prtners-owl {
+	margin-right: 25px;
+}
+
+.footer {
+	background-color: #343941;
+	padding-top: 33px;
+}
+
+.title-footer-big {
+	margin-top: 16px;
+	font: 32px 'snowstorm';
+	text-transform: capitalize;
+}
+
+.title-footer-medium {
+	font: 18px 'snowstorm';
+}
+
+.footer-contacts {
+	font: 24px 'Myriad Pro';
+	text-transform: capitalize;
+}
+
+.footer-contacts li a {
+	color: #d8d8d8;
+}
+
+.social li {
+	display: inline-block;
+}
+
+.youtube,
+.facebook,
+.insta {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	display: inline-block;
+	width: 43px;
+	height: 43px;
+}
+
+.social .youtube {
+	background-image: url(../img/youtube.png);
+}
+
+.social .facebook {
+	background-image: url(../img/facebook.png);
+}
+
+.social .insta {
+	background-image: url(../img/insta.png);
+}
+
+.social .youtube:hover {
+	background-image: url(../img/youtube-hover.png);
+	transition: .5s;
+}
+
+.social .facebook:hover {
+	background-image: url(../img/facebook-hover.png);
+	transition: .5s;
+}
+
+.social .insta:hover {
+	background-image: url(../img/insta-hover.png);
+	transition: .5s;
+}
+
+.footer-black-block {
+	background-color: #272526;
+	padding-top: 73px;
+}
+
+.copyright-wrapper {
+	background-color: #272526;
+	width: 100%;
+	max-width: 2096px;
+	padding: 10px 0;
+}
+
+.copyright {
+	color: #fff;
+	text-align: center;
+	font: 14.64px 'intro';
+	letter-spacing: 1px;
+}

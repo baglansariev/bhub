@@ -1,0 +1,60 @@
+@font-face{
+
+font-family: 'intro';
+
+src: url('../fonts/intro.otf');
+
+src: url('../fonts/intro.otf') format('otf'),
+
+url('../fonts/intro.otf') format('otf'),
+
+url('../fonts/intro.otf') format('truetype'),
+
+font-weight: normal;
+
+font-style: normal;
+
+}
+
+@font-face{
+
+font-family: 'intro-regular';
+
+src: url('../fonts/intro-regular.ttf');
+
+src: url('../fonts/intro-regular.ttf') format('ttf'),
+
+url('../fonts/intro-regular.ttf') format('ttf'),
+
+url('../fonts/intro-regular.ttf') format('truetype'),
+
+font-weight: normal;
+
+font-style: normal;
+
+}
+
+@font-face{
+
+font-family: 'snowstorm';
+
+src: url('../fonts/snowstorm.otf');
+
+src: url('../fonts/snowstorm.otf') format('otf'),
+
+url('../fonts/snowstorm.otf') format('otf'),
+
+url('../fonts/snowstorm.otf') format('truetype'),
+
+font-weight: normal;
+
+font-style: normal;
+
+}
+
+body {
+	font-family: intro;
+	font-size: 14px;
+	color: #fff;
+	text-transform: uppercase;
+}
