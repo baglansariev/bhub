@@ -2,9 +2,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">
-				<a href="/" title="Бизнес платформа"><img src="img/logo-white.png" width="139" height="66"></a>
-				<h2 class="title-footer-big">Бизнес</h2>
-				<h3 class="title-footer-medium">платформа</h3>
+				<div class="footer-logo-block">
+					<a href="/" title="Бизнес платформа"><img src="img/logo-white.png" width="139" height="66"></a>
+					<h2 class="title-footer-big">Бизнес</h2>
+					<h3 class="title-footer-medium">платформа</h3>
+				</div>
 			</div>
 			<div class="col-md-3">
 				<ul class="footer-contacts">

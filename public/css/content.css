@@ -177,3 +177,43 @@
 	font: 14.64px 'intro';
 	letter-spacing: 1px;
 }
+
+@media (max-width: 575.98px) {
+
+	.our-partners {
+		padding-bottom: 120px;
+	}
+
+	.our-prtners-owl {
+		text-align: center;
+		margin-right: initial;
+	}
+
+	.investros-and-employers-section {
+		background-size: auto; 
+	}
+
+	.title-our-partners {
+		font-size: 50px;
+	}	
+
+	.footer-logo-block,
+	.footer-contacts {
+		text-align: center;
+	}
+
+	.footer-contacts {
+		padding-top: 25px;
+		padding-bottom: 25px;
+	}
+
+	.social {
+		text-align: center;
+		padding-bottom: 25px;
+	}
+
+	.copyright {
+		font-size: 13px;
+	}
+
+}
