@@ -7,12 +7,12 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarText">
 					<div class="navbar-logo">
-						<a href="#"><img src="img/logo.png" alt="Qhub_logo" width="126" height="60"></a>
+						<a href="/"><img src="img/logo.png" alt="Qhub_logo" width="126" height="60"></a>
 					</div>
 					<div class="navbar-wrapper">
 						<ul class="navbar-nav">
 							<li class="nav-item active">
-								<a class="nav-link" href="#">Главная<span class="sr-only">(current)</span></a>
+								<a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="/business-news">Бизнес новости</a>
