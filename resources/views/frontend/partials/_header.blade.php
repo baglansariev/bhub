@@ -42,19 +42,27 @@
 			</div>
 		</nav>
 		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<div class="place-name">
-					<h1>Би<span>з</span>нес</h1>
-					<h2>платформа</h2>
+			@if (Route::current()->getName() == "home")
+				<div class="col-md-12 col-sm-12">
+					<div class="place-name">
+						<h1>Би<span>з</span>нес</h1>
+						<h2>платформа</h2>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-12 col-sm-12">
-				<div class="place-desc">
-					<p><strong>фриланс</strong></p>
-					<p><strong>новости</strong></p>
-					<p><strong>поиск и подбор инвестиций</strong></p>
+				<div class="col-md-12 col-sm-12">
+					<div class="place-desc">
+						<p><strong>фриланс</strong></p>
+						<p><strong>новости</strong></p>
+						<p><strong>поиск и подбор инвестиций</strong></p>
+					</div>
 				</div>
-			</div>
+			@else
+				<div class="col-md-12 col-sm-12">
+					<div class="place-name-second-pages">
+						<h2>@if(isset($title)) {{ $title }} @endif</h2>
+					</div>
+				</div>
+			@endif
 		</div>
 	</div>
 </div>

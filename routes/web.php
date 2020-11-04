@@ -17,30 +17,19 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+// Frontend area
+Route::get('/', 'FrontController@index')->name('home');
 
-Route::get('/business-news', function () {
-    return view('frontend.business-news');
-});
+Route::get('/business-news', "FrontController@businessNews")->name("businessNews");
 
-Route::get('/news-on-click', function () {
-    return view('frontend.news-on-click');
-});
+Route::get('/news-on-click', "FrontController@newsDetail")->name("newsDetail");
 
-Route::get('/startups', function () {
-	return view('frontend.startups');
-});
+Route::get('/startups', "FrontController@startups")->name("startups");
 
-Route::get('/startup', function () {
-	return view('frontend.startup');
-});
+Route::get('/startup', "FrontController@startup")->name("startup");
 
-Route::get('/employee', function () {
-	return view('frontend.employee');
-});
+Route::get('/freelancers', 'FrontController@freelancers')->name("freelancers");
 
-Route::get('/freelancers', function () {
-    return view('frontend.freelancers');
-});
+Route::get('/employee', "FrontController@employee")->name("employee");
+
+// Backend area

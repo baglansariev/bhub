@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'News on click')
+@section('title', $data["title"])
 
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="css/news.css">

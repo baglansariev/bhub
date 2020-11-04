@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'Главная')
+@section('title', $data['title'])
 
 @section('content')
 <div class="container-fluid">

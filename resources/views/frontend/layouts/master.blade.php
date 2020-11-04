@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>BHub | @yield('title')</title>
-
+	<!-- <title>BHub | @yield('title')</title> -->
+	<title>BHub | {{ $data["title"] ?? '' }}</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{{ asset('css/bootstrap-4.5.3/bootstrap.min.css') }}">
@@ -21,7 +21,7 @@
                               HEADER
 =========================================================-->
 	<header>
-		@include('frontend.partials._header')
+		@include('frontend.partials._header', ['title' => $data['title']])
 	</header>
 <!--========================================================
                               CONTENT

@@ -59,7 +59,8 @@
 }
 
 .place-name,
-.place-desc {
+.place-desc,
+.place-name-second-pages {
 	text-align: center;
 }
 
@@ -68,8 +69,13 @@
 	font-size: 119px;
 }
 
+.place-name-second-pages {
+	margin-top: 100px;
+}
+
 .place-name h1,
-.place-name h2 {
+.place-name h2,
+.place-name-second-pages h2 {
 	text-transform: uppercase;
 	font-family: "snowstorm";
 	color: #000;
@@ -80,7 +86,8 @@
 	line-height: 100px;
 }
 
-.place-name h2 {
+.place-name h2,
+.place-name-second-pages h2 {
 	font-size: 75.93px;
 }
 

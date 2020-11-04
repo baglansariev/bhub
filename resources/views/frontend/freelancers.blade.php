@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'Фрилансеры')
+@section('title', $data["title"])
 
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="css/freelance.css">

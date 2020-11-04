@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'Бизнес новости')
+@section('title', $data["title"])
 
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/news.css') }}">
