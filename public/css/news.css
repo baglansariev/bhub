@@ -35,6 +35,18 @@
 	background-color: #272425;
 	height: 273px;
 	margin-bottom: 65px;
+	padding: 20px;
+	position: relative;
+}
+
+.news-details-title {
+	position: absolute;
+	bottom: 35px;
+	left: 35px;
+	font: 20px 'intro';
+	text-transform: uppercase;
+	text-decoration: initial;
+	color: #272425;
 }
 
 .all-news-line {
@@ -62,6 +74,10 @@
 .title-all-news a:hover {
 	color: #fff;
 	text-decoration: none;
+}
+
+.right-blocks-wrapper-link {
+	display: block;
 }
 
 .three-blocks {

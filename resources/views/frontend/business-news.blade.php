@@ -30,13 +30,28 @@
 				<div class="col-md-5 offset-md-1">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="right-blocks"></div>
+							<a href="/news-on-click" title="Подробнее" class="right-blocks-wrapper-link">
+								<div class="right-blocks">
+									<img src="https://via.placeholder.com/405x233" alt="">
+									<h5 class="news-details-title">BHub бизнес платформа в Шымкенте</h5>
+								</div>
+							</a>
 						</div>
 						<div class="col-md-12">
-							<div class="right-blocks"></div>
+							<a href="/news-on-click" title="Подробнее" class="right-blocks-wrapper-link">
+								<div class="right-blocks">
+									<img src="https://via.placeholder.com/405x233" alt="">
+									<h5 class="news-details-title">BHub бизнес платформа в Казахстане</h5>
+								</div>
+							</a>
 						</div>			
 						<div class="col-md-12">
-							<div class="right-blocks"></div>
+							<a href="/news-on-click" title="Подробнее" class="right-blocks-wrapper-link">
+								<div class="right-blocks">
+									<img src="https://via.placeholder.com/405x233" alt="">
+									<h5 class="news-details-title">Новости мирового бизнеса</h5>
+								</div>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -44,7 +59,7 @@
 		</div>
 		<div class="all-news-line">
 			<div class="container">
-				<h1 class="title-all-news"><a href="/news-on-click" target="_blank" title=""><span>все</span> новости</a></h1>
+				<h1 class="title-all-news"><a href="#" target="_blank" title=""><span>все</span> новости</a></h1>
 			</div>
 		</div>
 		<div class="container">
