@@ -102,3 +102,29 @@
 	font: 14px 'intro';
 	line-height: 22px;
 }
+
+
+@media (max-width: 575.98px) {
+	.startups-wrapper {
+		padding: 80px 0; 
+	}
+
+	.startup-item-title {
+		font-size: 35px;
+	}
+
+	.startup-logo-wrapper {
+		width: 273px;
+		height: 273px;
+	}
+
+	.startup-logo-wrapper-title,
+	.startup-video-title {
+		font-size: 71px;
+	}
+
+	.phone-block {
+		margin: 15px 0;
+	}
+
+}
