@@ -17,6 +17,7 @@
 
 .circle-photo img {
 	object-fit: contain;
+	max-width: 100%;
 }
 
 .characteristic {
@@ -77,4 +78,32 @@
 .portfolio-inner {
 	background-color: #353942;
 	height: 281px;
+}
+
+
+@media (max-width: 575.98px) {
+
+	.employee-wrapper {
+		padding: 80px 0;
+	}
+
+	.portfolio-title {
+		font-size: 40px;
+		text-align: center;
+	}
+
+	.portfolio-wrapper {
+		padding: 80px 0;
+	}
+
+	.characteristic {
+		position: initial;
+		right: initial;
+		bottom: initial;
+	}
+
+	.portfolio-inner {
+		margin-bottom: 15px;
+	}
+
 }
