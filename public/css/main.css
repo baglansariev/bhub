@@ -63,6 +63,14 @@ body {
 	div.header-wrapper {
 		padding-bottom: 80px;
 	}
+
+	.place-name-second-pages {
+		margin-top: 50px;
+	}
+
+	.place-name-second-pages .place-name-second-pages-title {
+		font-size: 55.93px;
+	}
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {

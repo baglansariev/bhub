@@ -150,6 +150,7 @@
 	padding: 10px;
 	font: 20px 'intro';
 	margin-bottom: 23px;
+	width: 75%;
 }
 
 .quiz-title-sp {
@@ -258,6 +259,14 @@
 		margin: 25px 0;
 	}
 
+	.quiz-title {
+		width: 100%;
+	}
+
+	.quiz-title-sp {
+		padding-left: 20px;
+	}
+
 	.h1-title {
 		font-size: 37.2px;
 	}
@@ -283,6 +292,14 @@
 
 	.h1-title {
 		font-size: 37.2px;
+	}
+
+	p.quiz-title {
+		width: 100%;
+	}
+
+	.quiz-block h1 {
+		margin-bottom: 44px;
 	}
 
 }

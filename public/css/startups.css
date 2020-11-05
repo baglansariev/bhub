@@ -70,3 +70,13 @@
 .startups-main-top-startups-summ {
 	bottom: 17px;
 }
+
+@media (max-width: 575.98px) {
+	.startups-main-wrapper {
+		padding: 80px 0; 
+	}
+
+	.startups-main-title {
+		font-size: 35px;
+	}
+}

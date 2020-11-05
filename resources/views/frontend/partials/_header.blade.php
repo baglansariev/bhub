@@ -59,7 +59,7 @@
 			@else
 				<div class="col-md-12 col-sm-12">
 					<div class="place-name-second-pages">
-						<h2>@if(isset($title)) {{ $title }} @endif</h2>
+						<h2 class="place-name-second-pages-title">@if(isset($title)) {{ $title }} @endif</h2>
 					</div>
 				</div>
 			@endif
