@@ -14,7 +14,7 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-2 col-sm-2">
+			<div class="col-lg-2 col-md-3 col-sm-2">
 				<div class="categories-wrapper">
 					<h3 class="categories-title">Категории</h3>
 					<ul class="freelance-categories-lists">
@@ -46,9 +46,9 @@
 					</ul>		
 				</div>
 			</div>
-			<div class="col-md-9 offset-md-1 col-sm-9">
+			<div class="col-lg-9 offset-lg-1 col-md-9 offset-md-0 col-sm-9">
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
 							<a href="/employee" target="_blank" title="" style="display: block;">
 								<div class="inner-card-block">
@@ -63,7 +63,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
 							<div class="inner-card-block">
 								<img src="img/freelancer.png">
@@ -76,7 +76,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
 							<div class="inner-card-block">
 								<img src="img/freelancer.png">
@@ -89,7 +89,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
 							<div class="inner-card-block">
 								<img src="img/freelancer.png">
@@ -102,7 +102,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
 							<div class="inner-card-block">
 								<img src="img/freelancer.png">
@@ -115,7 +115,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
 							<div class="inner-card-block">
 								<img src="img/freelancer.png">
@@ -128,7 +128,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
 							<div class="inner-card-block">
 								<img src="img/freelancer.png">
@@ -141,7 +141,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
 							<div class="inner-card-block">
 								<img src="img/freelancer.png">
@@ -154,7 +154,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
 							<div class="inner-card-block">
 								<img src="img/freelancer.png">
@@ -167,7 +167,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
 							<div class="inner-card-block">
 								<img src="img/freelancer.png">
@@ -180,7 +180,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
 							<div class="inner-card-block">
 								<img src="img/freelancer.png">
@@ -193,7 +193,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
 							<div class="inner-card-block">
 								<img src="img/freelancer.png">
