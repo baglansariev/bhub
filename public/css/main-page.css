@@ -93,92 +93,36 @@
 	margin-right: 25px;
 }
 
-.footer {
-	background-color: #343941;
-	padding-top: 33px;
-}
-
-.title-footer-big {
-	margin-top: 16px;
-	font: 32px 'snowstorm';
-	text-transform: capitalize;
-}
-
-.title-footer-medium {
-	font: 18px 'snowstorm';
-}
-
-.footer-contacts {
-	font: 24px 'Myriad Pro';
-	text-transform: capitalize;
-}
-
-.footer-contacts li a {
-	color: #d8d8d8;
-}
-
-.social li {
-	display: inline-block;
-}
-
-.youtube,
-.facebook,
-.insta {
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-	display: inline-block;
-	width: 43px;
-	height: 43px;
-}
-
-.social .youtube {
-	background-image: url(../img/youtube.png);
-}
-
-.social .facebook {
-	background-image: url(../img/facebook.png);
-}
-
-.social .insta {
-	background-image: url(../img/insta.png);
-}
-
-.social .youtube:hover {
-	background-image: url(../img/youtube-hover.png);
-	transition: .5s;
-}
-
-.social .facebook:hover {
-	background-image: url(../img/facebook-hover.png);
-	transition: .5s;
-}
-
-.social .insta:hover {
-	background-image: url(../img/insta-hover.png);
-	transition: .5s;
-}
-
-.footer-black-block {
-	background-color: #272526;
-	padding-top: 73px;
-}
-
-.copyright-wrapper {
-	background-color: #272526;
-	width: 100%;
-	max-width: 2096px;
-	padding: 10px 0;
-}
-
-.copyright {
-	color: #fff;
-	text-align: center;
-	font: 14.64px 'intro';
-	letter-spacing: 1px;
-}
-
 @media (max-width: 575.98px) {
+
+	.header-wrapper {
+		padding-bottom: 80px;
+	}
+
+	.content-wrapper {
+		padding-top: 80px;
+	}
+
+	.place-name h1 {
+		font-size: 100px;
+	}
+
+	.place-name h2, 
+	.place-name-second-pages h2 {
+		font-size: 65.93px;	
+	}
+
+	.video h1 {
+		font-size: 80px;
+	}
+
+	.finds-wrap {
+		margin: 54px 0;
+	}
+
+	.find-an-investor {
+		margin-bottom: 20px;
+	}
 
 	.our-partners {
 		padding-bottom: 120px;
@@ -195,25 +139,6 @@
 
 	.title-our-partners {
 		font-size: 50px;
-	}	
-
-	.footer-logo-block,
-	.footer-contacts {
-		text-align: center;
-	}
-
-	.footer-contacts {
-		padding-top: 25px;
-		padding-bottom: 25px;
-	}
-
-	.social {
-		text-align: center;
-		padding-bottom: 25px;
-	}
-
-	.copyright {
-		font-size: 13px;
 	}
 
 }

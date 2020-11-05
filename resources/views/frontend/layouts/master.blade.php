@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/nav.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/content.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 
 	@yield('styles')
 

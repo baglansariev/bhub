@@ -2,6 +2,10 @@
 
 @section('title', $data['title'])
 
+@section('styles')
+	<link rel="stylesheet" href="{{ asset('css/main-page.css') }}">
+@endsection
+
 @section('content')
 <div class="container-fluid">
 	<div class="container">

@@ -142,3 +142,22 @@
   	display: block;
   	transition: 0.3s;
 }
+
+@media (max-width: 575.98px) {
+	#navbarText{
+		margin-top: 25px;
+	}
+
+	.navbar-logo {
+		text-align: center;
+	}
+
+	.navbar-wrapper {
+		margin: 25px 0;		
+	}
+
+	.navbar-light .navbar-toggler {
+		border-color: #dda426;
+	}
+
+}

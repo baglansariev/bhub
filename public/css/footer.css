@@ -1,0 +1,119 @@
+.footer {
+	background-color: #343941;
+	padding-top: 33px;
+}
+
+.title-footer-big {
+	margin-top: 16px;
+	font: 32px 'snowstorm';
+	text-transform: capitalize;
+}
+
+.title-footer-medium {
+	font: 18px 'snowstorm';
+}
+
+.footer-contacts-wrapper {
+	font: 24px 'Myriad Pro';
+	text-transform: capitalize;
+}
+
+.footer-contacts-wrapper li a {
+	color: #d8d8d8;
+}
+
+.social li {
+	display: inline-block;
+}
+
+.youtube,
+.facebook,
+.insta {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	display: inline-block;
+	width: 43px;
+	height: 43px;
+}
+
+.social .youtube {
+	background-image: url(../img/youtube.png);
+}
+
+.social .facebook {
+	background-image: url(../img/facebook.png);
+}
+
+.social .insta {
+	background-image: url(../img/insta.png);
+}
+
+.social .youtube:hover {
+	background-image: url(../img/youtube-hover.png);
+	transition: .5s;
+}
+
+.social .facebook:hover {
+	background-image: url(../img/facebook-hover.png);
+	transition: .5s;
+}
+
+.social .insta:hover {
+	background-image: url(../img/insta-hover.png);
+	transition: .5s;
+}
+
+.footer-black-block {
+	background-color: #272526;
+	padding-top: 73px;
+}
+
+.copyright-wrapper {
+	background-color: #272526;
+	width: 100%;
+	max-width: 2096px;
+	padding: 10px 0;
+}
+
+.copyright {
+	color: #fff;
+	text-align: center;
+	font: 14.64px 'intro';
+	letter-spacing: 1px;
+}
+
+/*Responsive*/
+@media (max-width: 575.98px) {
+
+	.footer-logo-block,
+	.footer-contacts-wrapper {
+		text-align: center;
+	}
+
+	.footer-contacts-wrapper {
+		padding-top: 25px;
+		padding-bottom: 25px;
+	}
+
+	.footer-contacts {
+		margin-bottom: 15px;
+	}
+
+	.footer-phone-1,
+	.footer-phone-2,
+	.footer-email-1,
+	.footer-address-1 {
+		margin-bottom: 10px;
+	}
+
+	.social {
+		text-align: center;
+		padding-bottom: 25px;
+	}
+
+	.copyright {
+		font-size: 13px;
+	}
+
+}

@@ -9,13 +9,13 @@
 				</div>
 			</div>
 			<div class="col-md-3">
-				<ul class="footer-contacts">
-					<li><a href="#" target="_blank" title="">Контакты:</a></li>
-					<li><a href="#" target="_blank" title="">Номер 1</a></li>
-					<li><a href="#" target="_blank" title="">Номер 2</a></li>
-					<li><a href="#" target="_blank" title="">Почта 1</a></li>
-					<li><a href="#" target="_blank" title="">Адрес 1</a></li>
-					<li><a href="#" target="_blank" title="">Адрес 2</a></li>
+				<ul class="footer-contacts-wrapper">
+					<li class="footer-contacts"><a href="#" target="_blank" title="">Контакты:</a></li>
+					<li class="footer-phone-1"><a href="#" target="_blank" title="">Номер 1</a></li>
+					<li class="footer-phone-2"><a href="#" target="_blank" title="">Номер 2</a></li>
+					<li class="footer-email-1"><a href="#" target="_blank" title="">Почта 1</a></li>
+					<li class="footer-address-1"><a href="#" target="_blank" title="">Адрес 1</a></li>
+					<li class="footer-address-2"><a href="#" target="_blank" title="">Адрес 2</a></li>
 				</ul>
 			</div>	
 			<div class="col-md-3">
