@@ -39,6 +39,10 @@
 	position: relative;
 }
 
+.right-blocks img {
+	max-width: 100%;
+}
+
 .news-details-title {
 	position: absolute;
 	bottom: 35px;
@@ -213,4 +217,31 @@
 .btn-to-write{
 	color: #7f7f7f;
 	font: 13px 'intro';
+}
+
+@media (max-width: 575.98px) {
+	.news-wrapper {
+		padding: 80px 0;
+	}
+
+	.right-blocks img {
+		max-width: 100%;
+		height: 100%;
+	}
+
+	.advertising {
+		margin-bottom: 60px;
+	}
+
+	.news-details-title {
+		font-size: 19px;
+	}
+
+	.title-all-news {
+		font-size: 50px;
+	}
+
+	.all-news-line {
+		margin-bottom: 5px;
+	}
 }
