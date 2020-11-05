@@ -95,3 +95,11 @@
 .instagramm-icon {
 	background-image: url(../img/instagramm-icon.png);
 }
+
+@media (max-width: 575.98px) {
+
+	.freelance-wrapper {
+		padding: 80px 0; 
+	}
+
+}
