@@ -59,3 +59,15 @@ body {
 	text-transform: uppercase;
 }
 
+@media (max-width: 575.98px) {
+	div.header-wrapper {
+		padding-bottom: 80px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	div.header-wrapper {
+		padding-bottom: 80px;
+	}
+}
+
