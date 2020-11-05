@@ -143,6 +143,12 @@
   	transition: 0.3s;
 }
 
+.header-wrapper .navbar-toggler:focus {
+	outline: initial;
+	/*border: 2px solid #dda426;
+	transition: .3s;*/
+}
+
 @media (max-width: 575.98px) {
 	#navbarText{
 		margin-top: 25px;
@@ -160,4 +166,27 @@
 		border-color: #dda426;
 	}
 
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	#navbarText{
+		margin-top: 25px;
+	}
+
+	.navbar-logo {
+		text-align: center;
+	}
+
+	.navbar-wrapper {
+		margin: 25px 0;		
+	}
+
+	.navbar-light .navbar-toggler {
+		border-color: #dda426;
+	}
+
+	.place-name-second-pages {
+		margin-top: 50px;
+	}
+	
 }

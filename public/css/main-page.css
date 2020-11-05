@@ -113,7 +113,7 @@
 	}
 
 	.video h1 {
-		font-size: 80px;
+		font-size: 50px;
 	}
 
 	.finds-wrap {
@@ -139,6 +139,48 @@
 
 	.title-our-partners {
 		font-size: 50px;
+		padding: 50px 0;
+	}
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+	.content-wrapper {
+		padding: 80px 0;
+	}
+
+	.video h1 {
+		font-size: 60px;
+	}
+
+	.place-name {
+		margin-top: 10%;
+	}
+
+	.find-an-investor {
+		margin-bottom: 15px;	
+	}
+
+	.finds-wrap {
+		margin-top: 54px;
+	}
+
+	.investros-and-employers-section {
+		padding: 98px 0;
+	}
+
+	.title-our-partners {
+		padding: 50px 0;
+		font-size: 58px;
+	}
+
+	.our-partners {
+		padding-bottom: 80px;
+	}
+
+	.our-prtners-owl {
+		text-align: center;
 	}
 
 }

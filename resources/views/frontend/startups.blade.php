@@ -10,21 +10,21 @@
 <section class="startups-main-wrapper">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="startups-main-categories">
 					<a href="#" title="Категории" class="startups-main-title">Категории</a>
 				</div>
 			</div>
-			<div class="col-md-8">
+			<div class="col-lg-8 col-md-6 col-sm-12">
 				<div class="startups-main-all">
 					<a href="#" title="Все" class="startups-main-title">Все</a>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-lg-4 col-md-12">
 				<div class="startups-main-route-wrapper startups-main-route-wrapper-first"><a href="#" class="startups-main-route">инвестору</a></div>
 				<div class="startups-main-route-wrapper"><a href="#" class="startups-main-route">предпринимателю</a></div>
 			</div>
-			<div class="col-md-8">
+			<div class="col-lg-8 col-md-12">
 				<div class="top">
 					<h3 class="top-title">ТОП</h3>
 					<div class="row">

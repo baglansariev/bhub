@@ -127,4 +127,34 @@
 		margin: 15px 0;
 	}
 
+	.br-mobile {
+		display: initial;
+	}
+
+	.phone-block-title {
+		text-align: center;
+	}
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+	.startups-wrapper {
+		padding: 80px 0;
+	}
+
+	.startup-logo-wrapper {
+		width: 273px;
+		height: 273px;
+	}
+
+	.startup-logo-wrapper-title,
+	.startup-video-title {
+		font-size: 71px;
+	}
+
+	.br-mobile {
+		display: initial;
+	}
+
 }

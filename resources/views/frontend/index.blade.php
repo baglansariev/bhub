@@ -17,10 +17,10 @@
 					</div>
 					<div class="finds-wrap">
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-lg-6 col-md-12">
 								<button type="button" class="btn find-an-investor">найти инвестора</button>
 							</div>
-							<div class="col-md-6">
+							<div class="col-lg-6 col-md-12">
 								<button type="button" class="btn find-an-employer">найти работадателя</button>
 							</div>
 						</div>
@@ -51,10 +51,10 @@
 						<p class="iae-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
 						<div class="finds-wrap">
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-lg-6 col-md-12">
 									<button type="button" class="btn find-an-investor">инвест проекты</button>
 								</div>
-								<div class="col-md-6">
+								<div class="col-lg-6 col-md-12">
 									<button type="button" class="btn find-an-employer">найти фрилансера</button>
 								</div>
 							</div>
@@ -78,16 +78,16 @@
 				<div class="col-md-12">
 					<h1 class="title-our-partners">наши <span>партнеры</span></h1>
 				</div>	
-				<div class="col-md-3">
+				<div class="col-lg-3 col-md-6 col-sm-12">
 					<div class="our-prtners-owl"><img src="img/our-partner.png" width="219" height="92" /></div>
 				</div>	
-				<div class="col-md-3">
+				<div class="col-lg-3 col-md-6 col-sm-12">
 					<div class="our-prtners-owl"><img src="img/our-partner.png" width="219" height="92" /></div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-lg-3 col-md-6 col-sm-12">
 					<div class="our-prtners-owl"><img src="img/our-partner.png" width="219" height="92" /></div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-lg-3 col-md-6 col-sm-12">
 					<div class="our-prtners-owl"><img src="img/our-partner.png" width="219" height="92" /></div>
 				</div>
 			</div>

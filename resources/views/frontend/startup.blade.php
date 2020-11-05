@@ -26,7 +26,7 @@
 			</div>
 			<div class="col-md-6">
 				<div class="phone-block">
-					<h2 class="phone-block-title">номер телефона:<span>&nbsp;+7 xxx xxx xx xx</span></h2>
+					<h2 class="phone-block-title">номер телефона:<br class="br-mobile"><span>&nbsp;+7 xxx xxx xx xx</span></h2>
 					<div class="startup-logo-wrapper"><h3 class="startup-logo-wrapper-title">ЛОГО</h1><img src="" class="startup-logo"></div>
 					</div>
 				</div>

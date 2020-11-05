@@ -59,6 +59,10 @@ body {
 	text-transform: uppercase;
 }
 
+.br-mobile {
+	display: none;
+}
+
 @media (max-width: 575.98px) {
 	div.header-wrapper {
 		padding-bottom: 80px;

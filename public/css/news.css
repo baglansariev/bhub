@@ -279,6 +279,11 @@
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) and (max-width: 991.98px) {
+
+	.news-wrapper {
+		padding: 80px 0;
+	}
+
 	.navbar-logo {
 		text-align: center;
 	}
@@ -301,6 +306,15 @@
 
 	.quiz-block h1 {
 		margin-bottom: 44px;
+	}
+
+	.three-blocks-title {
+		font-size: 30px;
+	}
+
+	.title-all-news {
+		font-size: 50px;
+		text-align: center;
 	}
 
 }
