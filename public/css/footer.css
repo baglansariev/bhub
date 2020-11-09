@@ -31,7 +31,7 @@
 .insta {
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: contain;
 	display: inline-block;
 	width: 43px;
 	height: 43px;
@@ -60,7 +60,7 @@
 }
 
 .social .insta:hover {
-	background-image: url(../img/insta-hover.png);
+	background-image: url(../img/_insta-hover.png);
 	transition: .5s;
 }
 
