@@ -11,25 +11,25 @@
 					</div>
 					<div class="navbar-wrapper">
 						<ul class="navbar-nav">
-							<li class="nav-item active">
+							<li class="nav-item {{Request::is('/') ? 'active' : '' }}">
 								<a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item {{Request::is('business-news') ? 'active' : '' }}">
 								<a class="nav-link" href="/business-news">Бизнес новости</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item {{ Request::is('startups','all','business','commercial-property') ? 'active' : '' }}">
 								<div class="dropdown">
-									<a class="nav-link" href="#">стартапы</a>
+									<a class="nav-link" href="/startups">стартапы</a>
 									<div class="dropdown-content">
-										<a href="#">все</a>
+										<a href="/all">все</a>
 										<a href="/startups">стартапы</a>
-										<a href="#">бизнес</a>
-										<a href="#" class="last">коммерческая недвижимость</a>
+										<a href="/business">бизнес</a>
+										<a href="/commercial-property" class="last">коммерческая недвижимость</a>
 									</div>
 								</div>
 								
 							</li>
-							<li class="nav-item">
+							<li class="nav-item {{ Request::is('freelancers','employee') ? 'active' : '' }}">
 								<a class="nav-link" href="/freelancers">Фрилансеры</a>
 							</li>
 						</ul>
@@ -60,6 +60,7 @@
 				<div class="col-md-12 col-sm-12">
 					<div class="place-name-second-pages">
 						<h2 class="place-name-second-pages-title">@if(isset($title)) {{ $title }} @endif</h2>
+						{{ Request::is('all') }}
 					</div>
 				</div>
 			@endif
