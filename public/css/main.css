@@ -63,7 +63,35 @@ body {
 	display: none;
 }
 
+.find-an-investor-wrapper {
+	padding: 120px 0;
+}
+
+a.find-an-investor-categories {
+	background-color: #272425;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	height: 253.69px;
+}
+
+.find-an-investor-categories img {
+	width: 100%;
+	max-width: inherit;	
+}
+
+.find-an-investor-categories-title {
+	color: #fff;
+	font: 14px 'intro';
+	padding: 15px 10px;
+}
+
 @media (max-width: 575.98px) {
+
+	.find-an-investor-wrapper {
+		padding: 80px 0;
+	}
+
 	div.header-wrapper {
 		padding-bottom: 80px;
 	}
@@ -81,5 +109,10 @@ body {
 	div.header-wrapper {
 		padding-bottom: 80px;
 	}
+
+	.find-an-investor-wrapper {
+		padding: 80px 0;
+	}
+
 }
 

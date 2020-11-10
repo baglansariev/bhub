@@ -18,10 +18,10 @@
 					<div class="finds-wrap">
 						<div class="row">
 							<div class="col-lg-6 col-md-12">
-								<button type="button" class="btn find-an-investor">найти инвестора</button>
+								<button type="button" class="btn find-an-investor"><a href="/find-an-investor" target="_blank" title="Найти инвестора">найти инвестора</a></button>
 							</div>
 							<div class="col-lg-6 col-md-12">
-								<button type="button" class="btn find-an-employer">найти работадателя</button>
+								<button type="button" class="btn find-an-employer"><a href="/find-an-employer" target="_blank" title="Найти работадателя">найти работадателя</a></button>
 							</div>
 						</div>
 					</div>

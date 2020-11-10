@@ -56,4 +56,18 @@ class FrontController extends Controller
 		return view("frontend.employee", compact("data"));
 	}
 
+	public function findAnInvestor ()
+	{
+		$data = ["title" => "Найти инвестора"];
+
+		return view("frontend.find-an-investor", compact("data"));
+	}
+
+	public function findAnEmployer ()
+	{
+		$data = ["title" => "Найти работадателя"];
+
+		return view("frontend.find-an-employer", compact("data"));
+	}
+
 }
