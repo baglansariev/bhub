@@ -14,39 +14,29 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-2 col-md-3 col-sm-2">
+			<div class="col-lg-3 col-md-3 col-sm-2">
 				<div class="categories-wrapper">
 					<h3 class="categories-title">Категории</h3>
 					<ul class="freelance-categories-lists">
-						<li><a href="#">Category1</a></li>
-						<li><a href="#">Category2</a></li>
-						<li><a href="#">Category3</a></li>
-						<li><a href="#">Category4</a></li>
-						<li><a href="#">Category5</a></li>
-						<li><a href="#">Category6</a></li>
-						<li><a href="#">Category7</a></li>
-						<li><a href="#">Category8</a></li>
-						<li><a href="#">Category9</a></li>
-						<li><a href="#">Category10</a></li>
-						<li><a href="#">Category11</a></li>
-						<li><a href="#">Category12</a></li>
-						<li><a href="#">Category14</a></li>
-						<li><a href="#">Category13</a></li>
-						<li><a href="#">Category14</a></li>
-						<li><a href="#">Category15</a></li>
-						<li><a href="#">Category16</a></li>
-						<li><a href="#">Category17</a></li>
-						<li><a href="#">Category18</a></li>
-						<li><a href="#">Category19</a></li>
-						<li><a href="#">Category20</a></li>
-						<li><a href="#">Category21</a></li>
-						<li><a href="#">Category22</a></li>
-						<li><a href="#">Category23</a></li>
-						<li><a href="#">Category24</a></li>
+						<li><a href="#">Разработчики мобильных приложений</a></li>
+						<li><a href="#">Веб-разработчики</a></li>
+						<li><a href="#">IT-специалисты</a></li>
+						<li><a href="#">Разработчики игр</a></li>
+						<li><a href="#">Веб-дизайнеры</a></li>
+						<li><a href="#">СММ-специалисты</a></li>
+						<li><a href="#">Маркетологи</a></li>
+						<li><a href="#">Бухгалтеры</a></li>
+						<li><a href="#">Экономисты и финансисты</a></li>
+						<li><a href="#">3Д графика</a></li>
+						<li><a href="#">2Д и 3Д анимация</a></li>
+						<li><a href="#">Дизайн и Арт</a></li>
+						<li><a href="#">Видео и Фотосъемка</a></li>
+						<li><a href="#">Обучение и консультация</a></li>
+						<li><a href="#">Оптимизация(SEO)</a></li>
 					</ul>		
 				</div>
 			</div>
-			<div class="col-lg-9 offset-lg-1 col-md-9 offset-md-0 col-sm-9">
+			<div class="col-lg-8 offset-lg-1 col-md-9 offset-md-0 col-sm-9">
 				<div class="row">
 					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
@@ -56,7 +46,7 @@
 									<h5 class="freelancer-name">Adilet</h5>
 									<p class="freelancer-position">Computer Sience</p>
 								</div>
-								<div class="social">
+								<div class="freelance-social">
 									<a href="#" class="facebook-icon" target="_blank" title="facebook"></a>
 									<a href="#" class="instagramm-icon" target="_blank" title="instagramm"></a>
 								</div>
@@ -70,7 +60,7 @@
 								<h5 class="freelancer-name">Adilet</h5>
 								<p class="freelancer-position">Computer Sience</p>
 							</div>
-							<div class="social">
+							<div class="freelance-social">
 								<a href="#" class="facebook-icon"></a>
 								<a href="#" class="instagramm-icon"></a>
 							</div>
@@ -83,7 +73,7 @@
 								<h5 class="freelancer-name">Adilet</h5>
 								<p class="freelancer-position">Computer Sience</p>
 							</div>
-							<div class="social">
+							<div class="freelance-social">
 								<a href="#" class="facebook-icon"></a>
 								<a href="#" class="instagramm-icon"></a>
 							</div>
@@ -96,7 +86,7 @@
 								<h5 class="freelancer-name">Adilet</h5>
 								<p class="freelancer-position">Computer Sience</p>
 							</div>
-							<div class="social">
+							<div class="freelance-social">
 								<a href="#" class="facebook-icon"></a>
 								<a href="#" class="instagramm-icon"></a>
 							</div>
@@ -109,7 +99,7 @@
 								<h5 class="freelancer-name">Adilet</h5>
 								<p class="freelancer-position">Computer Sience</p>
 							</div>
-							<div class="social">
+							<div class="freelance-social">
 								<a href="#" class="facebook-icon"></a>
 								<a href="#" class="instagramm-icon"></a>
 							</div>
@@ -122,7 +112,7 @@
 								<h5 class="freelancer-name">Adilet</h5>
 								<p class="freelancer-position">Computer Sience</p>
 							</div>
-							<div class="social">
+							<div class="freelance-social">
 								<a href="#" class="facebook-icon"></a>
 								<a href="#" class="instagramm-icon"></a>
 							</div>
@@ -135,7 +125,7 @@
 								<h5 class="freelancer-name">Adilet</h5>
 								<p class="freelancer-position">Computer Sience</p>
 							</div>
-							<div class="social">
+							<div class="freelance-social">
 								<a href="#" class="facebook-icon"></a>
 								<a href="#" class="instagramm-icon"></a>
 							</div>
@@ -148,7 +138,7 @@
 								<h5 class="freelancer-name">Adilet</h5>
 								<p class="freelancer-position">Computer Sience</p>
 							</div>
-							<div class="social">
+							<div class="freelance-social">
 								<a href="#" class="facebook-icon"></a>
 								<a href="#" class="instagramm-icon"></a>
 							</div>
@@ -161,7 +151,7 @@
 								<h5 class="freelancer-name">Adilet</h5>
 								<p class="freelancer-position">Computer Sience</p>
 							</div>
-							<div class="social">
+							<div class="freelance-social">
 								<a href="#" class="facebook-icon"></a>
 								<a href="#" class="instagramm-icon"></a>
 							</div>
@@ -174,7 +164,7 @@
 								<h5 class="freelancer-name">Adilet</h5>
 								<p class="freelancer-position">Computer Sience</p>
 							</div>
-							<div class="social">
+							<div class="freelance-social">
 								<a href="#" class="facebook-icon"></a>
 								<a href="#" class="instagramm-icon"></a>
 							</div>
@@ -187,7 +177,7 @@
 								<h5 class="freelancer-name">Adilet</h5>
 								<p class="freelancer-position">Computer Sience</p>
 							</div>
-							<div class="social">
+							<div class="freelance-social">
 								<a href="#" class="facebook-icon"></a>
 								<a href="#" class="instagramm-icon"></a>
 							</div>
@@ -200,7 +190,7 @@
 								<h5 class="freelancer-name">Adilet</h5>
 								<p class="freelancer-position">Computer Sience</p>
 							</div>
-							<div class="social">
+							<div class="freelance-social">
 								<a href="#" class="facebook-icon"></a>
 								<a href="#" class="instagramm-icon"></a>
 							</div>
