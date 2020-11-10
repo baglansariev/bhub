@@ -30,7 +30,23 @@
 								
 							</li>
 							<li class="nav-item {{ Request::is('freelancers','employee') ? 'active' : '' }}">
-								<a class="nav-link" href="/freelancers">Фрилансеры</a>
+								<div class="dropdown">
+									<a class="nav-link" href="/freelancers">Фрилансеры</a>
+									<div class="dropdown-content mega-menu">
+										<ul class="mega-menu-first-block">
+											<li><a href="/all">все</a></li>
+											<li><a href="/startups">иллюстрации</a></li>
+											<li><a href="/business">Реклама</a></li>
+											<li><a href="/commercial-property" class="last">Тексты</a></li>
+										</ul>
+										<ul>
+											<li><a href="/all">Дизайн</a></li>
+											<li><a href="/startups">вебразработчики</a></li>
+											<li><a href="/business">Продвижение</a></li>
+											<li><a href="/commercial-property" class="last">еще</a></li>
+										</ul>
+									</div>
+								</div>
 							</li>
 						</ul>
 					</div>

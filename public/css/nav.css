@@ -109,6 +109,7 @@
 	letter-spacing: 3px;
 }
 
+/*Start dropdown menu*/
 .dropdown-content {
   	display: none;
   	position: absolute;
@@ -142,6 +143,15 @@
   	display: block;
   	transition: 0.3s;
 }
+
+.dropdown:hover .dropdown-content.mega-menu {
+	display: flex;
+}
+
+.mega-menu-first-block {
+	border-right: 1px solid #fff;
+}
+/*End dropdown menu*/
 
 .header-wrapper .navbar-toggler:focus {
 	outline: initial;
