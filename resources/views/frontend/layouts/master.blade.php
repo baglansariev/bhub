@@ -34,6 +34,6 @@
     <section class="footer">
     	@include('frontend.partials._footer')
 	</section>
-
+	<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>

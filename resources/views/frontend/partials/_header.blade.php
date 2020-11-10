@@ -18,8 +18,9 @@
 								<a class="nav-link" href="/business-news">Бизнес новости</a>
 							</li>
 							<li class="nav-item {{ Request::is('startups','all','business','commercial-property') ? 'active' : '' }}">
+								<!-- Start  desktop dropdown version-->
 								<div class="dropdown">
-									<a class="nav-link" href="/startups">стартапы</a>
+									<a class="nav-link nav-link-desktop" href="/startups">стартапы</a>
 									<div class="dropdown-content">
 										<a href="/all">все</a>
 										<a href="/startups">стартапы</a>
@@ -27,11 +28,21 @@
 										<a href="/commercial-property" class="last">коммерческая недвижимость</a>
 									</div>
 								</div>
-								
+								<!-- Start mobile dropdown version-->
+								<a class="nav-link nav-link-mobile dropdown-toggle" data-toggle="dropdown" href="/freelancers">стартапы</a>
+								<div class="dropdown-menu megamenu megamenu-mobile">
+									<ul>
+											<li><a href="/all">все</a></li>
+											<li><a href="/startups">стартапы</a></li>
+											<li><a href="/business">бизнес</a></li>
+											<li><a href="/commercial-property" class="last">коммерческая недвижимость</a></li>
+										</ul>
+								</div>
 							</li>
 							<li class="nav-item {{ Request::is('freelancers','employee') ? 'active' : '' }}">
+								<!-- Start desktop dropdown version -->
 								<div class="dropdown">
-									<a class="nav-link" href="/freelancers">Фрилансеры</a>
+									<a class="nav-link nav-link-desktop" href="/freelancers">Фрилансеры</a>
 									<div class="dropdown-content mega-menu">
 										<ul class="mega-menu-first-block">
 											<li><a href="/all">все</a></li>
@@ -46,6 +57,22 @@
 											<li><a href="/commercial-property" class="last">еще</a></li>
 										</ul>
 									</div>
+								</div>
+								<!-- Start mobile dropdown version -->
+								<a class="nav-link nav-link-mobile dropdown-toggle" data-toggle="dropdown" href="/freelancers">Фрилансеры</a>
+								<div class="dropdown-menu megamenu megamenu-mobile">
+									<ul class="megamenu-mobile-inner">
+										<li><a href="/all">все</a></li>
+										<li><a href="/startups">иллюстрации</a></li>
+										<li><a href="/business">Реклама</a></li>
+										<li><a href="/commercial-property" class="last">Тексты</a></li>
+									</ul>
+									<ul class="megamenu-mobile-inner">
+										<li><a href="/all">Дизайн</a></li>
+										<li><a href="/startups">вебразработчики</a></li>
+										<li><a href="/business">Продвижение</a></li>
+										<li><a href="/commercial-property" class="last">еще</a></li>
+									</ul>
 								</div>
 							</li>
 						</ul>
