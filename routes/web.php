@@ -33,3 +33,13 @@ Route::get('/freelancers', 'FrontController@freelancers')->name("freelancers");
 Route::get('/employee', "FrontController@employee")->name("employee");
 
 // Backend area
+
+Auth::routes();
+
+Route::middleware('auth')->group(function () {
+    Route::prefix('admin')->group(function () {
+
+        Route::get('/', 'Admin\HomeController@index')->name('admin');
+
+    });
+});
