@@ -43,6 +43,18 @@
 	padding: 9px 0;
 }
 
+.find-an-investor a,
+.find-an-employer a {
+	text-decoration: initial;
+	color: #fff;
+}
+
+.find-an-investor a:hover,
+.find-an-employer a:hover {
+	color: #212529;
+	transition: .3s;
+}
+
 .investros-and-employers-section {
 	background: url(../img/building.png) no-repeat center bottom;
 	background-size: contain;
