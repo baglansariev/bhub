@@ -4601,7 +4601,8 @@ tr.group:hover {
 
 /*Custom styles*/
 .card-reset-password-form,
-.card-send-password-reset-link {
+.card-send-password-reset-link,
+.card-confirm-password-form {
     margin-top: 15px;
 }
 
