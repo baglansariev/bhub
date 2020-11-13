@@ -4599,6 +4599,10 @@ tr.group:hover {
 6.8 Timeline
 -------------------------*/
 
+/*Custom styles*/
+.card-reset-password-form {
+    margin-top: 15px;
+}
 
 /* --------------------------------
 
