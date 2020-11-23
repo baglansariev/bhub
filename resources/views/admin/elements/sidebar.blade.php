@@ -17,7 +17,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">
-                        <i class="fa fa-fw fa-rocket"></i>
+                        <i class="fa fa-fw fa-rocket mr-1"></i>
                         <span class="link-title">Модули</span>
                     </a>
                     <div id="submenu-2" class="collapse submenu" style="">
@@ -48,7 +48,7 @@
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4">
-                        <i class="fab fa-fw fa-wpforms"></i>
+                        <i class="fab fa-fw fa-wpforms mr-1"></i>
                         <span class="link-title">Блог</span>
                     </a>
                     <div id="submenu-4" class="collapse submenu" style="">
@@ -67,7 +67,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5">
-                        <i class="fas fa-fw fa-chart-bar"></i>
+                        <i class="fas fa-fw fa-chart-bar mr-1"></i>
                         <span class="link-title">Статистика</span>
                     </a>
                     <div id="submenu-5" class="collapse submenu" style="">
@@ -83,16 +83,16 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-users mr-1"></i>
                         <span class="link-title">Пользователи</span>
                     </a>
                     <div id="submenu-6" class="collapse submenu" style="">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="general-table.html">General Tables</a>
+                                <a class="nav-link" href="#">Все пользователи</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="data-tables.html">Data Tables</a>
+                                <a class="nav-link" href="">Группы</a>
                             </li>
                         </ul>
                     </div>
