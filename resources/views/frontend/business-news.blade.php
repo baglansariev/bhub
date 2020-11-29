@@ -13,15 +13,13 @@
 			<div class="col-md-6">
 				<div class="photo">
 					<h3 class="photo-title">фото</h1>
-						<img src="https://via.placeholder.com/675x462">
+						<!-- <img src="https://via.placeholder.com/675x462"> -->
+						<img src="{{asset('img/business-news/')}}/{{$latestPost->img }}" align="{{$latestPost->img}}" title="{{ $latestPost->title }}">
 					</div>
 					<div class="new-content">
-						<p class="new-content-text">текст для новостей текст для новостей текст для новостей текст для </p>
-						<p class="new-content-text">текст для новостей текст для новостей текст для новостей текст для </p>
-						<p class="new-content-text">текст для новостей текст для новостей текст для новостей текст для </p>
-						<p class="new-content-text">текст для новостей текст для новостей текст для новостей текст для </p>
-						<p class="new-content-text">текст для новостей текст для новостей текст для новостей текст для </p>
-						<p class="new-content-text">текст для новостей текст для новостей текст для новостей текст для </p>
+						<p class="new-content-text">
+							{{ $latestPost->body }}
+						</p>
 					</div>
 					<div class="advertising">
 						<h2>Реклама</h2>
@@ -29,7 +27,17 @@
 				</div>
 				<div class="col-md-5 offset-md-1">
 					<div class="row">
+						@foreach ( $news as $item )
 						<div class="col-md-12">
+							<a href="{{ url('business-news/' .  $item->slug) }}" title="Подробнее об '{{$item->title}}'" class="right-blocks-wrapper-link">
+								<div class="right-blocks">
+									<img src="/img/business-news/{{$item->img}}" alt="{{ $item->img }}">
+									<h5 class="news-details-title">{{ $item->title }}</h5>
+								</div>
+							</a>
+						</div>
+						@endforeach
+						<!-- <div class="col-md-12">
 							<a href="/news-on-click" title="Подробнее" class="right-blocks-wrapper-link">
 								<div class="right-blocks">
 									<img src="https://via.placeholder.com/405x233" alt="">
@@ -52,7 +60,7 @@
 									<h5 class="news-details-title">Новости мирового бизнеса</h5>
 								</div>
 							</a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

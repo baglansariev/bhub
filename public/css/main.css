@@ -87,6 +87,10 @@ a.find-an-investor-categories {
 	padding: 15px 10px;
 }
 
+.modal-title {
+	color: #272425;
+}
+
 @media (max-width: 575.98px) {
 
 	.find-an-investor-wrapper {

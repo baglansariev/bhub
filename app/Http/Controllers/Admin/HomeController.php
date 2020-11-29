@@ -16,9 +16,9 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth()->user();
-        echo '<pre>';
-        print_r($user->role()->first()->permissions()->first()->name);
-        exit;
+        // echo '<pre>';
+        // print_r($user->role()->first()->permissions()->first()->name);
+        // exit;
         return view('admin.home');
     }
 }

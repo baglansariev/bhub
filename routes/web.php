@@ -22,7 +22,8 @@ Route::get('/', 'FrontController@index')->name('home');
 
 Route::get('/business-news', "FrontController@businessNews")->name("businessNews");
 
-Route::get('/news-on-click', "FrontController@newsDetail")->name("newsDetail");
+//Route::get('/news-on-click', "FrontController@newsDetail")->name("newsDetail");
+Route::get('/business-news/{slug?}', "FrontController@newsDetail")->name("newsDetail");
 
 Route::get('/startups', "FrontController@startups")->name("startups");
 

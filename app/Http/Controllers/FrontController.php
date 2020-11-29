@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\BusinessNews;
 
 class FrontController extends Controller
 {
@@ -16,14 +17,19 @@ class FrontController extends Controller
 
 	public function businessNews ()
 	{
+		$news = BusinessNews::take(3)->get();
+		$latestPost = BusinessNews::orderBy('id', 'DESC')->first();
 		$data = ['title' => "Бизнес новости"];
+		//dd($news);
 
-		return view("frontend.business-news", compact("data"));
+		return view("frontend.business-news", compact("data", "news", "latestPost"));
 	}
 
-	public function newsDetail ()
+	public function newsDetail ( $slug = "" )
 	{
-		$data = ["title" => "Новости"];
+		$post = BusinessNews::whereSlug($slug)->first();
+		$data = ["title" => $post->title, "post" => $post];
+		//dd($data["post"]->title);
 
 		return view("frontend.news-on-click", compact("data"));
 	}
