@@ -23,6 +23,9 @@
                     <div id="submenu-2" class="collapse submenu" style="">
                         <ul class="nav flex-column">
                             <li class="nav-item">
+                                <a class="nav-link" href="/admin/business-news">Бизнес новости</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="#">Услуги</a>
                             </li>
                             <li class="nav-item">

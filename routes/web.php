@@ -45,6 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
 
         Route::get('/', 'Admin\HomeController@index')->name('admin');
-
+        Route::resource('/business-news', 'Admin\BusinessNewsController');
     });
 });
