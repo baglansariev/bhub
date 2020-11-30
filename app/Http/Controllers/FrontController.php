@@ -20,7 +20,7 @@ class FrontController extends Controller
 		$news = BusinessNews::take(3)->get();
 		$latestPost = BusinessNews::orderBy('id', 'DESC')->first();
 		$data = ['title' => "Бизнес новости"];
-		//dd($news);
+		//dd($latestPost);
 
 		return view("frontend.business-news", compact("data", "news", "latestPost"));
 	}
