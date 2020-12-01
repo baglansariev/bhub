@@ -5,10 +5,10 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Create New Blog</h2>
+            <h2>Добавить новый бизнес пост</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('business-news.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('business-news.index') }}"> <i class="fas fa-step-backward"></i></a>
         </div>
     </div>
 </div>
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Отправить</button>
         </div>
     </div>
    
