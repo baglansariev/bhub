@@ -7,10 +7,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Role;
 use Laravelista\Comments\Commenter;
+use Laravelista\Comments\Comment;
+use App\Models\Like;
 
 class User extends Authenticatable
 {
-    use Notifiable, Commenter;
+    use Notifiable, Followable;
+
+    protected $guarded = [];
 
     /**
      * The attributes that are mass assignable.
@@ -42,5 +46,33 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsToMany(Role::class, 'user_roles');
+    }
+
+    public function timeline()
+    {
+        $friends = $this->follows()->pluck('id');
+
+        return Commenter::whereIn('user_id', $friends)
+            ->orWhere('user_id', $this->id)
+            ->withLikes()
+            ->orderByDesc('id')
+            ->paginate(50);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->latest();
+    }
+
+     public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function path($append = '')
+    {
+        $path = route('profile', $this->username);
+
+        return $append ? "{$path}/{$append}" : $path;
     }
 }

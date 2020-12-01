@@ -284,6 +284,14 @@
 	margin-bottom: 10px;
 }
 
+.comments-area-cusomize {
+	white-space: initial !important;
+}
+
+.likes-area {
+	display: flex;
+}
+
 @media (max-width: 575.98px) {
 	.news-wrapper {
 		padding: 80px 0;

@@ -1,6 +1,10 @@
 @inject('markdown', 'Parsedown')
 @php($markdown->setSafeMode(true))
 
+{{--dd($comment->likes())--}}
+{{--dd($comment->likes->where('comment_id', $comment->id)->where('liked', true)->count())--}}
+{{--dd($comment->current_user())--}}
+
 @if(isset($reply) && $reply === true)
   <div id="comment-{{ $comment->id }}" class="media">
 @else
@@ -9,10 +13,25 @@
     <img class="mr-3" src="https://www.gravatar.com/avatar/{{ md5($comment->commenter->email ?? $comment->guest_email) }}.jpg?s=64" alt="{{ $comment->commenter->name ?? $comment->guest_name }} Avatar">
     <div class="media-body">
         <h5 class="mt-0 mb-1 customize-post-commenter-name">{{ $comment->commenter->name ?? $comment->guest_name }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
-        <div style="white-space: pre-wrap; color: #000;">
+        <div class="comments-area-cusomize" style="white-space: pre-wrap; color: #000;">
             {!! $markdown->line($comment->comment) !!}
-            <a href="" class="btn"><i class="far fa-heart"></i></a>
-            <a class="btn"><i class="fas fa-heart"></i></a>
+        
+            <div class="likes-area">
+                <div>{{$comment->likes->where('comment_id', $comment->id)->where('user_id', $comment->commenter->id)}}</div>
+                <a class="btn"><i class="fas fa-heart"></i>&nbsp;{{$comment->likedCount($comment->commenter) ?: 0}}</a>
+                {{--@if ($comment->likedCount($comment->commenter) > 0)
+                <a class="btn"><i class="fas fa-heart"></i>&nbsp;{{$comment->likedCount($comment->commenter) ?: 0}}</a>
+                @else
+                <a href="" class="btn"><i class="fas fa-heart"></i>&nbsp;0</a>
+                @endif--}} 
+
+                @if ($comment->likes->where('comment_id', $comment->id)->where('liked', false)->count() > 0)
+                <a href="" class="btn"><i class="far fa-heart"></i>&nbsp;{{$comment->likes->where('comment_id', $comment->id)->where('liked', false)->count() ?: 0}}</a>
+                @else
+                <a href="" class="btn"><i class="far fa-heart"></i>&nbsp;0</a>
+                @endif  
+            </div>
+              
         </div>
 
         <div>
