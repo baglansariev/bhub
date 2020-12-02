@@ -17,19 +17,14 @@
             {!! $markdown->line($comment->comment) !!}
         
             <div class="likes-area">
-                <div>{{$comment->likes->where('comment_id', $comment->id)->where('user_id', $comment->commenter->id)}}</div>
-                <a class="btn"><i class="fas fa-heart"></i>&nbsp;{{$comment->likedCount($comment->commenter) ?: 0}}</a>
-                {{--@if ($comment->likedCount($comment->commenter) > 0)
-                <a class="btn"><i class="fas fa-heart"></i>&nbsp;{{$comment->likedCount($comment->commenter) ?: 0}}</a>
-                @else
-                <a href="" class="btn"><i class="fas fa-heart"></i>&nbsp;0</a>
-                @endif--}} 
+                <!-- <div>TEST {{$comment->current_user()}}</div> -->
+                <!-- <div>{{$comment->likes->where('comment_id', $comment->id)->where('user_id', $comment->current_user()->id)->where('liked', true)->count()}}</div> -->
+                <!-- <div>{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? "true" : "false"}}</div> -->
 
-                @if ($comment->likes->where('comment_id', $comment->id)->where('liked', false)->count() > 0)
-                <a href="" class="btn"><i class="far fa-heart"></i>&nbsp;{{$comment->likes->where('comment_id', $comment->id)->where('liked', false)->count() ?: 0}}</a>
-                @else
-                <a href="" class="btn"><i class="far fa-heart"></i>&nbsp;0</a>
-                @endif  
+                <a href="" class="btn like"><i class="{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? 'fas' : 'far'}} fa-heart"></i>&nbsp;
+                    {{$comment->likes()->count() ?: 0}}
+                </a>
+                <a href="" class="btn dislike hidden"><i class="far fa-heart"></i>&nbsp;</a>
             </div>
               
         </div>

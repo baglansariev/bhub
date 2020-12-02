@@ -91,6 +91,10 @@ a.find-an-investor-categories {
 	color: #272425;
 }
 
+.hidden {
+	display: none;
+}
+
 @media (max-width: 575.98px) {
 
 	.find-an-investor-wrapper {

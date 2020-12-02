@@ -26,7 +26,7 @@ trait Likable
 	}
 
 	/**
-     * isLikedBy.
+     * isLikedBy ожидает модель User.
      */
     public function isLikedBy(User $user)
     {
@@ -92,6 +92,12 @@ trait Likable
         [
             'liked' => $liked    
         ]);
+    }
+
+    public function current_user()
+    {
+        //dd(auth()->user());
+        return auth()->user();
     }	
 	
 }
