@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BusinessNews;
 
+use Laravelista\Comments\Commenter;
+use Laravelista\Comments\Comment;
+
 class FrontController extends Controller
 {
     //
@@ -75,5 +78,17 @@ class FrontController extends Controller
 
 		return view("frontend.find-an-employer", compact("data"));
 	}
+
+	public function ajaxRequest(Request $request){
+
+        // $post = Comment::find($request->id);
+        // $response = auth()->user()->toggleLike($post);
+
+				$post = Comment::find($request->id);
+        $response = auth()->user()->toggleLike($post);
+
+
+        return response()->json(['success'=>$response]);
+    }
 
 }

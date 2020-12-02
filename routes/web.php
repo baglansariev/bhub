@@ -36,6 +36,7 @@ Route::get('/employee', "FrontController@employee")->name("employee");
 Route::get('/find-an-investor', "FrontController@findAnInvestor")->name('findAnInvestor');
 
 Route::get('/find-an-employer', "FrontController@findAnEmployer")->name('findAnEmployer');
+Route::get('ajaxRequest', 'FrontController@ajaxRequest')->name('ajaxRequest');
 
 // Backend area
 

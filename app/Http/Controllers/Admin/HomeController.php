@@ -21,4 +21,5 @@ class HomeController extends Controller
         // exit;
         return view('admin.home');
     }
+
 }

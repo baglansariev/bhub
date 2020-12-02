@@ -16,15 +16,15 @@
         <div class="comments-area-cusomize" style="white-space: pre-wrap; color: #000;">
             {!! $markdown->line($comment->comment) !!}
         
-            <div class="likes-area">
+            <div class="likes-area" data-id="{{ $comment->id }}">
                 <!-- <div>TEST {{$comment->current_user()}}</div> -->
                 <!-- <div>{{$comment->likes->where('comment_id', $comment->id)->where('user_id', $comment->current_user()->id)->where('liked', true)->count()}}</div> -->
                 <!-- <div>{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? "true" : "false"}}</div> -->
 
-                <a href="" class="btn like"><i class="{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? 'fas' : 'far'}} fa-heart"></i>&nbsp;
-                    {{$comment->likes()->count() ?: 0}}
+                <a id="like{{$comment->id}}" href="" class="btn like"><i class="{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? 'fas' : 'far'}} fa-heart"></i>&nbsp;
+                    <div id="like{{$comment->id}}-bs3">{{ $comment->likes()->count() ?: 0 }}</div>
                 </a>
-                <a href="" class="btn dislike hidden"><i class="far fa-heart"></i>&nbsp;</a>
+                <a id="dislike{{$comment->id}}" href="" class="btn dislike hidden"><i class="far fa-heart"></i>&nbsp;</a>
             </div>
               
         </div>
@@ -123,3 +123,49 @@
 @else
   </li>
 @endif
+
+<script type="text/javascript">
+    $(document).ready(function() {     
+
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $('.like').click(function(e){   
+            e.preventDefault(); 
+            var id = $(this).parent(".likes-area").data('id');
+            var c = $('#'+this.id+'-bs3').html();
+            var cObjId = this.id;
+            var cObj = $(this);
+            //console.log(cObj);
+
+            $.ajax({
+               type:'get',
+               url:"/ajaxRequest",
+               data:{id:id},
+               success:function(data){
+                console.log(data);
+                  // if(jQuery.isEmptyObject(data.success.attached)){
+                  //   $('#'+cObjId+'-bs3').html(parseInt(c)-1);
+                  //   $(cObj).removeClass("like-post");
+                  // }else{
+                  //   $('#'+cObjId+'-bs3').html(parseInt(c)+1);
+                  //   $(cObj).addClass("like-post");
+                  // }
+               }
+            });
+
+
+        });      
+
+
+        $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });                                        
+    }); 
+</script>
