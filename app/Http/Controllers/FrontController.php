@@ -7,6 +7,7 @@ use App\Models\BusinessNews;
 
 use Laravelista\Comments\Commenter;
 use Laravelista\Comments\Comment;
+use App\Moldels\Like;
 
 class FrontController extends Controller
 {
@@ -20,6 +21,7 @@ class FrontController extends Controller
 
 	public function businessNews ()
 	{
+		
 		$news = BusinessNews::take(3)->get();
 		$latestPost = BusinessNews::orderBy('id', 'DESC')->first();
 		$data = ['title' => "Бизнес новости"];
@@ -85,7 +87,11 @@ class FrontController extends Controller
         // $response = auth()->user()->toggleLike($post);
 
 				if (auth()->user()){
-					$post = Comment::find($request->id);
+					// $post = Comment::find($request->id);
+					$comment = Comment::find(1);
+					$like = $comment->where('user_id', 1)->first();
+					$like->liked = 1;
+					$like->save();
 					$test = auth()->user();		
 				} else {
 					$message = "Авторизуйтесь.";
