@@ -69,7 +69,7 @@
                	status:status.attr('class')
                },
                success:function(data){
-                console.log(data.success);
+                console.log(data);
                   // if(jQuery.isEmptyObject(data.success.attached)){
                   //   $('#'+cObjId+'-bs3').html(parseInt(c)-1);
                   //   $(cObj).removeClass("like-post");

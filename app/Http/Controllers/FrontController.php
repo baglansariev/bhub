@@ -100,7 +100,7 @@ class FrontController extends Controller
         //$response = auth()->user()->toggleLike($post);
 
 
-        return response()->json(['success'=>$request->status]);
+        return response()->json(['success'=>$request->id]);
     }
 
 }
