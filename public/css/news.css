@@ -290,6 +290,7 @@
 
 .likes-area {
 	display: flex;
+	position: relative;
 }
 
 @media (max-width: 575.98px) {

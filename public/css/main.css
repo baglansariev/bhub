@@ -95,6 +95,13 @@ a.find-an-investor-categories {
 	display: none;
 }
 
+.likes-popover {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
 @media (max-width: 575.98px) {
 
 	.find-an-investor-wrapper {

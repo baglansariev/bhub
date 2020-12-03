@@ -84,11 +84,17 @@ class FrontController extends Controller
         // $post = Comment::find($request->id);
         // $response = auth()->user()->toggleLike($post);
 
-				$post = Comment::find($request->id);
-        $response = auth()->user()->toggleLike($post);
+				if (auth()->user()){
+					$post = Comment::find($request->id);
+					$test = auth()->user();		
+				} else {
+					$message = "Авторизуйтесь.";
+					return response()->json(['success'=>auth()->user(), "message" => $message]);
+				}
+        //$response = auth()->user()->toggleLike($post);
 
 
-        return response()->json(['success'=>$response]);
+        return response()->json(['success'=>$request->status]);
     }
 
 }

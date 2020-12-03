@@ -17,13 +17,20 @@
             {!! $markdown->line($comment->comment) !!}
         
             <div class="likes-area" data-id="{{ $comment->id }}">
-                <!-- <div>TEST {{$comment->current_user()}}</div> -->
-                <!-- <div>{{$comment->likes->where('comment_id', $comment->id)->where('user_id', $comment->current_user()->id)->where('liked', true)->count()}}</div> -->
-                <!-- <div>{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? "true" : "false"}}</div> -->
+                <span id="likes-popover-{{ $comment->id }}" class="likes-popover alert alert-danger" role="alert" data-comment-id="{{ $comment->id }}"></span>
+                {{--<div>TEST {{$comment->current_user()}}</div>--}}
+                {{--<div>{{$comment->likes->where('comment_id', $comment->id)->where('user_id', $comment->current_user()->id)->where('liked', true)->count()}}</div>--}}
+                {{--<div>{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? "true" : "false"}}</div>--}} 
 
+                @if($comment->current_user())
                 <a id="like{{$comment->id}}" href="" class="btn like"><i class="{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? 'fas' : 'far'}} fa-heart"></i>&nbsp;
                     <div id="like{{$comment->id}}-bs3">{{ $comment->likes()->count() ?: 0 }}</div>
                 </a>
+                @else
+                <a id="like{{$comment->id}}" href="" class="btn like"><i class="far fa-heart"></i>&nbsp;
+                    <div id="like{{$comment->id}}-bs3">{{ $comment->likes()->count() ?: 0 }}</div>
+                </a>
+                @endif
                 <a id="dislike{{$comment->id}}" href="" class="btn dislike hidden"><i class="far fa-heart"></i>&nbsp;</a>
             </div>
               
@@ -123,49 +130,3 @@
 @else
   </li>
 @endif
-
-<script type="text/javascript">
-    $(document).ready(function() {     
-
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-
-        $('.like').click(function(e){   
-            e.preventDefault(); 
-            var id = $(this).parent(".likes-area").data('id');
-            var c = $('#'+this.id+'-bs3').html();
-            var cObjId = this.id;
-            var cObj = $(this);
-            //console.log(cObj);
-
-            $.ajax({
-               type:'get',
-               url:"/ajaxRequest",
-               data:{id:id},
-               success:function(data){
-                console.log(data);
-                  // if(jQuery.isEmptyObject(data.success.attached)){
-                  //   $('#'+cObjId+'-bs3').html(parseInt(c)-1);
-                  //   $(cObj).removeClass("like-post");
-                  // }else{
-                  //   $('#'+cObjId+'-bs3').html(parseInt(c)+1);
-                  //   $(cObj).addClass("like-post");
-                  // }
-               }
-            });
-
-
-        });      
-
-
-        $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });                                        
-    }); 
-</script>
