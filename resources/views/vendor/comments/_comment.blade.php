@@ -23,7 +23,7 @@
                 {{--<div>{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? "true" : "false"}}</div>--}} 
 
                 @if($comment->current_user())
-                <a id="like{{$comment->id}}" href="" class="btn like"><i class="{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? 'fas' : 'far'}} fa-heart"></i>&nbsp;
+                <a id="like{{$comment->id}}" href="" class="btn like" data-user-id="{{ $comment->current_user()->id }}"><i class="{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? 'fas' : 'far'}} fa-heart"></i>&nbsp;
                     <div id="like{{$comment->id}}-bs3">{{ $comment->likes()->count() ?: 0 }}</div>
                 </a>
                 @else

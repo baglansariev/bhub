@@ -57,19 +57,22 @@
             var cObj = $(this);
             var popover = $('#likes-popover-' + id);
             var status = $(this).children();
+            var user_id = $(this).data('user-id');
             //console.log(popover.data('comment-id'));
             //console.log("c: " + c);  
-            console.log("status: " + status.attr('class'));
+            //console.log("status: " + status.attr('class'));
+            //console.log('user_id: ' + user_id);
 
             $.ajax({
                type:'get',
                url:"/ajaxRequest",
                data:{
                	id:id,
-               	status:status.attr('class')
+               	status:status.attr('class'),
+               	user_id:user_id
                },
                success:function(data){
-                console.log(data);
+                console.log(data.success);
                   // if(jQuery.isEmptyObject(data.success.attached)){
                   //   $('#'+cObjId+'-bs3').html(parseInt(c)-1);
                   //   $(cObj).removeClass("like-post");
