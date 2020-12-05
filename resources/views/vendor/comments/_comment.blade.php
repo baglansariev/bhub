@@ -23,15 +23,15 @@
                 {{--<div>{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? "true" : "false"}}</div>--}} 
 
                 @if($comment->current_user())
-                <a id="like{{$comment->id}}" href="" class="btn like" data-user-id="{{ $comment->current_user()->id }}"><i class="{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? 'fas' : 'far'}} fa-heart"></i>&nbsp;
+                <a id="like{{$comment->id}}" href="" class="btn like" data-user-id="{{ $comment->current_user()->id }}"><i id="{{ $comment->id }}" class="{{$comment->isLikedBy($comment->getUserModel($comment->current_user()->id)) ? 'fas' : 'far'}} fa-heart"></i>&nbsp;
                     <div id="like{{$comment->id}}-bs3">{{ $comment->likes()->count() ?: 0 }}</div>
                 </a>
                 @else
-                <a id="like{{$comment->id}}" href="" class="btn like"><i class="far fa-heart"></i>&nbsp;
+                <a id="like{{$comment->id}}" href="" class="btn like"><i id="{{ $comment->id }}" class="far fa-heart"></i>&nbsp;
                     <div id="like{{$comment->id}}-bs3">{{ $comment->likes()->count() ?: 0 }}</div>
                 </a>
                 @endif
-                <a id="dislike{{$comment->id}}" href="" class="btn dislike hidden"><i class="far fa-heart"></i>&nbsp;</a>
+                <a id="dislike{{$comment->id}}" href="" class="btn dislike hidden"><i id="{{ $comment->id }}" class="far fa-heart"></i>&nbsp;</a>
             </div>
               
         </div>
@@ -130,3 +130,64 @@
 @else
   </li>
 @endif
+
+@section('scripts')
+    <!-- Likes dislikes for comments -->
+    <script type="text/javascript">
+        $(document).ready(function() {     
+
+
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+
+
+          $('.like').click(function(e){   
+            e.preventDefault(); 
+            var id = $(this).parent(".likes-area").data('id');
+            var c = $('#'+this.id+'-bs3').html();
+            var cObjId = this.id;
+            var cObj = $(this);
+            var popover = $('#likes-popover-' + id);
+            var status = $(this).children();
+            var user_id = $(this).data('user-id');
+
+            $.ajax({
+               type:'get',
+               url:"/ajaxRequest",
+               data:{
+                  id:id,
+                  status:status.attr('class'),
+                  user_id:user_id
+              },
+              success:function(data){
+                  if (data.success == null) {
+                    $(popover).animate({top: "-60px", opacity: 1}, "fast", "linear").css({"pointer-events": "all"}).text(data.message).fadeIn().delay(1000).animate({top: "-0px", opacity: 0}).css({"pointer-events": "none"});
+                } else {
+                    $('#like' + id + '-bs3').html(data.success.count);
+                    if (data.success.status) {
+                      var like = $('#like' + id).find("#"+id);
+                      like.removeClass('far fa-heart');
+                      like.addClass('fas fa-heart');
+                  } else {
+                      var dislike = $('#like' + id).find("#"+id);
+                      dislike.removeClass('fas fa-heart');
+                      dislike.addClass('far fa-heart');
+                  }
+              }
+          }
+      });
+
+
+        });      
+
+
+          $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });                                        
+      }); 
+    </script>
+@endsection

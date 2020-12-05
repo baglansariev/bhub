@@ -37,70 +37,7 @@
 	</section>
 	<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 
-<!-- Likes dislikes for comments -->
-	<script type="text/javascript">
-    $(document).ready(function() {     
-
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-
-        $('.like').click(function(e){   
-            e.preventDefault(); 
-            var id = $(this).parent(".likes-area").data('id');
-            var c = $('#'+this.id+'-bs3').html();
-            var cObjId = this.id;
-            var cObj = $(this);
-            var popover = $('#likes-popover-' + id);
-            var status = $(this).children();
-            var user_id = $(this).data('user-id');
-            //console.log(popover.data('comment-id'));
-            //console.log("c: " + c);  
-            //console.log("status: " + status.attr('class'));
-            //console.log('user_id: ' + user_id);
-
-            $.ajax({
-               type:'get',
-               url:"/ajaxRequest",
-               data:{
-               	id:id,
-               	status:status.attr('class'),
-               	user_id:user_id
-               },
-               success:function(data){
-                console.log(data.success);
-                  // if(jQuery.isEmptyObject(data.success.attached)){
-                  //   $('#'+cObjId+'-bs3').html(parseInt(c)-1);
-                  //   $(cObj).removeClass("like-post");
-                  // }else{
-                  //   $('#'+cObjId+'-bs3').html(parseInt(c)+1);
-                  //   $(cObj).addClass("like-post");
-                  // }
-                  if (data.success == null) {
-                    //$(popover).fadeIn().html(data.message);
-                    //$(popover).fadeOut().html(data.message).delay(3);
-                    $(popover).animate({top: "-60px", opacity: 1}, "fast", "linear").css({"pointer-events": "all"}).text(data.message).fadeIn().delay(1000).animate({top: "-0px", opacity: 0}).css({"pointer-events": "none"});
-                    console.log("123");
-                  } else {
-                  	$('#'+cObjId+'-bs3').html(parseInt(c) + 1);
-                  }
-               }
-            });
-
-
-        });      
-
-
-        $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });                                        
-    }); 
-</script>
+  @yield('scripts')
 
 </body>
 </html>

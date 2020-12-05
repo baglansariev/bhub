@@ -67,10 +67,10 @@ trait Likable
 	/**
      * Likes.
      */
-    public function likes()
-    {
-        return $this->hasMany(Like::class);
-    }
+    // public function likes()
+    // {
+    //     return $this->hasMany(Like::class);
+    // }
 
 	/**
      * Dislike.
@@ -98,6 +98,6 @@ trait Likable
     {
         //dd(auth()->user());
         return auth()->user();
-    }	
+    }
 	
 }
