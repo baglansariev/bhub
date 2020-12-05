@@ -99,5 +99,19 @@ trait Likable
         //dd(auth()->user());
         return auth()->user();
     }
+
+    public function getUserModel($id)
+    {
+        return User::find($id);
+    }
+
+    /**
+     * Get likes count.
+     */ 
+
+    public function likes()
+    {
+        return Like::where('liked', true)->where('comment_id', $this->id);
+    }
 	
 }
