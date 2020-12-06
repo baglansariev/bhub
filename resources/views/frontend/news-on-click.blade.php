@@ -1,9 +1,10 @@
 @extends('frontend.layouts.master')
 
 @section('title', $data["title"])
+{{--@section('title', $data["post"]->title)--}}
 
 @section('styles')
-	<link rel="stylesheet" type="text/css" href="css/news.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/news.css') }}">
 @section('content')
 <section class="news-on-click-wrapper">
 	<div class="container-fluid">
@@ -12,7 +13,7 @@
 				<div class="col-md-6">
 					<div class="watch-the-video">
 						<div class="bnt-play-video">
-							<img src="img/play-video.png" width="59" height="51">
+							<img src="{{ asset('img/play-video.png') }}" width="59" height="51">
 							<p>смотреть видео</p>
 						</div>
 					</div>
@@ -20,7 +21,7 @@
 						<h2>Реклама</h2>
 					</div>
 					<div class="advertising-text">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+						<p>{{ $data['post']->body }}</p>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -44,7 +45,8 @@
 					<div class="discussion">
 						<h1 class="h1-title">Обсуждение</h1>
 						<div class="discussion-content">
-							<span>написал</span>
+							<!-- <span>написал</span> -->
+							@comments(['model' => $data['post']])
 						</div>
 					</div>
 					<div class="to-write">

@@ -50,7 +50,8 @@
 	font: 20px 'intro';
 	text-transform: uppercase;
 	text-decoration: initial;
-	color: #272425;
+	/*color: #272425;*/
+	color: #dda426;
 }
 
 .all-news-line {
@@ -191,12 +192,13 @@
 	box-shadow: 5px 10px 13px #b1b1b1, -5px -10px 10px #b7b7b7;
 	margin-top: 13px;
 	padding: 28px 13px;
-	height: 638px;
+	/*height: 638px;*/
+	position: relative;
 }
 
 .discussion-content {
 	margin-top: 32px;
-	text-align: right;
+	/*text-align: right;*/
 }
 
 .discussion-content span {
@@ -205,8 +207,8 @@
 	box-shadow: 3px 10px 15px #747474;
 	color: #000;
 	font: 13px 'intro';
-	width: 176px;
-	padding: 9px 20px 9px 88px;
+	/*width: 176px;
+	padding: 9px 20px 9px 88px;*/
 }
 
 .to-write {
@@ -217,8 +219,78 @@
 }
 
 .btn-to-write{
-	color: #7f7f7f;
+	/*color: #7f7f7f;*/
+	color: transparent;
 	font: 13px 'intro';
+}
+
+.list-unstyled.customize-post-comment {
+	background-color: #fff;
+	border-radius: 3px;
+	box-shadow: 3px 10px 15px #747474;
+	padding: 15px;
+}
+
+.customize-post-commenter-name {
+	color: #000;
+	font: 13px 'intro';
+	/*width: 176px;*/
+}
+
+.card.card-submit-customize {
+	box-shadow: 5px 10px 15px #b1b1b1, -5px 4px 15px #b1b1b1;
+	width: 100%;
+    margin-top: 18px;
+    text-align: right;
+	position: absolute;
+	right: 0;
+	bottom: -200px;
+	border-radius: initial;
+}
+
+.card.card-login-customize {
+	position: absolute;
+	right: 25px;
+	bottom: -55px;
+	font: 13px 'intro';
+	border: initial;
+}
+
+.card.card-login-customize .card-body {
+	padding: 0;
+}
+
+.card.card-login-customize .card-body a {
+	border-color: transparent;
+	background-color: initial;
+	color: #212529;
+	padding: 0;
+}
+
+.btn-outline-success.customize-submit-comment-btn {
+	border: 1px solid #212529;
+	color: #212529;
+	font: 13px 'intro';
+	transition: .5s;
+}
+
+.btn-outline-success.customize-submit-comment-btn:hover {
+	background-color: #212529; 
+	color: #fff;
+	transition: 0.5s;
+}
+
+.customize-comment-list {
+	margin-bottom: 10px;
+}
+
+.comments-area-cusomize {
+	white-space: initial !important;
+}
+
+.likes-area {
+	display: flex;
+	position: relative;
 }
 
 @media (max-width: 575.98px) {
@@ -237,7 +309,7 @@
 		max-width: 100%;
 		/*height: 100%;*/
 		width: 100px;
-		height: 100px;
+		/*height: 100px;*/
 	}
 
 	.news-details-title {
@@ -288,6 +360,16 @@
 
 	.quiz-block h1 {
 		margin-bottom: 44px;
+	}
+
+	.to-write {
+		display: none;
+	}
+
+	.card.card-submit-customize {
+		position: initial;
+		right: initial;
+		bottom: initial;
 	}
 }
 

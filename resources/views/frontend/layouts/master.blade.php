@@ -15,6 +15,7 @@
 
 	<script type="text/javascript" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/bootstrap-4.5.3/bootstrap.min.js') }}"></script>
+	<script src="https://kit.fontawesome.com/8298cc323a.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <!--========================================================
@@ -35,5 +36,8 @@
     	@include('frontend.partials._footer')
 	</section>
 	<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+
+  @yield('scripts')
+
 </body>
 </html>

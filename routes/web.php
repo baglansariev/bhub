@@ -22,7 +22,8 @@ Route::get('/', 'FrontController@index')->name('home');
 
 Route::get('/business-news', "FrontController@businessNews")->name("businessNews");
 
-Route::get('/news-on-click', "FrontController@newsDetail")->name("newsDetail");
+//Route::get('/news-on-click', "FrontController@newsDetail")->name("newsDetail");
+Route::get('/business-news/{slug?}', "FrontController@newsDetail")->name("newsDetail");
 
 Route::get('/startups', "FrontController@startups")->name("startups");
 
@@ -35,6 +36,7 @@ Route::get('/employee', "FrontController@employee")->name("employee");
 Route::get('/find-an-investor', "FrontController@findAnInvestor")->name('findAnInvestor');
 
 Route::get('/find-an-employer', "FrontController@findAnEmployer")->name('findAnEmployer');
+Route::get('ajaxRequest', 'FrontController@ajaxRequest')->name('ajaxRequest');
 
 // Backend area
 
@@ -44,8 +46,12 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
     Route::prefix('admin')->group(function () {
 
         Route::get('/', 'Admin\HomeController@index')->name('admin');
+
         Route::resource('/user', 'Admin\UserController');
         Route::resource('/role', 'Admin\RoleController');
+
+        Route::resource('/business-news', 'Admin\BusinessNewsController');
+
 
     });
 });

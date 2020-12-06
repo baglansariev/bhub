@@ -7,7 +7,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarText">
 					<div class="navbar-logo">
-						<a href="/"><img src="img/logo.png" alt="Qhub_logo" width="126" height="60"></a>
+						<a href="/"><img src="{{ asset('img/logo.png') }}" alt="Qhub_logo" width="126" height="60"></a>
 					</div>
 					<div class="navbar-wrapper">
 						<ul class="navbar-nav">
