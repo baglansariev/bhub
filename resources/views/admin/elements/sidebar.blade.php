@@ -25,6 +25,20 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/business-news">Бизнес новости</a>
                             </li>
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">
+                                <i class="fa fa-fw fa-rocket mr-1"></i>
+                                <span class="link-title">Разделы</span>
+                            </a>
+                            <div id="submenu-3" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                   <li class="nav-item">
+                                        <a class="nav-link" href="/admin/freelance-categories">Категория Фрилансеры</a>
+                                    </li> 
+                                </ul>
+                            </div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('admin/freelancers')}}">Фрилансеры</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Услуги</a>
                             </li>
