@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
+use App\Models\Permission;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,10 +16,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth()->user();
-        echo '<pre>';
-        print_r($user->role()->first()->permissions()->first()->name);
-        exit;
         return view('admin.home');
     }
 }

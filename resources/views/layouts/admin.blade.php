@@ -1,9 +1,8 @@
-@php
-    use App\Http\Controllers\Admin\Elements\HeaderController;
-    use App\Http\Controllers\Admin\Elements\FooterController;
-    use App\Http\Controllers\Admin\Elements\SidebarController;
-@endphp
-        <!DOCTYPE html>
+@inject('header', 'App\Http\Controllers\Admin\Elements\HeaderController')
+@inject('sidebar', 'App\Http\Controllers\Admin\Elements\SidebarController')
+@inject('footer', 'App\Http\Controllers\Admin\Elements\FooterController')
+
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
@@ -24,11 +23,11 @@
 <body>
 <div class="dashboard-main-wrapper">
     <div class="dashboard-header">
-        {!! (new HeaderController) -> show() !!}
+        {!! $header->show() !!}
     </div>
 
     <div class="nav-left-sidebar sidebar-dark">
-        {!! (new SidebarController) -> show() !!}
+        {!! $sidebar->show() !!}
     </div>
 
     <div class="dashboard-wrapper">
@@ -53,7 +52,7 @@
 
         <div class="footer">
             <div class="container-fluid">
-                {!! (new FooterController) -> show() !!}
+                {!! $footer->show() !!}
             </div>
         </div>
     </div>
@@ -62,6 +61,6 @@
 <script src="{{ asset('js/bootstrap-4.5.3/bootstrap.min.js') }}"></script>
 <script src="{{ asset('panel/vendor/slimscroll/jquery.slimscroll.js') }}"></script>
 <script src="{{ asset('panel/libs/js/main-js.js') }}"></script>
-{{--<script src="{{ asset('assets/js/main.js') }}"></script>--}}
+<script src="{{ asset('panel/libs/js/custom.js') }}"></script>
 </body>
 </html>

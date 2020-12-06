@@ -89,10 +89,10 @@
                     <div id="submenu-6" class="collapse submenu" style="">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Все пользователи</a>
+                                <a class="nav-link" href="{{ route('user.index') }}">Все пользователи</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Группы</a>
+                                <a class="nav-link" href="{{ route('role.index') }}">Группы</a>
                             </li>
                         </ul>
                     </div>

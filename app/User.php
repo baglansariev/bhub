@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role_id', 'image'
     ];
 
     /**
@@ -40,6 +41,21 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->belongsToMany(Role::class, 'user_roles');
+        return $this->belongsTo(Role::class);
+    }
+
+    public function isCreator($user_email = false)
+    {
+        $creator_email = 'baglansariev@mail.ru';
+        if ($user_email) {
+            return $user_email == $creator_email;
+        }
+
+        return $this->email == $creator_email;
+    }
+
+    public function isAuthUser()
+    {
+        return Auth::user()->email == $this->email;
     }
 }

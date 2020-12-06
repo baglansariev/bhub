@@ -40,10 +40,12 @@ Route::get('/find-an-employer', "FrontController@findAnEmployer")->name('findAnE
 
 Auth::routes();
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'staff_roles'])->group(function () {
     Route::prefix('admin')->group(function () {
 
         Route::get('/', 'Admin\HomeController@index')->name('admin');
+        Route::resource('/user', 'Admin\UserController');
+        Route::resource('/role', 'Admin\RoleController');
 
     });
 });
