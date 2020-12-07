@@ -9,6 +9,8 @@ use Laravelista\Comments\Commenter;
 use Laravelista\Comments\Comment;
 use App\Models\Like;
 use App\Likable;
+use App\Models\FreelanceCategory;
+use App\Models\Freelancer;
 
 class FrontController extends Controller
 {
@@ -62,6 +64,9 @@ class FrontController extends Controller
 	public function freelancers ()
 	{
 		$data = ["title" => "Фрилансеры"];
+		dd($data);
+		//$categories = FreelanceCategory::all();
+
 
 		return view("frontend.freelancers", compact('data'));
 	}

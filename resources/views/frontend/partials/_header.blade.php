@@ -29,7 +29,7 @@
 									</div>
 								</div>
 								<!-- Start mobile dropdown version-->
-								<a class="nav-link nav-link-mobile dropdown-toggle" data-toggle="dropdown" href="/freelancers">стартапы</a>
+								<a class="nav-link nav-link-mobile dropdown-toggle" data-toggle="dropdown" href="/startups">стартапы</a>
 								<div class="dropdown-menu megamenu megamenu-mobile">
 									<ul>
 											<li><a href="/all">все</a></li>

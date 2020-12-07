@@ -18,8 +18,11 @@
 				<div class="categories-wrapper">
 					<h3 class="categories-title">Категории</h3>
 					<ul class="freelance-categories-lists">
-						<li><a href="#">Разработчики мобильных приложений</a></li>
-						<li><a href="#">Веб-разработчики</a></li>
+						{{--@foreach($categories as $category)
+						<li><a href="#">{{ $category->name }}</a></li>
+						@endforeach--}}
+						<!-- <li><a href="#">Разработчики мобильных приложений</a></li> -->
+						<!-- <li><a href="#">Веб-разработчики</a></li>
 						<li><a href="#">IT-специалисты</a></li>
 						<li><a href="#">Разработчики игр</a></li>
 						<li><a href="#">Веб-дизайнеры</a></li>
@@ -32,7 +35,7 @@
 						<li><a href="#">Дизайн и Арт</a></li>
 						<li><a href="#">Видео и Фотосъемка</a></li>
 						<li><a href="#">Обучение и консультация</a></li>
-						<li><a href="#">Оптимизация(SEO)</a></li>
+						<li><a href="#">Оптимизация(SEO)</a></li> -->
 					</ul>		
 				</div>
 			</div>

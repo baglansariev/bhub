@@ -18,6 +18,7 @@ class FreelancerController extends Controller
     public function index()
     {
         $freelancers = Freelancer::all();
+        //dd($freelancers);
         return view('admin.freelancer.index', compact('freelancers'));
     }
 
@@ -84,9 +85,11 @@ class FreelancerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Freelancer $Freelancer)
     {
-        //
+        //dd($Freelancer->freelanceCategory()->where('id', $Freelancer->category_id));
+        $category = FreelanceCategory::where('id', $Freelancer->category_id)->first();
+        return view('admin.freelancer.edit',compact('Freelancer', 'category'));
     }
 
     /**
@@ -96,9 +99,15 @@ class FreelancerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Freelancer $Freelancer)
     {
-        //
+
+        $Freelancer->update($request->all());
+
+        //dd($BusinessNews->update($request->all()));
+
+        return redirect()->route('freelancers.index')
+        ->with('success','Данные успешно обновлены');
     }
 
     /**
@@ -107,8 +116,11 @@ class FreelancerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Freelancer $Freelancer)
     {
-        //
+        $Freelancer->delete();
+  
+        return redirect()->route('freelancers.index')
+                        ->with('success','Данные успешно удалены');
     }
 }

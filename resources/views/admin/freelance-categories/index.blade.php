@@ -1,49 +1,73 @@
 @extends('layouts.admin')
 
 @section('content')
-
 <div class="row">
-	<div class="container">
-		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-			Добавить категорию
-		</button>	
-	</div>
-</div>
+    <div class="col-sm-12">
+        <div class="card">
+        	<div class="card-header d-flex justify-content-between align-items-center">
+        		<h5>Категории фрилансеров</h5>
+                <div class="card-actions">
+                	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                		Добавить категорию
+                	</button>
+                </div>
+        	</div>
+        	<div class="card-body">
+        		@if (session()->has('msg_success'))
+                    <div class="card-alert alert alert-success alert-dismissible fade show" role="alert">
+                        {!! session()->get('msg_success') !!}
+                        <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </a>
+                    </div>
+                @endif
+                @if (session()->has('msg_error'))
+                    <div class="card-alert alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session()->get('msg_error') }}
+                        <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </a>
+                    </div>
+                @endif
+                <div class="table-responsive">
+                	<table class="table table-striped table-bordered first">
+                		<thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Наименование категории</th>
+                                <th>Действие</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if ($categories->count())
+                                @foreach($categories as $category)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $category->title }}</td>
+                                        <td>
+                                        	<form action="{{ route('freelance-categories.destroy',$category->id) }}" method="POST">
 
-<div class="row">
-	<div class="container">
-		@if ($message = Session::get('success'))
-		<div class="alert alert-success">
-			<p>{{ $message }}</p>
-		</div>
-		@endif
-		<table class="table-bordered">
-			<thead>
-				<tr>
-					<th>Наименование категории</th>
-					<th width="250px">Действие</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($categories as $category)
-				<tr>
-					<td>{{ $category->title }}</td>
-					<td>
-						<form action="{{ route('freelance-categories.destroy',$category->id) }}" method="POST">
+                                        		<a class="btn btn-primary" href="{{ route('freelance-categories.edit',$category->id) }}"><i class="far fa-edit"></i></a>
 
-							<a class="btn btn-primary" href="{{ route('freelance-categories.edit',$category->id) }}"><i class="far fa-edit"></i></a>
+                                        		@csrf
+                                        		@method('DELETE')
 
-							@csrf
-							@method('DELETE')
-
-							<button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-						</form>
-					</td>
-				</tr>
-				@endforeach
-			</tbody>
-		</table>			
-	</div>
+                                        		<button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                        	</form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="6" class="text-center">Пока еще нет категорий</td>
+                                </tr>
+                            @endif
+                        </tbody>
+                	</table>
+                </div>
+        	</div>
+        </div>
+    </div>
 </div>
 
 <!-- The Modal -->
