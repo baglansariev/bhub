@@ -64,12 +64,10 @@ class FrontController extends Controller
 	public function freelancers ()
 	{
 		$data = ["title" => "Фрилансеры"];
-		//dd($data);
-		//$categories = FreelanceCategory::all();
-
-
-
-		return view("frontend.freelancers", compact('data'));
+		$categories = FreelanceCategory::all();
+		$freelancers = Freelancer::where('status', 1)->get();
+		//dd($freelancers);
+		return view("frontend.freelancers", compact('data', 'categories', 'freelancers'));
 	}
 
 	public function employee ()

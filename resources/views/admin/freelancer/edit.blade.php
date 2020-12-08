@@ -10,16 +10,28 @@
             @csrf
             <input type="hidden" name="_method" value="PUT">
             <div class="form-row">
-                <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="col-xs-12 col-sm-2 col-md-2">
                     <div class="form-group">
                         <label>Имя:</label>
                         <input type="text" name="name" class="form-control" placeholder="Имя" value="{{ $Freelancer->name }}">
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="col-xs-12 col-sm-2 col-md-2">
                     <div class="form-group">
                         <label>Позиция:</label>
                         <input type="text" name="position" class="form-control" placeholder="Позиция" value="{{ $Freelancer->position }}">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-2 col-md-2">
+                    <div class="form-group">
+                        <label>Статус:</label>
+                        <!-- <input type="text" name="status" class="form-control" placeholder="Статус" value="{{ $Freelancer->status }}"> -->
+                        <select name="status" id="" class="form-control">
+                            <option value="0" selected="">{{ $Freelancer->status }}</option>
+                            <option value="0">0 - Не активный</option>
+                            <option value="1">1 - Активный</option>
+                            <option value="2">2 - В ожидании</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">

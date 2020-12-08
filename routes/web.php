@@ -29,7 +29,7 @@ Route::get('/startups', "FrontController@startups")->name("startups");
 
 Route::get('/startup', "FrontController@startup")->name("startup");
 
-
+Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");
 
 Route::get('/employee', "FrontController@employee")->name("employee");
 
@@ -57,5 +57,3 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
         Route::resource('/freelancers', 'Admin\FreelancerController');
     });
 });
-
-Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");

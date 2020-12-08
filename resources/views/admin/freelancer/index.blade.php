@@ -37,6 +37,7 @@
                                 <th>#</th>
                                 <th>Имя</th>
                                 <th>Позиция</th>
+                                <th>Статус</th>
                                 <th>Дата создания</th>
                                 <th>Действие</th>
                             </tr>
@@ -48,6 +49,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->position }}</td>
+                                        <td>{{ $user->status }}</td>
                                         <td>{{ $user->created_at }}</td>
                                         <td>
                                             <form action="{{ route('freelancers.destroy',$user->id) }}" method="POST">
