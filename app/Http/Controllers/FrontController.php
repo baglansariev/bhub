@@ -64,7 +64,7 @@ class FrontController extends Controller
 	public function freelancers ()
 	{
 		$data = ["title" => "Фрилансеры"];
-		dd($data);
+		//dd($data);
 		//$categories = FreelanceCategory::all();
 
 
