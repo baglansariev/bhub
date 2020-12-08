@@ -79,7 +79,11 @@
 					</div>
 
 					<span class="navbar-text btnSign">
-						<button class="btn" type="button">Вход</button>
+						@guest
+							<button class="btn" type="button" onclick="location.href='/login'">Вход</button>
+						@else
+							<button class="btn" type="button">{{ Auth::user()->name }}</button>
+						@endguest
 					</span>
 				</div>	
 			</div>

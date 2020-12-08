@@ -164,7 +164,7 @@ class UserController extends Controller
         $user_name = $user->name;
 
         if (file_exists($this->user_image_dir . $user->id)) {
-            $this->removeDir($this->user_image_dir . $user->id);
+            removeDir($this->user_image_dir . $user->id);
         }
 
         if ($user->delete()) {
@@ -175,20 +175,5 @@ class UserController extends Controller
         }
 
         return redirect(route('user.index'));
-    }
-
-    public function removeDir($dir) {
-        if (is_dir($dir)) {
-            $objects = scandir($dir);
-            foreach ($objects as $object) {
-                if ($object != "." && $object != "..") {
-                    if (is_dir($dir. DIRECTORY_SEPARATOR .$object) && !is_link($dir."/".$object))
-                        $this->removeDir($dir. DIRECTORY_SEPARATOR .$object);
-                    else
-                        unlink($dir. DIRECTORY_SEPARATOR .$object);
-                }
-            }
-            rmdir($dir);
-        }
     }
 }

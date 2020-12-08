@@ -49,6 +49,8 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
 
         Route::resource('/user', 'Admin\UserController');
         Route::resource('/role', 'Admin\RoleController');
+        Route::resource('/startup', 'Admin\StartupController');
+        Route::resource('/startup-category', 'Admin\StartupCategoryController');
 
         Route::resource('/business-news', 'Admin\BusinessNewsController');
 
