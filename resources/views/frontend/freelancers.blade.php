@@ -3,7 +3,7 @@
 @section('title', $data["title"])
 
 @section('styles')
-	<link rel="stylesheet" type="text/css" href="css/freelance.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/freelance.css') }}">
 @endsection
 
 @section('content')
@@ -25,7 +25,8 @@
 					<h3 class="categories-title">Категории</h3>
 					<ul class="freelance-categories-lists">
 						@foreach($categories as $category)
-						<li><a href="#">{{ $category->title }}</a></li>
+						{{--<li><a href="{{ route('freelancerFilter', $category->id) }}">{{ $category->title }}</a></li>--}}
+						<li><a href="{{ route('freelancers', $category->id) }}">{{ $category->title }}</a></li>
 						@endforeach
 					</ul>		
 				</div>
