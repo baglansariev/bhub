@@ -15,7 +15,7 @@ class CreateStartupsTable extends Migration
     {
         Schema::create('startups', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
+            $table->bigInteger('user_id')->nullable();
             $table->bigInteger('startup_category_id');
             $table->string('title');
             $table->string('phone');

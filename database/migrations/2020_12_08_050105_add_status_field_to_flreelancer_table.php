@@ -25,7 +25,7 @@ class AddStatusFieldToFlreelancerTable extends Migration
      */
     public function down()
     {
-        Schema::table('flreelancer', function (Blueprint $table) {
+        Schema::table('freelancer', function (Blueprint $table) {
             $table->dropColumn('status');
         });
     }
