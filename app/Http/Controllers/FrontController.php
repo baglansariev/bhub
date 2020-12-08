@@ -24,7 +24,7 @@ class FrontController extends Controller
 
 	public function businessNews ()
 	{
-		
+
 		$news = BusinessNews::take(3)->get();
 		$latestPost = BusinessNews::orderBy('id', 'DESC')->first();
 		$data = ['title' => "Бизнес новости"];
@@ -37,7 +37,7 @@ class FrontController extends Controller
 	{
 		$data = [
 			'user_id' => auth()->id(),
-			'comment_id' => 17,	
+			'comment_id' => 17,
 		];
 
 		$post = BusinessNews::whereSlug($slug)->first();
@@ -66,6 +66,7 @@ class FrontController extends Controller
 		$data = ["title" => "Фрилансеры"];
 		//dd($data);
 		//$categories = FreelanceCategory::all();
+
 
 
 		return view("frontend.freelancers", compact('data'));
@@ -98,26 +99,26 @@ class FrontController extends Controller
         $status = false;
 
         if (auth()->user()){
-			
+
         	$like = Like::where('comment_id', $request->id)->where('user_id', $request->user_id)->first();
 
         	if ($like) {
 				// Если пришел лайк от юсера, проверим если у юсера установлен лайк на данный коммент то удалим запись
         		if ($like->user_id == $request->user_id && $like->comment_id == $request->id && $like->liked == true) {
         			$response = Like::where('user_id', $request->user_id)->where('comment_id', $request->id)->delete();
-        			$status = false;	
+        			$status = false;
         		}
         	} else {
         		$data = [
         			'user_id' => $request->user_id,
         			'comment_id' => $request->id,
-        			'liked' => true		
+        			'liked' => true
         		];
 
         		$response = Like::create($data);
         		$status = $data['liked'];
         	}
-		
+
         } else {
         	$message = "Авторизуйтесь.";
         	return response()->json(['success'=>auth()->user(), "message" => $message]);
@@ -127,7 +128,7 @@ class FrontController extends Controller
         	'status' => $status,
         	'count' => Like::where('comment_id', $request->id)->get()->count(),
         ];
-        
+
         return response()->json(['success' => $response]);
     }
 

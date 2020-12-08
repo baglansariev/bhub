@@ -17,7 +17,7 @@ class CreateLikesTable extends Migration
             $table->id();
             $table
                 ->foreignId('user_id')
-                ->constrained()
+                ->constrained('users')
                 ->onDelete('cascade');
             $table
                 ->foreignId('comment_id')

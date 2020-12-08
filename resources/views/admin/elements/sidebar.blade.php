@@ -99,6 +99,22 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7">
+                        <i class="fa fa-fw fa-rocket mr-1"></i>
+                        <span class="link-title">Стартапы</span>
+                    </a>
+                    <div id="submenu-7" class="collapse submenu" style="">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('startup.index') }}">Все стартапы</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('startup-category.index') }}">Категории</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6">
                         <i class="fas fa-users mr-1"></i>
                         <span class="link-title">Пользователи</span>

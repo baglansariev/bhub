@@ -12,7 +12,7 @@
                         <div class="card-header text-center">
                             <a class="form-logo d-flex justify-content-center align-items-center" href="{{ route('home') }}">
 {{--                                <img class="logo-img" src="{{ asset('images/template/main_logo_black.png') }}" alt="logo">--}}
-                                <span>BHUB PANEL</span>
+                                <span>BHUB ACCOUNT</span>
                             </a>
                             <span class="splash-description">Введите данные для входа.</span>
                         </div>
