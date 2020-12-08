@@ -17,7 +17,11 @@
                 </li>
                 <li class="nav-item">
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/business-news">Бизнес новости</a>
+
+                        <a class="nav-link" href="/admin/business-news">
+                            <i class="fab fa-fw fa-wpforms mr-1"></i>
+                            <span>Бизнес новости</span>
+                        </a>
                     </li>
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">
                         <i class="fa fa-fw fa-rocket mr-1"></i>
@@ -33,55 +37,55 @@
                             </li>
                         </ul>
                     </div>
-                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">
-                        <i class="fa fa-fw fa-rocket mr-1"></i>
-                        <span class="link-title">Модули</span>
-                    </a>
-                    <div id="submenu-2" class="collapse submenu" style="">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Услуги</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="general.html">Портфолио</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="carousel.html">Клиенты</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="listgroup.html">Страницы</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="typography.html">Меню</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="accordions.html">Accordions</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="tabs.html">Tabs</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4">
-                        <i class="fab fa-fw fa-wpforms mr-1"></i>
-                        <span class="link-title">Блог</span>
-                    </a>
-                    <div id="submenu-4" class="collapse submenu" style="">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="form-elements.html">Form Elements</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="form-validation.html">Parsely Validations</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="multiselect.html">Multiselect</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+{{--                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">--}}
+{{--                        <i class="fa fa-fw fa-rocket mr-1"></i>--}}
+{{--                        <span class="link-title">Модули</span>--}}
+{{--                    </a>--}}
+{{--                    <div id="submenu-2" class="collapse submenu" style="">--}}
+{{--                        <ul class="nav flex-column">--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="#">Услуги</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="general.html">Портфолио</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="carousel.html">Клиенты</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="listgroup.html">Страницы</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="typography.html">Меню</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="accordions.html">Accordions</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="tabs.html">Tabs</a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item ">--}}
+{{--                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4">--}}
+{{--                        <i class="fab fa-fw fa-wpforms mr-1"></i>--}}
+{{--                        <span class="link-title">Блог</span>--}}
+{{--                    </a>--}}
+{{--                    <div id="submenu-4" class="collapse submenu" style="">--}}
+{{--                        <ul class="nav flex-column">--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="form-elements.html">Form Elements</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="form-validation.html">Parsely Validations</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="multiselect.html">Multiselect</a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5">
                         <i class="fas fa-fw fa-chart-bar mr-1"></i>
