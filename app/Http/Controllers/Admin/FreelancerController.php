@@ -49,14 +49,18 @@ class FreelancerController extends Controller
             'position' => 'required',
             'characteristic' => 'required',
             'description' => 'required',
+            'image' => 'image|mime:png,jpg,jpeg|max:2048'
             //'img' => 'mimes:jpeg,jpg,png,gif,svg|max:2048',
             // 'img' => 'required|mimes:jpeg,jpg,png,gif,svg|max:2048',
         ]);
-
+        
+        //dd($validatedData );
+        
         $img = $request->img;
         if ($img) {
+            //dd($img);
             $imgName = $img->getClientOriginalName();
-            $img->move('img/', $imgName);
+            $img->move('img/freelancers/', $imgName);
             $validatedData['img'] = "img/" . $imgName;    
         } else {
             $validatedData['img'] = "defaults/no-image.png";

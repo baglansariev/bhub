@@ -104,11 +104,6 @@
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
-									<input type="text" class="form-control" name="Instagramm" placeholder="Instagramm">
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-group">
 									<select name="category_id" id="category_id" class="form-control">
 										<option value="">Выбор категории...</option>
 										@foreach($categories as $category)
