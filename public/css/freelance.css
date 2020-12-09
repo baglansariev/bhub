@@ -92,6 +92,11 @@
 	text-align: center;
 }
 
+.inner-card-block img {
+	max-width: 100%;
+	border-radius: 50%;
+}
+
 .freelancer-name {
 	color: #6d6e71;
 	font: bold 20.79px 'Open Sans';
