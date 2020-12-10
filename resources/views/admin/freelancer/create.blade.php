@@ -8,7 +8,7 @@
         <a class="btn btn-primary" href="{{ route('freelancers.index') }}"> <i class="fas fa-step-backward"></i></a>
     </div>
     <div class="card-body">
-        <form action="{{ route('freelancers.store') }}" method="POST">
+        <form action="{{ route('freelancers.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-row">
                 <div class="col-xs-12 col-sm-4 col-md-4">
@@ -56,6 +56,18 @@
                     <div class="form-group">
                         {{ Form::label('category_id', 'Категории:') }}
                         {{ Form::select('category_id', $categories, null, ['class' => 'form-control', 'placeholder' => 'Выбор категории']) }}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="characteristic">Характеристики:</label>
+                        <textarea name="characteristic" placeholder="Характеристики" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="description">Описание:</label>
+                        <textarea name="description" placeholder="Описание" class="form-control"></textarea>
                     </div>
                 </div>
             </div>

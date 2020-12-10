@@ -42,30 +42,31 @@ class FreelancerController extends Controller
      */
     public function store(Request $request)
     {
-
-        //dd($request->all());
-        //validation
-        $this->validate($request, [
+        $validatedData = $request->validate([
+            'category_id' => 'required',
             'name' => 'required',
-            'position' => 'required'
+            'status' => 'required',
+            'position' => 'required',
+            'characteristic' => 'required',
+            'description' => 'required',
+            'image' => 'image|mime:png,jpg,jpeg|max:2048'
+            //'img' => 'mimes:jpeg,jpg,png,gif,svg|max:2048',
+            // 'img' => 'required|mimes:jpeg,jpg,png,gif,svg|max:2048',
         ]);
-
-        // Берем все кроме image
-        // $formInput = $request->except('img');
         
-        // //Image upload
+        //dd($validatedData);
+        
+        $img = $request->img;
+        if ($img) {
+            //dd($img);
+            $imgName = $img->getClientOriginalName();
+            $img->move('img/freelancers/', $imgName);
+            $validatedData['img'] = "img/" . $imgName;    
+        } else {
+            $validatedData['img'] = "defaults/no-image.png";
+        }
 
-        // $image = $request->image;
-        // //dd($image);
-        // if ( $image )
-        // {
-        //     //dd($image);
-        //     $imageName = $image->getClientOriginalName();
-        //     $image->move('img', $imageName);
-        //     $formInput['img'] = $imageName;
-        // }
-
-        Freelancer::create($request->all());
+        Freelancer::create($validatedData);
         if ($request->type == 'freelancer-profile') {
             return redirect()->route('freelancers')
                         ->with('msg_success','Данные успешно добавлены.');        

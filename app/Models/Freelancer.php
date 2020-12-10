@@ -8,7 +8,7 @@ use App\Models\FreelanceCategory;
 class Freelancer extends Model
 {
     protected $table = 'freelancer';
-    protected $fillable = ['category_id','name','position','img', 'status'];
+    protected $fillable = ['category_id','name','position','img', 'status', 'characteristic', 'description'];
 
     public function freelanceCategory()
     {

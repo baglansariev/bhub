@@ -36,6 +36,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Имя</th>
+                                {{--<th>Img</th>--}}
                                 <th>E-mail</th>
                                 <th>Группа</th>
                                 <th>Дата создания</th>
@@ -54,6 +55,7 @@
                                                 <a href="{{ route('user.edit', $user->id) }}">{{ $user->name }}</a>
                                             @endif
                                         </td>
+                                       {{-- <td>{{ $user->image }}</td> --}}
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->role->name ?? 'без группы' }}</td>
                                         <td>{{ $user->created_at }}</td>

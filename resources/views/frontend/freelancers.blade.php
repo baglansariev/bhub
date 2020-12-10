@@ -3,7 +3,7 @@
 @section('title', $data["title"])
 
 @section('styles')
-	<link rel="stylesheet" type="text/css" href="css/freelance.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/freelance.css') }}">
 @endsection
 
 @section('content')
@@ -25,7 +25,8 @@
 					<h3 class="categories-title">Категории</h3>
 					<ul class="freelance-categories-lists">
 						@foreach($categories as $category)
-						<li><a href="#">{{ $category->title }}</a></li>
+						{{--<li><a href="{{ route('freelancerFilter', $category->id) }}">{{ $category->title }}</a></li>--}}
+						<li><a href="{{ route('freelancers', $category->id) }}">{{ $category->title }}</a></li>
 						@endforeach
 					</ul>		
 				</div>
@@ -37,7 +38,7 @@
 						<div class="freelance-card">
 							<a href="/employee" target="_blank" title="" style="display: block;">
 								<div class="inner-card-block">
-									<img src="{{ asset('img') . '/' . $freelancer->img }}" align="Adilet" title="Adilet">
+									<img src="{{ asset('img') . '/' . $freelancer->img }}" align="Adilet" alt="{{ $freelancer->img }}" title="{{ $freelancer->name }}">
 									<h5 class="freelancer-name">{{ $freelancer->name }}</h5>
 									<p class="freelancer-position">{{ $freelancer->position }}</p>
 								</div>
@@ -89,6 +90,16 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<input type="text" class="form-control" name="Instagramm" placeholder="Instagramm">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<textarea class="form-control" name="characteristic" placeholder="Харектеристики"></textarea>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<textarea class="form-control" name="description" placeholder="Описание"></textarea>
 								</div>
 							</div>
 							<div class="col-md-12">

@@ -61,14 +61,27 @@ class FrontController extends Controller
 		return view("frontend.startup", compact('data'));
 	}
 
-	public function freelancers ()
+	public function freelancers ($category_id = false)
 	{
 		$data = ["title" => "Фрилансеры"];
 		$categories = FreelanceCategory::all();
-		$freelancers = Freelancer::where('status', 1)->get();
-		//dd($freelancers);
-		return view("frontend.freelancers", compact('data', 'categories', 'freelancers'));
+		if (!$category_id) {
+			$freelancers = Freelancer::where('status', 1)->get();
+		} else {
+			$freelancers = Freelancer::where('category_id', $category_id)->where('status', 1)->get();
+		}
+		return view("frontend.freelancers", compact('data', 'categories', 'freelancers'));	
 	}
+
+	// public function freelancerFilter($id)
+	// {
+	// 	$data = ["title" => "Фрилансеры"];
+	// 	$categories = FreelanceCategory::all();
+	// 	$freelancers = Freelancer::where('category_id', $id)->get();
+	// 	//dd($freelancers);
+	// 	return redirect()->route("freelancers");
+	// 	// return view("frontend.freelancers", compact('data', 'categories', 'freelancers'));
+	// }
 
 	public function employee ()
 	{
