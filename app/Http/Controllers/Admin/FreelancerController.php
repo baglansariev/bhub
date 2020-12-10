@@ -54,7 +54,7 @@ class FreelancerController extends Controller
             // 'img' => 'required|mimes:jpeg,jpg,png,gif,svg|max:2048',
         ]);
         
-        //dd($validatedData );
+        //dd($validatedData);
         
         $img = $request->img;
         if ($img) {
