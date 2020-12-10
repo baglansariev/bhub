@@ -59,3 +59,14 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
 });
 
 Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");
+
+
+Route::middleware('auth')->group(function () {
+
+    Route::prefix('account')->group(function () {
+
+        Route::get('/', 'AccountController@index')->name('account');
+
+    });
+
+});
