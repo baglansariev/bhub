@@ -11,25 +11,48 @@
         <form action="{{ route('freelancers.store') }}" method="POST">
             @csrf
             <div class="form-row">
-                <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="col-xs-12 col-sm-4 col-md-4">
                     <div class="form-group">
                         <label>Имя:</label>
                         <input type="text" name="name" class="form-control" placeholder="Имя" value="{{ old('name') }}">
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="col-xs-12 col-sm-4 col-md-4">
                     <div class="form-group">
                         <label>Позиция:</label>
                         <input type="text" name="position" class="form-control" placeholder="Позиция" value="{{ old('position') }}">
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <label>Статус:</label>
+                        <!-- <input type="text" name="status" class="form-control" placeholder="Статус" value="{{ old('status') }}"> -->
+                        <select name="status" id="" class="form-control">
+                            <option value="0">0 - Не активный</option>
+                            <option value="1">1 - Активный</option>
+                            <option value="2">2 - В ожидании</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-2 col-md-3">
                     <div class="form-group">
                         <label>Фото:</label>
                         <input type="file" name="img" class="form-control" placeholder="Фото">
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="col-xs-12 col-sm-2 col-md-2">
+                    <div class="form-group">
+                        <label>Facebook:</label>
+                        <input type="text" name="facebook" class="form-control" placeholder="facebook">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-2 col-md-2">
+                    <div class="form-group">
+                        <label>Instagramm:</label>
+                        <input type="text" name="instagramm" class="form-control" placeholder="Instagramm">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-5">
                     <div class="form-group">
                         {{ Form::label('category_id', 'Категории:') }}
                         {{ Form::select('category_id', $categories, null, ['class' => 'form-control', 'placeholder' => 'Выбор категории']) }}

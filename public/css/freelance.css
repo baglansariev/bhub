@@ -14,12 +14,44 @@
 	color: #dda326;
 }
 
+.freelance-info-main {
+	margin-bottom: 74px;
+	text-align: center;
+}
+
 .freelance-info-text {
 	color: #6d6e71;
 	text-transform: uppercase;
 	text-align: center;
 	font: 14.73px 'intro';
-	margin-bottom: 74px;
+	margin-bottom: 22px;
+}
+
+.btn-freelancer-profile {
+	background-color: #dda326;
+	border-color: initial;
+	font: 20px 'intro';
+}
+
+.btn.btn-freelancer-profile:hover {
+	background-color: #000;
+	box-shadow: initial;
+	border-color: #000;
+	color: #dda326;
+}
+
+.btn.btn-freelancer-profile:focus {
+	background-color: #dda326;
+	box-shadow: initial;
+	border-color: #dda326;
+	color: #fff;
+}
+
+.btn.btn-freelancer-profile:active {
+	background-color: #dda326 !important;
+	box-shadow: initial !important;
+	border-color: #dda326 !important;
+	color: #fff !important;
 }
 
 .categories-title {
@@ -50,6 +82,7 @@
 
 .freelance-card {
 	margin-bottom: 26px;
+	/*height: 300px;*/
 }
 
 .inner-card-block {
@@ -94,6 +127,11 @@
 
 .instagramm-icon {
 	background-image: url(../img/instagramm-icon.png);
+}
+
+.sweet-modal-content {
+	color: #000;
+	font: 45.51px 'intro';
 }
 
 @media (max-width: 575.98px) {

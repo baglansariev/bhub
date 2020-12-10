@@ -42,6 +42,8 @@ class FreelancerController extends Controller
      */
     public function store(Request $request)
     {
+
+        //dd($request->all());
         //validation
         $this->validate($request, [
             'name' => 'required',
@@ -64,8 +66,13 @@ class FreelancerController extends Controller
         // }
 
         Freelancer::create($request->all());
-        return redirect()->route('freelancers.index')
-                        ->with('success','Данные успешно добавлены.');
+        if ($request->type == 'freelancer-profile') {
+            return redirect()->route('freelancers')
+                        ->with('msg_success','Данные успешно добавлены.');        
+        } else {
+            return redirect()->route('freelancers.index')
+                        ->with('msg_success','Данные успешно добавлены.');
+        }
     }
 
     /**
