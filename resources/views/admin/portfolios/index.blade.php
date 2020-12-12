@@ -15,10 +15,22 @@
             </div>
             <div class="card-body">
 
-                @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                    <p>{{ $message }}</p>
-                </div>
+                @if (session()->has('msg_success'))
+                    <div class="card-alert alert alert-success alert-dismissible fade show" role="alert">
+                        {!! session()->get('msg_success') !!}
+                        <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </a>
+                    </div>
+                @endif
+
+                @if (session()->has('msg_error'))
+                    <div class="card-alert alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session()->get('msg_error') }}
+                        <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </a>
+                    </div>
                 @endif
 
                 <table class="table table-striped mb-3">

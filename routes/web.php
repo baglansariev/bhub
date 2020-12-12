@@ -33,7 +33,8 @@ Route::get('/freelancers/{category_id?}', "FrontController@freelancers")->name("
 // Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");
 // Route::get('freelancer-filter/{category_id?}', "FrontController@freelancerFilter")->name('freelancerFilter');
 
-Route::get('/employee', "FrontController@employee")->name("employee");
+// Route::get('/employee', "FrontController@employee")->name("employee");
+Route::get('/freelancer/{id?}/{name?}', "FrontController@employee")->name("freelancer");
 
 Route::get('/find-an-investor', "FrontController@findAnInvestor")->name('findAnInvestor');
 

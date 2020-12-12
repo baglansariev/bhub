@@ -31,6 +31,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-2 col-md-4">
                     <div class="form-group">
+                        <label>Фото портфолио:</label>
                         <div class="input-group hdtuto control-group lst increment" >
                             <input type="file" name="img[]" class="myfrm form-control">
                             <div class="input-group-btn"> 

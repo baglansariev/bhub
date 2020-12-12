@@ -36,7 +36,7 @@
 					@foreach($freelancers as $freelancer)
 					<div class="col-lg-3 col-md-4">
 						<div class="freelance-card">
-							<a href="/employee" target="_blank" title="" style="display: block;">
+							<a href="{{ url('freelancer/' . $freelancer->id . '/' . $freelancer->name) }}" target="_blank" title="" style="display: block;">
 								<div class="inner-card-block">
 									<img src="{{ asset('img') . '/' . $freelancer->img }}" align="Adilet" alt="{{ $freelancer->img }}" title="{{ $freelancer->name }}">
 									<h5 class="freelancer-name">{{ $freelancer->name }}</h5>

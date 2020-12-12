@@ -83,11 +83,37 @@ class FrontController extends Controller
 	// 	// return view("frontend.freelancers", compact('data', 'categories', 'freelancers'));
 	// }
 
-	public function employee ()
+	public function employee ( $id = "" )
 	{
-		$data = ["title" => "Работник"];
+		$freelancer = Freelancer::where('id', $id)->first();
+		$portfolio = $freelancer->portfolio()->first();
+		// foreach ($portfolios as $key => $portfolio) {
+		// 	//dd(json_decode($portfolio->img));
+		// 	$portfolios = [
+		// 		// 'name' => $portfolio->title,
+		// 		// 'slug' => $portfolio->slug,
+		// 		// 'url' => $portfolio->url,
+		// 		'imgs' => json_decode($portfolio->img)
+		// 	];
+		// };
 
-		return view("frontend.employee", compact("data"));
+		//dd(json_decode($portfolio->img));
+		function isJson($string) {
+			json_decode($string);
+			return (json_last_error() == JSON_ERROR_NONE);
+		}
+
+		if (isJson($portfolio->img)) {
+			$portfolio['img'] = json_decode($portfolio->img);
+		}
+
+		//dd($portfolio);
+		//dd(is_array($portfolio->img));
+
+		$data = ["title" => $freelancer->name];
+		// dd($freelancer->portfolio()->get());
+		//dd($freelancer);
+		return view("frontend.employee", compact("data", "freelancer", "portfolio"));
 	}
 
 	public function findAnInvestor ()
