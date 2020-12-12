@@ -12,48 +12,52 @@ class FreelancerSeeder extends Seeder
     public function run()
     {
         DB::table('freelancer')->insert([
+            'user_id' => 1,
         	'category_id' => 1,
         	'name' => 'Adilet',
         	'position' => 'РАЗРАБОТЧИКИ МОБИЛЬНЫХ ПРИЛОЖЕНИЙ',
             'characteristic' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        	'img' => 'freelancer.jpg',
+        	'img' => 'img/freelancer.png',
         	'facebook' => '#',
         	'instagramm' => '#',
         	'created_at' => Carbon\Carbon::now()
         ]);
 
         DB::table('freelancer')->insert([
+            'user_id' => 1,
         	'category_id' => 2,
         	'name' => 'Vasily',
         	'position' => 'ВЕБ-РАЗРАБОТЧИКИ',
             'characteristic' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        	'img' => 'freelancer.jpg',
+        	'img' => 'img/freelancer.png',
         	'facebook' => '#',
         	'instagramm' => '#',
         	'created_at' => Carbon\Carbon::now()
         ]);
 
         DB::table('freelancer')->insert([
+            'user_id' => 1,
         	'category_id' => 3,
         	'name' => 'Jon Doe',
         	'position' => 'IT-СПЕЦИАЛИСТЫ',
             'characteristic' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        	'img' => 'freelancer.jpg',
+        	'img' => 'img/freelancer.png',
         	'facebook' => '#',
         	'instagramm' => '#',
         	'created_at' => Carbon\Carbon::now()
         ]);
 
         DB::table('freelancer')->insert([
+            'user_id' => 1,
         	'category_id' => 4,
         	'name' => 'Mat Zanstra',
         	'position' => 'РАЗРАБОТЧИКИ ИГР',
             'characteristic' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        	'img' => 'freelancer.jpg',
+        	'img' => 'img/freelancer.png',
         	'facebook' => '#',
         	'instagramm' => '#',
         	'created_at' => Carbon\Carbon::now()
