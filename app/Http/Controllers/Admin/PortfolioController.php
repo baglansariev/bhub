@@ -47,6 +47,7 @@ class PortfolioController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
+            //'title' => 'mimes:doc,pdf,docx,zip,txt',
             'slug' => 'required',
             'url' => 'required',
             'img' => 'required',
@@ -54,7 +55,28 @@ class PortfolioController extends Controller
         ]);
 
         $inputData = $request->except('_token');
+        $titles = [];
+
+        if (is_array($inputData['title'])) {
+            foreach ($inputData['title'] as $id => $title) {
+                if ($title != null) {
+                    $titles[] = $title;
+                };    
+            }
+        }
+
+        //dd(count($titles));
         
+        if (count($titles) > 1) {
+            $inputData['title'] = json_encode($titles);     
+        } else {
+            foreach ($titles as $title) {
+                $inputData['title'] = $title;
+            }
+        }
+
+        //dd($inputData);
+
         if($request->hasfile('img'))
          {
             foreach($request->file('img') as $file)
@@ -67,9 +89,19 @@ class PortfolioController extends Controller
          }
 
          $inputData['img'] = json_encode($data);
-         Portfolio::create($inputData);
+         //dd($inputData);
+         $res = Portfolio::create($inputData);
          
-        return redirect()->route('portfolios.index')->with('msg_success', 'Данные успешно добавлены.');
+         if ($res) {
+            // return redirect()->route('portfolios.index')->with('msg_success', 'Данные успешно добавлены.');   
+            $request->session()->flash('msg_success', 'Данные успешно добавлены.');
+         } else {
+            // return redirect()->route('portfolios.index')->with('msg_success', 'Данные успешно добавлены.'); 
+            $request->session()->flash('msg_error', 'Ошибка, попробуйте позже!');
+         }
+
+         return redirect(route('portfolios.index'));
+        
         // return back()->with('msg_success', 'Данные успешно добавлены.');
     }
 

@@ -14,7 +14,21 @@
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="form-group">
                         <label>Наименование:</label>
-                        <input type="text" name="title" class="form-control" placeholder="Наименование" value="{{ old('title') }}">
+                        <div class="input-group hdtuto control-group lst increment-title" >
+                            <input type="text" name="title[]" class="myfrm form-control" placeholder="Наименование">
+                            <div class="input-group-btn"> 
+                                <button class="btn btn-success btn-add-title" type="button"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="clone-title" style="display: none">
+                            <div class="hdtuto control-group lst input-group" style="margin-top:10px">
+                                <input type="text" name="title[]" class="myfrm form-control" placeholder="Наименование">
+                                <div class="input-group-btn"> 
+                                    <button class="btn btn-danger btn-remove-add-title" type="button"><i class="fas fa-minus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <input type="text" name="title" class="form-control" placeholder="Наименование" value="{{ old('title') }}"> -->
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4">
@@ -32,17 +46,17 @@
                 <div class="col-xs-12 col-sm-2 col-md-4">
                     <div class="form-group">
                         <label>Фото портфолио:</label>
-                        <div class="input-group hdtuto control-group lst increment" >
+                        <div class="input-group hdtuto control-group lst increment-img" >
                             <input type="file" name="img[]" class="myfrm form-control">
                             <div class="input-group-btn"> 
-                                <button class="btn btn-success" type="button"><i class="fas fa-plus"></i></button>
+                                <button class="btn btn-success btn-success-img" type="button"><i class="fas fa-plus"></i></button>
                             </div>
                         </div>
-                        <div class="clone" style="display: none">
+                        <div class="clone-img" style="display: none">
                             <div class="hdtuto control-group lst input-group" style="margin-top:10px">
                                 <input type="file" name="img[]" class="myfrm form-control">
                                 <div class="input-group-btn"> 
-                                    <button class="btn btn-danger" type="button"><i class="fas fa-minus"></i></button>
+                                    <button class="btn btn-danger btn-danger-img" type="button"><i class="fas fa-minus"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -83,13 +97,24 @@
 @endif
 <script type="text/javascript">
     $(document).ready(function() {
-      $(".btn-success").click(function(){ 
-          var lsthmtl = $(".clone").html();
-          $(".increment").after(lsthmtl);
+      $(".btn-success-img").click(function(){ 
+          var lsthmtl = $(".clone-img").html();
+          $(".increment-img").after(lsthmtl);
       });
-      $("body").on("click",".btn-danger",function(){ 
+
+      $("body").on("click",".btn-danger-img",function(){ 
           $(this).parents(".hdtuto.control-group.lst").remove();
       });
+
+      $(".btn-add-title").click(function(){ 
+          var lsthmtl = $(".clone-title").html();
+          $(".increment-title").after(lsthmtl);
+      });
+
+      $("body").on("click",".btn-remove-add-title",function(){ 
+          $(this).parents(".hdtuto.control-group.lst").remove();
+      });
+
     });
 </script>
 @endsection
