@@ -57,5 +57,6 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
         Route::resource('/business-news', 'Admin\BusinessNewsController');
         Route::resource('/freelance-categories', 'Admin\FreelanceCategories');	
         Route::resource('/freelancers', 'Admin\FreelancerController');
+        Route::resource('/portfolios', 'Admin\PortfolioController');
     });
 });

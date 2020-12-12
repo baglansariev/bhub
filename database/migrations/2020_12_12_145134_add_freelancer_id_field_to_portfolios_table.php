@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserIdFieldToFreelancerTable extends Migration
+class AddFreelancerIdFieldToPortfoliosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddUserIdFieldToFreelancerTable extends Migration
      */
     public function up()
     {
-        Schema::table('freelancer', function (Blueprint $table) {
-            $table->integer('user_id')->nullable(0)->after('id');
+        Schema::table('portfolios', function (Blueprint $table) {
+            $table->integer('freelancer_id')->after('id');
         });
     }
 
@@ -25,8 +25,8 @@ class AddUserIdFieldToFreelancerTable extends Migration
      */
     public function down()
     {
-        Schema::table('freelancer', function (Blueprint $table) {
-            $table->dropColumn('user_id');
+        Schema::table('portfolios', function (Blueprint $table) {
+            $table->dropColumn('freelancer_id');
         });
     }
 }

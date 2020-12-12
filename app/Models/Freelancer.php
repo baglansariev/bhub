@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\FreelanceCategory;
+use App\Models\Portfolio;
 
 class Freelancer extends Model
 {
@@ -13,5 +14,10 @@ class Freelancer extends Model
     public function freelanceCategory()
     {
     	return $this->belongsTo(FreelanceCategory::class);
+    }
+
+    public function portfolio()
+    {
+    	return $this->hasMany(Portfolio::class);
     }
 }
