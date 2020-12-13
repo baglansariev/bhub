@@ -14,3 +14,9 @@ function removeDir($dir) {
         rmdir($dir);
     }
 }
+
+function pr($arr = []) {
+    echo "<pre>";
+        print_r($arr);
+    echo "</pre>";
+}

@@ -45,12 +45,13 @@
 		<h1 class="portfolio-title">портфолио</h1>
 		<div class="row">
 			@if (is_array($portfolio->img))
-				@forelse ($portfolio->img as $item)
+				@forelse ($portfolio->img as $key => $item)
 				
 				<div class="col-md-3">
 					<div class="portfolio-inner">
-						<h3>{{ $portfolio->title }}</h3>
-						<img src="{{asset('img/portfolios/' . $item)}}" style="max-width: 100%" title="{{ $portfolio->title }}" alt="{{ $item }}">
+						<a href=""></a>
+						<h3>{{ $portfolio->title[$key] }}</h3>
+						<img src="{{asset('img/portfolios/' . $item)}}" style="max-width: 100%" title="{{ $portfolio->title[$key] }}" alt="{{ $item }}">
 					</div>
 				</div>
 				@empty

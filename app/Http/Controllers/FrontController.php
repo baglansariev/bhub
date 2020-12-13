@@ -107,6 +107,11 @@ class FrontController extends Controller
 			$portfolio['img'] = json_decode($portfolio->img);
 		}
 
+		if (isJson($portfolio->title)) {
+			$portfolio['title'] = json_decode($portfolio->title);
+		}
+	
+		
 		//dd($portfolio);
 		//dd(is_array($portfolio->img));
 
