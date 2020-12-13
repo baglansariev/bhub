@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <label>Наименование:</label>
                         <div class="input-group hdtuto control-group lst increment-title" >
-                            <input type="text" name="title[]" class="myfrm form-control" placeholder="Наименование">
+                            <input type="text" name="title[0][name]" class="myfrm form-control" placeholder="Наименование">
                             <div class="input-group-btn"> 
                                 <button class="btn btn-success btn-add-title" type="button"><i class="fas fa-plus"></i></button>
                             </div>
@@ -73,6 +73,7 @@
                     </div>
                 </div>
             </div>
+            <button type="button" class="btn btn-primary addmore-portfolio">Add more portfolio</button>
             <div class="row pt-2 pt-sm-5 mt-1">
                 <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0"></div>
                 <div class="col-sm-6 pl-0">
@@ -97,6 +98,12 @@
 @endif
 <script type="text/javascript">
     $(document).ready(function() {
+
+      $('.addmore-portfolio').click(function () {
+          var test = $('.form-row').html();
+          $('.form-row').after(test);
+      });  
+
       $(".btn-success-img").click(function(){ 
           var lsthmtl = $(".clone-img").html();
           $(".increment-img").after(lsthmtl);
