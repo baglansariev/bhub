@@ -41,6 +41,8 @@ Route::get('/find-an-investor', "FrontController@findAnInvestor")->name('findAnI
 Route::get('/find-an-employer', "FrontController@findAnEmployer")->name('findAnEmployer');
 Route::get('ajaxRequest', 'FrontController@ajaxRequest')->name('ajaxRequest');
 
+Route::get('ajaxPortfolio', 'FrontController@ajaxPortfolio')->name('ajaxPortfolio');
+
 // Backend area
 
 Auth::routes();

@@ -174,4 +174,46 @@ class FrontController extends Controller
         return response()->json(['success' => $response]);
     }
 
+    public function ajaxPortfolio(Request $request)
+    {
+    	//$html = "<input type='text' name='title[{$request->count}]['title']'>123</input>";
+    	$html = "<div class='form-row'>
+                    <div class='col-xs-12 col-sm-6 col-md-6'>
+                        <div class='form-group'>
+                            <label>Наименование:</label>
+                            <div class='input-group hdtuto control-group lst increment-title' >
+                                <input type='text' name='portfolio[{$request->index}][title]' class='myfrm form-control' placeholder='Наименование'>
+                                <div class='input-group-btn'> 
+                                    <button class='btn btn-success btn-add-title' type='button'><i class='fas fa-plus'></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-xs-12 col-sm-6 col-md-6'>
+                        <div class='form-group'>
+                            <label>slug:</label>
+                            <input type='text' name='portfolio[{$request->index}][slug]' class='form-control' placeholder='slug' value=''>
+                        </div>
+                    </div>
+                    <div class='col-xs-12 col-sm-6 col-md-6'>
+                        <div class='form-group'>
+                            <label>Ссылка:</label>
+                            <input type='text' name='portfolio[{$request->index}][url]' class='form-control' placeholder='Ссылка' value=''>
+                        </div>
+                    </div>
+                    <div class='col-xs-12 col-sm-6 col-md-6'>
+                        <div class='form-group'>
+                            <label>Фото портфолио:</label>
+                            <div class='input-group hdtuto control-group lst increment-img'>
+                                <input type='file' name='portfolio[{$request->index}][img]' class='myfrm form-control'>
+                                <div class='input-group-btn'> 
+                                    <button class='btn btn-success btn-success-img' type='button'><i class='fas fa-plus'></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>";
+    	return $html;
+    }
+
 }
