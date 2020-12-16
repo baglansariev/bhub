@@ -46,7 +46,7 @@
                     <div class="col-xs-12 col-sm-6 col-md-6">
                         <div class="form-group">
                             <label>slug:</label>
-                            <input type="text" name="portfolio[0][slug]" class="form-control" placeholder="slug" value="{{ old('slug') }}" required>
+                            <input type="text" name="portfolio[0][slug]" class="form-control" placeholder="slug" value="{{ old('slug') }}">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6">

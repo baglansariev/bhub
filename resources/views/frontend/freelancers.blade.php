@@ -120,23 +120,26 @@
 						</div>
 					</div>
 					<div class="form-row">
+						<?php $portfolioIndex = 0; ?>
+						<script type="text/javascript">$portfolioIndex = 2;</script>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input id="photo" type="text" class="form-control" name="img" placeholder="Наименование портфолио">
+								<input id="photo" type="text" class="form-control" name="portfolio[0][title]" placeholder="Наименование портфолио">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input id="photo" type="text" class="form-control" name="img" placeholder="Ссылка">
+								<input id="photo" type="text" class="form-control" name="portfolio[0][url]" placeholder="Ссылка">
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">
 								<label for="photo" style="color: #252525" class="common-title">Изображение портфолио</label>
-								<input id="photo" type="file" class="form-control" name="img" placeholder="Изображение">
+								<input id="photo" type="file" class="form-control" name="portfolio[0][img]" placeholder="Изображение">
 							</div>
 						</div>
 					</div>
+					<button type="button" class="btn btn-success add-more-portfolios-btn">портфолио&nbsp;<i class="fas fa-plus-circle"></i></button>
 				</div>
 				<div class="modal-footer">
 					<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->

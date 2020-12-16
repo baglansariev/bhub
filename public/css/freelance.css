@@ -140,7 +140,8 @@
 }
 
 #freelanceProfile .modal-title,
-.btn-send-freelancer-data {
+.btn-send-freelancer-data,
+.add-more-portfolios-btn {
 	font-family: 'intro';
 }
 
