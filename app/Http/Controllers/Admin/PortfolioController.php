@@ -20,6 +20,12 @@ class PortfolioController extends Controller
         $portfolios = Portfolio::all();
         $portfolios = $portfolios->load('freelancer'); //получим связные данные
         //dd($portfolios);
+        // foreach ($portfolios as $key => $value) {
+        //     dd($value);
+        //     // echo "<pre>";
+        //     //     print_r($value->freelancer);
+        //     // echo "</pre>";
+        // }
         return view('admin.portfolios.index', compact('portfolios'));
     }
 
