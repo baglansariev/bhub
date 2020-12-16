@@ -85,8 +85,11 @@ class FrontController extends Controller
 
 	public function employee ( $id = "" )
 	{
+		// $freelancer = Freelancer::where('id', $id)->first();
+		// $portfolio = $freelancer->portfolio()->first();
 		$freelancer = Freelancer::where('id', $id)->first();
-		$portfolio = $freelancer->portfolio()->first();
+		$portfolio = $freelancer->portfolio()->get();
+		//dd($portfolio);
 		// foreach ($portfolios as $key => $portfolio) {
 		// 	//dd(json_decode($portfolio->img));
 		// 	$portfolios = [
@@ -98,18 +101,18 @@ class FrontController extends Controller
 		// };
 
 		//dd(json_decode($portfolio->img));
-		function isJson($string) {
-			json_decode($string);
-			return (json_last_error() == JSON_ERROR_NONE);
-		}
+		// function isJson($string) {
+		// 	json_decode($string);
+		// 	return (json_last_error() == JSON_ERROR_NONE);
+		// }
 
-		if (isJson($portfolio->img)) {
-			$portfolio['img'] = json_decode($portfolio->img);
-		}
+		// if (isJson($portfolio->img)) {
+		// 	$portfolio['img'] = json_decode($portfolio->img);
+		// }
 
-		if (isJson($portfolio->title)) {
-			$portfolio['title'] = json_decode($portfolio->title);
-		}
+		// if (isJson($portfolio->title)) {
+		// 	$portfolio['title'] = json_decode($portfolio->title);
+		// }
 	
 		
 		//dd($portfolio);
@@ -182,7 +185,7 @@ class FrontController extends Controller
                         <div class='form-group'>
                             <label>Наименование:</label>
                             <div class='input-group hdtuto control-group lst increment-title' >
-                                <input type='text' name='portfolio[{$request->index}][title]' class='myfrm form-control' placeholder='Наименование'>
+                                <input type='text' name='portfolio[{$request->index}][title]' class='myfrm form-control' placeholder='Наименование' required>
                                 <div class='input-group-btn'> 
                                     <button class='btn btn-success btn-add-title' type='button'><i class='fas fa-plus'></i></button>
                                 </div>
@@ -192,20 +195,20 @@ class FrontController extends Controller
                     <div class='col-xs-12 col-sm-6 col-md-6'>
                         <div class='form-group'>
                             <label>slug:</label>
-                            <input type='text' name='portfolio[{$request->index}][slug]' class='form-control' placeholder='slug' value=''>
+                            <input type='text' name='portfolio[{$request->index}][slug]' class='form-control' placeholder='slug' value='' required>
                         </div>
                     </div>
                     <div class='col-xs-12 col-sm-6 col-md-6'>
                         <div class='form-group'>
                             <label>Ссылка:</label>
-                            <input type='text' name='portfolio[{$request->index}][url]' class='form-control' placeholder='Ссылка' value=''>
+                            <input type='text' name='portfolio[{$request->index}][url]' class='form-control' placeholder='Ссылка' value='' required>
                         </div>
                     </div>
                     <div class='col-xs-12 col-sm-6 col-md-6'>
                         <div class='form-group'>
                             <label>Фото портфолио:</label>
                             <div class='input-group hdtuto control-group lst increment-img'>
-                                <input type='file' name='portfolio[{$request->index}][img]' class='myfrm form-control'>
+                                <input type='file' name='portfolio[{$request->index}][img]' class='myfrm form-control' required>
                                 <div class='input-group-btn'> 
                                     <button class='btn btn-success btn-success-img' type='button'><i class='fas fa-plus'></i></button>
                                 </div>

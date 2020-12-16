@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Portfolio;
 use App\Models\Freelancer;
+use App\Helpers\MainHelper;
 
 class PortfolioController extends Controller
 {
@@ -45,64 +46,40 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            //'title' => 'mimes:doc,pdf,docx,zip,txt',
-            'slug' => 'required',
-            'url' => 'required',
-            'img' => 'required',
-            'img.*' => 'mimes:png,jpg,jpeg|max:1400'
-        ]);
+        $requestData = $request->except('_token');
+        // $data = $request->validate($requestData['portfolio'][0],[
+        //     "name"    => "required",
+        // ]);
 
-        $inputData = $request->except('_token');
-        $titles = [];
+        // echo "<pre>";
+        // print_r($requestData['portfolio'][0]['img']->getClientOriginalName());
+        // echo "</pre>";
+        //dd($requestData);
 
-        if (is_array($inputData['title'])) {
-            foreach ($inputData['title'] as $id => $title) {
-                if ($title != null) {
-                    $titles[] = $title;
-                };    
-            }
-        }
+        foreach ($requestData['portfolio'] as $key => $item) {
+            $inputData = [
+                "freelancer_id" => $requestData['freelancer_id'],
+                "title" => $item['title'],
+                "slug" => $item['slug'],
+                "url" => $item['url'],
+                "img" => $item['img']->getClientOriginalName()
+            ];
 
-        //dd(count($titles));
-        
-        if (count($titles) > 1) {
-            $inputData['title'] = json_encode($titles);     
-        } else {
-            foreach ($titles as $title) {
-                $inputData['title'] = $title;
-            }
-        }
+            $fileName = time().'-'.$item['img']->getClientOriginalName();
+            $item['img']->move(public_path().'/img/portfolios/', $fileName); 
 
-        //dd($inputData);
-
-        if($request->hasfile('img'))
-         {
-            foreach($request->file('img') as $file)
-            {
-                // $name = time().'.'.$file->extension();
-                $name = time().'-'.$file->getClientOriginalName();
-                $file->move(public_path().'/img/portfolios/', $name);  
-                $data[] = $name;  
-            }
-         }
-
-         $inputData['img'] = json_encode($data);
-         //dd($inputData);
-         $res = Portfolio::create($inputData);
-         
-         if ($res) {
+            $res = Portfolio::create($inputData);
+            
+            if ($res) {
             // return redirect()->route('portfolios.index')->with('msg_success', 'Данные успешно добавлены.');   
-            $request->session()->flash('msg_success', 'Данные успешно добавлены.');
-         } else {
+                $request->session()->flash('msg_success', 'Данные успешно добавлены.');
+            } else {
             // return redirect()->route('portfolios.index')->with('msg_success', 'Данные успешно добавлены.'); 
-            $request->session()->flash('msg_error', 'Ошибка, попробуйте позже!');
-         }
+                $request->session()->flash('msg_error', 'Ошибка, попробуйте позже!');
+            }       
+        }
 
-         return redirect(route('portfolios.index'));
-        
-        // return back()->with('msg_success', 'Данные успешно добавлены.');
+        return redirect(route('portfolios.index'));
     }
 
     /**

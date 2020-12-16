@@ -71,58 +71,76 @@
 					</button>
 				</div>
 				<div class="modal-body">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<input type="text" class="form-control" name="name" placeholder="Имя">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-gorup">
-									<input type="text" class="form-control" name="position" placeholder="Позиция">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<input type="text" class="form-control" name="Facebook" placeholder="Facebook">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<input type="text" class="form-control" name="Instagramm" placeholder="Instagramm">
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-group">
-									<textarea class="form-control" name="characteristic" placeholder="Харектеристики"></textarea>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-group">
-									<textarea class="form-control" name="description" placeholder="Описание"></textarea>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-group">
-									<select name="category_id" id="category_id" class="form-control">
-										<option value="">Выбор категории...</option>
-										@foreach($categories as $category)
-										<option value="{{ $category->id }}">{{ $category->title }}</option>
-										@endforeach
-									</select>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-group">
-									<label for="photo" style="color: #252525">Фото</label>
-									<input id="photo" type="file" class="form-control" name="img" placeholder="Фото">
-								</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" name="name" placeholder="Имя" required>
 							</div>
 						</div>
+						<div class="col-md-6">
+							<div class="form-gorup">
+								<input type="text" class="form-control" name="position" placeholder="Позиция" required>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" name="Facebook" placeholder="Facebook">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" name="Instagramm" placeholder="Instagramm">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<textarea class="form-control" name="characteristic" placeholder="Харектеристики" required></textarea>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<textarea class="form-control" name="description" placeholder="Описание" required></textarea>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<select name="category_id" id="category_id" class="form-control" required>
+									<option value="">Выбор категории...</option>
+									@foreach($categories as $category)
+									<option value="{{ $category->id }}">{{ $category->title }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="photo" style="color: #252525" class="common-title">Ваше фото</label>
+								<input id="photo" type="file" class="form-control" name="img" placeholder="Фото">
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<input id="photo" type="text" class="form-control" name="img" placeholder="Наименование портфолио">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input id="photo" type="text" class="form-control" name="img" placeholder="Ссылка">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="photo" style="color: #252525" class="common-title">Изображение портфолио</label>
+								<input id="photo" type="file" class="form-control" name="img" placeholder="Изображение">
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-					<button type="submit" class="btn btn-primary">Отправить данные</button>
+					<button type="submit" class="btn btn-primary btn-send-freelancer-data">Отправить данные</button>
 				</div>
 			</form>
 		</div>
@@ -149,4 +167,8 @@
 </script>
 @endif
 
+@endsection
+
+@section('scripts')
+<script type="text/javascript" src="{{ asset('js/freelancers.js') }}"></script>
 @endsection

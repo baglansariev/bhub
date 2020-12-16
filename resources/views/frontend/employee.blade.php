@@ -44,28 +44,17 @@
 		@if(isset($portfolio) && !empty($portfolio))
 		<h1 class="portfolio-title">портфолио</h1>
 		<div class="row">
-			@if (is_array($portfolio->img))
-				@forelse ($portfolio->img as $key => $item)
-				
-				<div class="col-md-3">
-					<div class="portfolio-inner">
-						<a href=""></a>
-						<h3>{{ $portfolio->title[$key] }}</h3>
-						<img src="{{asset('img/portfolios/' . $item)}}" style="max-width: 100%" title="{{ $portfolio->title[$key] }}" alt="{{ $item }}">
-					</div>
+			@forelse ($portfolio as $key => $item)
+			<div class="col-md-3">
+				<div class="portfolio-inner">
+					<a href=""></a>
+					<h3>{{ $item->title }}</h3>
+					<img src="{{asset('img/portfolios/' . $item->img)}}" style="max-width: 100%" title="{{ $item->title }}" alt="{{ $item->title }}">
 				</div>
-				@empty
-					Нет данных
-				@endforelse
-			@else
-				<div class="col-md-3">
-					<div class="portfolio-inner">
-						<h3>{{ $portfolio->title }}</h3>
-						<img src="{{asset('img/portfolios/' . $portfolio->img)}}" style="max-width: 100%" title="{{ $portfolio->title }}" alt="{{ $portfolio->img }}">
-					</div>
-				</div>	
-			@endif	
-			
+			</div>
+			@empty
+			<h2 class="c-black-title">Пользователь не внес портфолио</h2>
+			@endforelse
 			<!-- <div class="col-md-3">
 				<div class="portfolio-inner">
 					

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Helpers;
+
 function removeDir($dir) {
     if (is_dir($dir)) {
         $objects = scandir($dir);

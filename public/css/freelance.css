@@ -139,6 +139,11 @@
 	font: 45.51px 'intro';
 }
 
+#freelanceProfile .modal-title,
+.btn-send-freelancer-data {
+	font-family: 'intro';
+}
+
 @media (max-width: 575.98px) {
 
 	.freelance-wrapper {

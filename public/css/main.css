@@ -102,6 +102,17 @@ a.find-an-investor-categories {
 	left: 0;
 }
 
+.c-black-title {
+	color: #000;
+	font: 14px "intro";
+	padding-left: 15px;
+}
+
+.common-title {
+	font: 14px "intro";
+	text-transform: none;
+}
+
 @media (max-width: 575.98px) {
 
 	.find-an-investor-wrapper {

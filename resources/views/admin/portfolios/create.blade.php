@@ -11,14 +11,14 @@
         <form action="{{ route('portfolios.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-row-wrapper">
-                <input type="hidden" name="count" data-count="0" class="my-count" value="0">
                 <div class="form-row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <label>Выбор фрилансера</label>
-                            <select name="freelancer_id" class="form-control">
+                            <select name="freelancer_id" class="form-control" required>
                                 @foreach($freelancers as $id => $freelancer)
-                                <option value="{{ $freelancer->id }}">{{ $freelancer->name . ' - ' . $freelancer->position }}</option>
+                                <option value="" required>Выберите фрилансера...</option>
+                                <option value="{{ $freelancer->id }}" required>{{ $freelancer->name . ' - ' . $freelancer->position }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -27,51 +27,51 @@
                         <div class="form-group">
                             <label>Наименование:</label>
                             <div class="input-group hdtuto control-group lst increment-title" >
-                                <input type="text" name="portfolio[0][name]" class="myfrm form-control" placeholder="Наименование">
+                                <input type="text" name="portfolio[0][title]" class="myfrm form-control" placeholder="Наименование" required>
                                 <div class="input-group-btn"> 
                                     <button class="btn btn-success btn-add-title" type="button"><i class="fas fa-plus"></i></button>
                                 </div>
                             </div>
-                            <div class="clone-title" style="display: none">
+                            <!-- <div class="clone-title" style="display: none">
                                 <div class="hdtuto control-group lst input-group" style="margin-top:10px">
                                     <input type="text" name="title[]" class="myfrm form-control" placeholder="Наименование">
                                     <div class="input-group-btn"> 
                                         <button class="btn btn-danger btn-remove-add-title" type="button"><i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- <input type="text" name="title" class="form-control" placeholder="Наименование" value="{{ old('title') }}"> -->
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6">
                         <div class="form-group">
                             <label>slug:</label>
-                            <input type="text" name="portfolio[0][slug]" class="form-control" placeholder="slug" value="{{ old('slug') }}">
+                            <input type="text" name="portfolio[0][slug]" class="form-control" placeholder="slug" value="{{ old('slug') }}" required>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6">
                         <div class="form-group">
                             <label>Ссылка:</label>
-                            <input type="text" name="portfolio[0][url]" class="form-control" placeholder="Ссылка" value="{{ old('url') }}">
+                            <input type="text" name="portfolio[0][url]" class="form-control" placeholder="Ссылка" value="{{ old('url') }}" required>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-2 col-md-6">
                         <div class="form-group">
                             <label>Фото портфолио:</label>
                             <div class="input-group hdtuto control-group lst increment-img" >
-                                <input type="file" name="portfolio[0][img]" class="myfrm form-control">
+                                <input type="file" name="portfolio[0][img]" class="myfrm form-control" required>
                                 <div class="input-group-btn"> 
                                     <button class="btn btn-success btn-success-img" type="button"><i class="fas fa-plus"></i></button>
                                 </div>
                             </div>
-                            <div class="clone-img" style="display: none">
+                            <!-- <div class="clone-img" style="display: none">
                                 <div class="hdtuto control-group lst input-group" style="margin-top:10px">
                                     <input type="file" name="img[]" class="myfrm form-control">
                                     <div class="input-group-btn"> 
                                         <button class="btn btn-danger btn-danger-img" type="button"><i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
