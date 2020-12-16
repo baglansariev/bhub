@@ -151,16 +151,14 @@
 	</div>
 </div>
 
-<div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="freelanceProfileCenterTitle" aria-hidden="true">
+<!-- Modal for freelance auth -->
+<div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalCenterTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
-			<form action="{{ route('freelancers.store') }}" method="POST" enctype="multipart/form-data">
+			<form action="{{ route('freelancers.store') }}" method="POST">
 				@csrf
-				<input type="hidden" name="status" value="0">
-				<input type="hidden" name="type" value="freelancer-profile">
-				<input type="hidden" name="user_id" value="{{(auth()->user()) ? auth()->user()->id : ''}}">
 				<div class="modal-header">
-					<h5 class="modal-title" id="freelanceProfileLongTitle">Вы не авторизованы</h5>
+					<h5 class="modal-title" id="authModalLongTitle">Вы не авторизованы</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
