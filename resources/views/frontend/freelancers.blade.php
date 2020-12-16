@@ -13,7 +13,7 @@
 			<h1 class="freelance-title"><span>лучшие</span> работники</h1>
 			<p class="freelance-info-text">Внизу список достойнейших людей, которые доказали все делом и т.д.</p>
 			<!-- Button trigger modal for freelancer profile -->
-			<button type="button" class="btn btn-primary btn-freelancer-profile" data-toggle="modal" data-target="#freelanceProfile">
+			<button type="button" class="btn btn-primary btn-freelancer-profile" data-toggle="modal" data-target="{{(auth()->user()) ? '#freelanceProfile' : '#authModal' }}">
 				Заполнить анкету
 			</button>
 		</div>
@@ -60,10 +60,11 @@
 <div class="modal fade" id="freelanceProfile" tabindex="-1" role="dialog" aria-labelledby="freelanceProfileCenterTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
-			<form action="{{ route('freelancers.store') }}" method="POST">
+			<form action="{{ route('freelancers.store') }}" method="POST" enctype="multipart/form-data">
 				@csrf
 				<input type="hidden" name="status" value="0">
 				<input type="hidden" name="type" value="freelancer-profile">
+				<input type="hidden" name="user_id" value="{{(auth()->user()) ? auth()->user()->id : ''}}">
 				<div class="modal-header">
 					<h5 class="modal-title" id="freelanceProfileLongTitle">Анкета фрилансера</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -144,6 +145,38 @@
 				<div class="modal-footer">
 					<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 					<button type="submit" class="btn btn-primary btn-send-freelancer-data">Отправить данные</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="freelanceProfileCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<form action="{{ route('freelancers.store') }}" method="POST" enctype="multipart/form-data">
+				@csrf
+				<input type="hidden" name="status" value="0">
+				<input type="hidden" name="type" value="freelancer-profile">
+				<input type="hidden" name="user_id" value="{{(auth()->user()) ? auth()->user()->id : ''}}">
+				<div class="modal-header">
+					<h5 class="modal-title" id="freelanceProfileLongTitle">Вы не авторизованы</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<h3 class="c-black-title">Авторизуйтесь</h3>
+							</div>
+						</div>	
+					</div>
+				</div>
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+					<button type="submit" class="btn btn-primary">Авторизоваться</button>
 				</div>
 			</form>
 		</div>

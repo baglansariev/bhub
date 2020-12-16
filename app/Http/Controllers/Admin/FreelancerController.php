@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Freelancer;
 use App\Models\FreelanceCategory;
+use App\Models\Portfolio;
 
 class FreelancerController extends Controller
 {
@@ -56,24 +57,61 @@ class FreelancerController extends Controller
         
         //dd($validatedData);
         
+        $user_id = $request->user_id;
         $img = $request->img;
         if ($img) {
-            //dd($img);
-            $imgName = $img->getClientOriginalName();
+            $imgName = time().'-'.$img->getClientOriginalName();
             $img->move('img/freelancers/', $imgName);
-            $validatedData['img'] = "img/" . $imgName;    
+            $validatedData['img'] = "freelancers/" . $imgName;    
         } else {
             $validatedData['img'] = "defaults/no-image.png";
         }
 
-        Freelancer::create($validatedData);
+        if ($user_id) {
+            $validatedData['user_id'] = $user_id;
+        }
+
+        //dd($validatedData);
+
+        $freelancer = Freelancer::create($validatedData);
         if ($request->type == 'freelancer-profile') {
+            $inputDataPortfolio = $request->except('_token', 'img');
+            $freelancer = Freelancer::where('id', $freelancer->id)->first();
+            //dd($freelancer);
+            foreach ($inputDataPortfolio['portfolio'] as $portfolio) {
+                if (!is_null($portfolio['title']) && !is_null($portfolio['url']) && !is_null($portfolio['img'])) {
+
+                    $fileName = time().'-'.$portfolio['img']->getClientOriginalName();
+                    $arrPortfolio = [
+                        "freelancer_id" => $freelancer->id,
+                        "title" => $portfolio['title'],
+                        "url" => $portfolio['url'],
+                        "img" => $fileName
+                    ];
+                    //dd($fileName);
+                    $portfolio['img']->move(public_path().'/img/portfolios/', $fileName);
+
+                    $res = Portfolio::create($arrPortfolio);
+                    if ($res) {
+                        $request->session()->flash('msg_success', 'Данные успешно добавлены.');
+                    } else {
+                        $request->session()->flash('msg_error', 'Ошибка, попробуйте позже!');
+                    }        
+                }
+            }
             return redirect()->route('freelancers')
                         ->with('msg_success','Данные успешно добавлены.');        
         } else {
             return redirect()->route('freelancers.index')
                         ->with('msg_success','Данные успешно добавлены.');
         }
+        // if ($request->type == 'freelancer-profile') {
+        //     return redirect()->route('freelancers')
+        //                 ->with('msg_success','Данные успешно добавлены.');        
+        // } else {
+        //     return redirect()->route('freelancers.index')
+        //                 ->with('msg_success','Данные успешно добавлены.');
+        // }
     }
 
     /**
