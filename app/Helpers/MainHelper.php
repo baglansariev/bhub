@@ -4,6 +4,7 @@ function getUserImageDir() {
     return 'img/user/';
 }
 
+
 function removeDir($dir) {
     if (is_dir($dir)) {
         $objects = scandir($dir);

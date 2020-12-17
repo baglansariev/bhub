@@ -79,11 +79,45 @@ class FrontController extends Controller
 	// 	// return view("frontend.freelancers", compact('data', 'categories', 'freelancers'));
 	// }
 
-	public function employee ()
+	public function employee ( $id = "" )
 	{
-		$data = ["title" => "Работник"];
+		// $freelancer = Freelancer::where('id', $id)->first();
+		// $portfolio = $freelancer->portfolio()->first();
+		$freelancer = Freelancer::where('id', $id)->first();
+		$portfolio = $freelancer->portfolio()->get();
+		//dd($portfolio);
+		// foreach ($portfolios as $key => $portfolio) {
+		// 	//dd(json_decode($portfolio->img));
+		// 	$portfolios = [
+		// 		// 'name' => $portfolio->title,
+		// 		// 'slug' => $portfolio->slug,
+		// 		// 'url' => $portfolio->url,
+		// 		'imgs' => json_decode($portfolio->img)
+		// 	];
+		// };
 
-		return view("frontend.employee", compact("data"));
+		//dd(json_decode($portfolio->img));
+		// function isJson($string) {
+		// 	json_decode($string);
+		// 	return (json_last_error() == JSON_ERROR_NONE);
+		// }
+
+		// if (isJson($portfolio->img)) {
+		// 	$portfolio['img'] = json_decode($portfolio->img);
+		// }
+
+		// if (isJson($portfolio->title)) {
+		// 	$portfolio['title'] = json_decode($portfolio->title);
+		// }
+	
+		
+		//dd($portfolio);
+		//dd(is_array($portfolio->img));
+
+		$data = ["title" => $freelancer->name];
+		// dd($freelancer->portfolio()->get());
+		//dd($freelancer);
+		return view("frontend.employee", compact("data", "freelancer", "portfolio"));
 	}
 
 	public function findAnInvestor ()
@@ -137,6 +171,48 @@ class FrontController extends Controller
         ];
 
         return response()->json(['success' => $response]);
+    }
+
+    public function ajaxPortfolio(Request $request)
+    {
+    	//$html = "<input type='text' name='title[{$request->count}]['title']'>123</input>";
+    	$html = "<div class='form-row'>
+                    <div class='col-xs-12 col-sm-6 col-md-6'>
+                        <div class='form-group'>
+                            <label>Наименование:</label>
+                            <div class='input-group hdtuto control-group lst increment-title' >
+                                <input type='text' name='portfolio[{$request->index}][title]' class='myfrm form-control' placeholder='Наименование' required>
+                                <div class='input-group-btn'> 
+                                    <button class='btn btn-success btn-add-title' type='button'><i class='fas fa-plus'></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-xs-12 col-sm-6 col-md-6'>
+                        <div class='form-group'>
+                            <label>slug:</label>
+                            <input type='text' name='portfolio[{$request->index}][slug]' class='form-control' placeholder='slug' value='' required>
+                        </div>
+                    </div>
+                    <div class='col-xs-12 col-sm-6 col-md-6'>
+                        <div class='form-group'>
+                            <label>Ссылка:</label>
+                            <input type='text' name='portfolio[{$request->index}][url]' class='form-control' placeholder='Ссылка' value='' required>
+                        </div>
+                    </div>
+                    <div class='col-xs-12 col-sm-6 col-md-6'>
+                        <div class='form-group'>
+                            <label>Фото портфолио:</label>
+                            <div class='input-group hdtuto control-group lst increment-img'>
+                                <input type='file' name='portfolio[{$request->index}][img]' class='myfrm form-control' required>
+                                <div class='input-group-btn'> 
+                                    <button class='btn btn-success btn-success-img' type='button'><i class='fas fa-plus'></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>";
+    	return $html;
     }
 
 }

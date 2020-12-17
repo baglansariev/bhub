@@ -29,12 +29,15 @@ Route::get('/freelancers/{category_id?}', "FrontController@freelancers")->name("
 // Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");
 // Route::get('freelancer-filter/{category_id?}', "FrontController@freelancerFilter")->name('freelancerFilter');
 
-Route::get('/employee', "FrontController@employee")->name("employee");
+// Route::get('/employee', "FrontController@employee")->name("employee");
+Route::get('/freelancer/{id?}/{name?}', "FrontController@employee")->name("freelancer");
 
 Route::get('/find-an-investor', "FrontController@findAnInvestor")->name('findAnInvestor');
 
 Route::get('/find-an-employer', "FrontController@findAnEmployer")->name('findAnEmployer');
 Route::get('ajaxRequest', 'FrontController@ajaxRequest')->name('ajaxRequest');
+
+Route::get('ajaxPortfolio', 'FrontController@ajaxPortfolio')->name('ajaxPortfolio');
 
 // Backend area
 
@@ -56,6 +59,7 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
         Route::resource('/business-news', 'Admin\BusinessNewsController');
         Route::resource('/freelance-categories', 'Admin\FreelanceCategories');	
         Route::resource('/freelancers', 'Admin\FreelancerController');
+        Route::resource('/portfolios', 'Admin\PortfolioController');
     });
 });
 Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");

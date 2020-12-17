@@ -61,7 +61,7 @@
 									</div>
 								</div>
 								<!-- Start mobile dropdown version -->
-								<a class="nav-link nav-link-mobile dropdown-toggle" data-toggle="dropdown" href="/freelancers">Фрилансеры</a>
+								<a class="nav-link nav-link-mobile dropdown-toggle" data-toggle="dropdown" href="{{route('freelancers')}}">Фрилансеры</a>
 								<div class="dropdown-menu megamenu megamenu-mobile">
 									<ul class="megamenu-mobile-inner">
 										<li><a href="/all">все</a></li>

@@ -35,6 +35,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{url('admin/freelancers')}}">Все фрилансеры</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('admin/portfolios')}}">Портфолио</a>
+                            </li>
                         </ul>
                     </div>
 {{--                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">--}}

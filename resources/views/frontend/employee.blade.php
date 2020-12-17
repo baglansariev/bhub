@@ -13,21 +13,21 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="circle-photo">
-						<img src="img/employee.png" width="398" height="399">
+						<img src="{{ asset('img/' . $freelancer->img) }}" width="398" height="399" title="{{ $freelancer->name }}" alt="{{ $freelancer->img }}">
 					</div>
 				</div>
 				<div class="col-md-7 offset-md-1">
 					<div class="characteristic">
 						<h2 class="employee-title">характеристики</h2>
 						<div class="characteristic-content">
-							<p class="employee-text">красава</p>
+							<p class="employee-text">{{ ($freelancer->characteristic) ? $freelancer->description : "Нет данных" }}</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-8">
 					<div class="employee-description">
 						<h2 class="employee-title">описание</h2>
-						<p class="employee-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>	
+						<p class="employee-text">{{ ($freelancer->description) ? $freelancer->description : "Нет данных" }}</p>	
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -41,9 +41,21 @@
 </section>
 <section class="portfolio-wrapper">
 	<div class="container">
+		@if(isset($portfolio) && !empty($portfolio))
 		<h1 class="portfolio-title">портфолио</h1>
 		<div class="row">
+			@forelse ($portfolio as $key => $item)
 			<div class="col-md-3">
+				<div class="portfolio-inner">
+					<a href=""></a>
+					<h3>{{ $item->title }}</h3>
+					<img src="{{asset('img/portfolios/' . $item->img)}}" style="max-width: 100%" title="{{ $item->title }}" alt="{{ $item->title }}">
+				</div>
+			</div>
+			@empty
+			<h2 class="c-black-title">Пользователь не внес портфолио</h2>
+			@endforelse
+			<!-- <div class="col-md-3">
 				<div class="portfolio-inner">
 					
 				</div>
@@ -57,13 +69,9 @@
 				<div class="portfolio-inner">
 					
 				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="portfolio-inner">
-					
-				</div>
-			</div>
+			</div> -->
 		</div>
+		@endif
 	</div>
 </section>
 @endsection

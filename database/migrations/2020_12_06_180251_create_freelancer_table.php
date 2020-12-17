@@ -18,8 +18,8 @@ class CreateFreelancerTable extends Migration
             $table->string('name');
             $table->string('position');
             $table->string('img');
-            $table->string('facebook');
-            $table->string('instagramm');
+            $table->string('facebook')->nullable('#');
+            $table->string('instagramm')->nullable('#');
             $table->timestamps();
         });
     }

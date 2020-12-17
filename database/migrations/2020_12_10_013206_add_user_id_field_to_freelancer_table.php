@@ -26,7 +26,7 @@ class AddUserIdFieldToFreelancerTable extends Migration
     public function down()
     {
         Schema::table('freelancer', function (Blueprint $table) {
-            //
+            $table->dropColumn('user_id');
         });
     }
 }
