@@ -15,7 +15,7 @@
                             <label for="inputUserName">Название</label>
                             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="inputUserName" placeholder="Название" value="{{ $startup->title }}" required>
                             @error('title')
-                            <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
@@ -26,11 +26,34 @@
                             <label for="inputUserPhone">Телефон</label>
                             <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" id="inputUserPhone" placeholder="Телефон" value="{{ $startup->phone }}" required>
                             @error('phone')
-                            <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        @if ($categories->count())
+                            <div class="form-group">
+                                <label for="inputUserRole">Категория</label>
+                                <select name="startup_category_id" id="inputUserRole" class="form-control">
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}" @if($startup->category->id == $category->id) selected @endif>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPrice">Цена</label>
+                        <input type="text" id="inputPrice" name="price" class="form-control @error('price') is-invalid @enderror" placeholder="Цена" value="{{ $startup->price }}" required>
+                        @error('price')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-row">
@@ -49,16 +72,8 @@
                 </div>
                 <div class="form-row">
                     <div class="col-md-6">
-                        @if ($categories->count())
-                            <div class="form-group">
-                                <label for="inputUserRole">Категория</label>
-                                <select name="startup_category_id" id="inputUserRole" class="form-control">
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" @if($startup->category->id == $category->id) selected @endif>{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        @endif
+                        <label for="inputVideo">Ссылка на видео</label>
+                        <input type="text" id="inputVideo" name="video" class="form-control" placeholder="Ссылка на видео" value="{{ $startup->video }}">
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -68,19 +83,12 @@
                                 <img src="{{ asset($startup->image) }}" alt="">
                             </div>
                             @error('image')
-                                <span class="invalid-feedback" role="alert">
+                            <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6">
-                        <label for="inputVideo">Ссылка на видео</label>
-                        <input type="text" id="inputVideo" name="video" class="form-control" placeholder="Ссылка на видео" value="{{ $startup->video }}">
-                    </div>
-                    <div class="col-md-6"></div>
                 </div>
                 <div class="row pt-2 pt-sm-5 mt-1">
                     <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0"></div>

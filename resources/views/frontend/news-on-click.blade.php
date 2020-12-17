@@ -1,6 +1,5 @@
 @extends('frontend.layouts.master')
 
-@section('title', $data["title"])
 {{--@section('title', $data["post"]->title)--}}
 
 @section('styles')
@@ -21,7 +20,7 @@
 						<h2>Реклама</h2>
 					</div>
 					<div class="advertising-text">
-						<p>{{ $data['post']->body }}</p>
+						<p>{{ $post->body }}</p>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -46,7 +45,7 @@
 						<h1 class="h1-title">Обсуждение</h1>
 						<div class="discussion-content">
 							<!-- <span>написал</span> -->
-							@comments(['model' => $data['post']])
+							@comments(['model' => $post])
 						</div>
 					</div>
 					<div class="to-write">

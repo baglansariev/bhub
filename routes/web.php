@@ -25,10 +25,6 @@ Route::get('/business-news', "FrontController@businessNews")->name("businessNews
 //Route::get('/news-on-click', "FrontController@newsDetail")->name("newsDetail");
 Route::get('/business-news/{slug?}', "FrontController@newsDetail")->name("newsDetail");
 
-Route::get('/startups', "FrontController@startups")->name("startups");
-
-Route::get('/startup', "FrontController@startup")->name("startup");
-
 Route::get('/freelancers/{category_id?}', "FrontController@freelancers")->name("freelancers");
 // Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");
 // Route::get('freelancer-filter/{category_id?}', "FrontController@freelancerFilter")->name('freelancerFilter');
@@ -51,7 +47,10 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
 
         Route::resource('/user', 'Admin\UserController');
         Route::resource('/role', 'Admin\RoleController');
+        Route::post('/startup/approve/{id}', 'Admin\StartupController@approve')->name('startup.approve');
+        Route::post('/startup/top/{id}', 'Admin\StartupController@top')->name('startup.top');
         Route::resource('/startup', 'Admin\StartupController');
+        Route::get('/startup-pending', 'Admin\StartupController@pending')->name('startup.pending');
         Route::resource('/startup-category', 'Admin\StartupCategoryController');
 
         Route::resource('/business-news', 'Admin\BusinessNewsController');
@@ -61,6 +60,13 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
 });
 Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");
 
+Route::prefix('startup')->group(function() {
+    Route::get('', 'StartupController@index')->name('front-startup.index');
+    Route::get('{category}', 'StartupController@category')->name('startup.category')->where('category',  '[A-Za-z]+_*[A-Za-z]*');
+    Route::get('create-new', 'StartupController@create')->name('front-startup.create');
+    Route::post('', 'StartupController@store')->name('front-startup.store');
+    Route::get('show/{id}', 'StartupController@show')->name('front-startup.show');
+});
 
 Route::middleware('auth')->group(function () {
 
@@ -71,3 +77,5 @@ Route::middleware('auth')->group(function () {
     });
 
 });
+
+Route::resource('temp', 'TempController');

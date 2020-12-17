@@ -113,6 +113,9 @@
                                 <a class="nav-link" href="{{ route('startup.index') }}">Все стартапы</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('startup.pending') }}">Ожидающие</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('startup-category.index') }}">Категории</a>
                             </li>
                         </ul>

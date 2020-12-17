@@ -7,6 +7,11 @@
 	color: #dda326;
 	font: 45.51px 'intro';
 }
+.startup-link {
+	border: 1px solid #ebebeb;
+	display: block;
+	margin-bottom: 20px;
+}
 
 .startups-main-title:hover {
 	color: #dda326;
@@ -22,6 +27,7 @@
 	font: 45.51px 'intro';
 	text-transform: uppercase;
 	text-align: center;
+	margin-bottom: 30px;
 }
 
 .startups-main-route-wrapper {
@@ -41,6 +47,12 @@
 	padding: 16px 22px;
 }
 
+.startup-form {
+	padding: 30px 20px;
+	background-color: #fafafa;
+	border: 1px solid #ebebeb;
+}
+
 .startups-main-route:hover {
 	color: #fff;
 	text-decoration: initial;
@@ -48,7 +60,9 @@
 }
 
 .startups-main-top-startups {
-	background-color: #f5f5f5;
+	/*background-color: #f5f5f5;*/
+	background-position: center;
+	background-size: cover;
 	padding: 17px;
 	margin-top: 50px;
 	position: relative;

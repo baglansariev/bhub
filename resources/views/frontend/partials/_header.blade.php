@@ -20,12 +20,14 @@
 							<li class="nav-item {{ Request::is('startups','all','business','commercial-property') ? 'active' : '' }}">
 								<!-- Start  desktop dropdown version-->
 								<div class="dropdown">
-									<a class="nav-link nav-link-desktop" href="/startups">стартапы</a>
+									<a class="nav-link nav-link-desktop" href="#">стартапы</a>
 									<div class="dropdown-content">
-										<a href="/all">все</a>
-										<a href="/startups">стартапы</a>
-										<a href="/business">бизнес</a>
-										<a href="/commercial-property" class="last">коммерческая недвижимость</a>
+										<a href="{{ route('startup.index') }}">все</a>
+{{--										@if (isset($startup_categories) && $startup_categories->count())--}}
+										    @foreach($startup_categories as $startup_category)
+												<a href="/startup/{{ $startup_category->code }}">{{ $startup_category->name }}</a>
+											@endforeach
+{{--										@endif--}}
 									</div>
 								</div>
 								<!-- Start mobile dropdown version-->

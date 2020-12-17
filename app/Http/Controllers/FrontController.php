@@ -11,15 +11,19 @@ use App\Models\Like;
 use App\Likable;
 use App\Models\FreelanceCategory;
 use App\Models\Freelancer;
+use App\Models\StartupCategory;
 
 class FrontController extends Controller
 {
     //
 	public function index ()
 	{
-		$data = ["title" => "Главная"];
+		$data = [
+		    'title' => 'Главная',
+            'startup_categories' => StartupCategory::all(),
+        ];
 
-		return view("frontend.index", compact('data'));
+		return view("frontend.index", $data);
 	}
 
 	public function businessNews ()
@@ -27,50 +31,42 @@ class FrontController extends Controller
 
 		$news = BusinessNews::take(3)->get();
 		$latestPost = BusinessNews::orderBy('id', 'DESC')->first();
-		$data = ['title' => "Бизнес новости"];
+		$data = [
+            'title' => "Бизнес новости",
+            'latestPost' => $latestPost,
+            'news' => $news
+        ];
 		//dd($latestPost);
 
-		return view("frontend.business-news", compact("data", "news", "latestPost"));
+		return view("frontend.business-news", $data);
 	}
 
 	public function newsDetail ( $slug = "" )
 	{
-		$data = [
-			'user_id' => auth()->id(),
-			'comment_id' => 17,
-		];
 
 		$post = BusinessNews::whereSlug($slug)->first();
 		$data = ["title" => $post->title, "post" => $post];
 		//dd($data["post"]->title);
 
-		return view("frontend.news-on-click", compact("data"));
-	}
-
-	public function startups ()
-	{
-		$data = ["title" => "Стартапы"];
-
-		return view("frontend.startups", compact('data'));
-	}
-
-	public function startup ()
-	{
-		$data = ["title" => "Стартап"];
-
-		return view("frontend.startup", compact('data'));
+		return view("frontend.news-on-click", $data);
 	}
 
 	public function freelancers ($category_id = false)
 	{
-		$data = ["title" => "Фрилансеры"];
+
 		$categories = FreelanceCategory::all();
 		if (!$category_id) {
 			$freelancers = Freelancer::where('status', 1)->get();
 		} else {
 			$freelancers = Freelancer::where('category_id', $category_id)->where('status', 1)->get();
 		}
-		return view("frontend.freelancers", compact('data', 'categories', 'freelancers'));	
+        $data = [
+            "title" => "Фрилансеры",
+            'categories' => $categories,
+            'freelancers' => $freelancers,
+        ];
+
+		return view("frontend.freelancers", $data);
 	}
 
 	// public function freelancerFilter($id)

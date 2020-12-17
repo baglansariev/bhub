@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title', $data['title'])
+{{--@section('title', $data['title'])--}}
 
 @section('styles')
 	<link rel="stylesheet" href="{{ asset('css/main-page.css') }}">

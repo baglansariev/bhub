@@ -58,6 +58,7 @@
     </div>
 </div>
 
+<script src="{{ asset('panel/libs/js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-4.5.3/bootstrap.min.js') }}"></script>
 <script src="{{ asset('panel/vendor/slimscroll/jquery.slimscroll.js') }}"></script>
 <script src="{{ asset('panel/libs/js/main-js.js') }}"></script>

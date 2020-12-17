@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class StartupController extends Controller
 {
-
-    public $user_image_dir = 'img/user/';
     /**
      * Display a listing of the resource.
      *
@@ -21,10 +19,19 @@ class StartupController extends Controller
     {
         $data = [
             'title' => 'Все стартапы',
-            'startups' => Startup::paginate(25),
+            'startups' => Startup::where('status', '!=', 0)->paginate(25),
         ];
 
         return view('admin.startup.index', $data);
+    }
+
+    public function pending()
+    {
+        $data = [
+            'title' => 'Ожидающие',
+            'startups' => Startup::where('status', 0)->paginate(25),
+        ];
+        return view('admin.startup.pending', $data);
     }
 
     /**
@@ -56,8 +63,9 @@ class StartupController extends Controller
 
 
         if ($file = $request->file('image')) {
-            $file_path = $this->user_image_dir . Auth::user()->id . '/' . $file->getClientOriginalName();
-            $file->move($this->user_image_dir . Auth::user()->id . '/', $file->getClientOriginalName());
+            $startup_dir = getUserImageDir() . Auth::user()->id . '/startups/';
+            $file_path = $startup_dir . $file->getClientOriginalName();
+            $file->move($startup_dir, $file->getClientOriginalName());
 
             $startup->image = $file_path;
         }
@@ -122,6 +130,41 @@ class StartupController extends Controller
             $file->move($this->user_image_dir . Auth::user()->id . '/', $file->getClientOriginalName());
 
             $startup->image = $file_path;
+        }
+
+        if ($startup->save()) {
+            $request->session()->flash('msg_success', 'Стартап успешно изменен!');
+        }
+        else {
+            $request->session()->flash('msg_error', 'Ошибка попробуйте позже!');
+        }
+
+        return redirect(route('startup.index'));
+    }
+
+    public function approve(Request $request, $id)
+    {
+        $startup = Startup::findOrFail($id);
+        $startup->status = 1;
+
+        if ($startup->save()) {
+            $request->session()->flash('msg_success', 'Стартап успешно одобрен!');
+        }
+        else {
+            $request->session()->flash('msg_error', 'Ошибка попробуйте позже!');
+        }
+
+        return redirect(route('startup.pending'));
+    }
+
+    public function top(Request $request, $id)
+    {
+        $startup = Startup::findOrFail($id);
+        if ($startup->top == 1) {
+            $startup->top = 0;
+        }
+        else {
+            $startup->top = 1;
         }
 
         if ($startup->save()) {

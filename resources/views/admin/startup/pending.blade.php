@@ -9,7 +9,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5>Список всех стартапов</h5>
                     <div class="card-actions">
-                        <a href="{{ route('startup.create') }}" class="btn btn-success">Добавить</a>
+{{--                        <a href="{{ route('startup.create') }}" class="btn btn-success">Добавить</a>--}}
                     </div>
                 </div>
                 <div class="card-body">
@@ -39,7 +39,6 @@
                                     <th>Телефон</th>
                                     <th>Категория</th>
                                     <th>Статус</th>
-                                    <th>Оплата</th>
                                     <th>Дата создания</th>
                                     <th>Действие</th>
                                 </tr>
@@ -54,14 +53,7 @@
                                         </td>
                                         <td>{{ $startup->phone }}</td>
                                         <td>{{ $startup->category->name ?? 'без группы' }}</td>
-                                        <td>
-                                            @if ($startup->status == 1)
-                                                Подтвержден
-                                            @elseif($startup->status == 3)
-                                                Истек срок
-                                            @endif
-                                        </td>
-                                        <td>{{ $startup->paid == 1 ? 'Оплачен' : 'Не оплачен' }}</td>
+                                        <td>{{ $startup->status == 0 ? 'Ожидает' : '' }}</td>
                                         <td>{{ $startup->created_at }}</td>
                                         <td class="d-flex">
                                             <div class="table-actions dropdown">
@@ -69,9 +61,9 @@
                                                     Действия
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_{{ $loop->iteration }}">
-                                                    <form action="{{ route('startup.top', $startup->id) }}" method="post">
+                                                    <form action="{{ route('startup.approve', $startup->id) }}" method="post">
                                                         @csrf
-                                                        <button type="submit" class="dropdown-item">{{ $startup->top == 1 ? 'Убрать из топа' : 'В топ' }}</button>
+                                                        <button type="submit" class="dropdown-item">Подтвердить</button>
                                                     </form>
                                                     <a href="{{ route('startup.edit', $startup->id) }}" class="dropdown-item">Изменить</a>
                                                     <form action="{{ route('startup.destroy', $startup->id) }}" method="post">

@@ -1,8 +1,10 @@
+@inject('header', 'App\Http\Controllers\Partials\HeaderController')
+@inject('footer', 'App\Http\Controllers\Partials\FooterController')
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-	<!-- <title>BHub | @yield('title')</title> -->
-	<title>BHub | {{ $data["title"] ?? '' }}</title>
+	<title>BHub | {{ $title ?? '' }}</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{{ asset('css/bootstrap-4.5.3/bootstrap.min.css') }}">
@@ -16,6 +18,7 @@
 
 	<script type="text/javascript" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/bootstrap-4.5.3/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 	<script src="https://kit.fontawesome.com/8298cc323a.js" crossorigin="anonymous"></script>
 	<script src="{{ asset('js/jquery.sweet-modal.js') }}"></script>
 </head>
@@ -24,7 +27,7 @@
                               HEADER
 =========================================================-->
 	<header>
-		@include('frontend.partials._header', ['title' => $data['title']])
+		{!! $header->show(['title' => $title]) !!}
 	</header>
 <!--========================================================
                               CONTENT
@@ -35,7 +38,7 @@
                               FOOTER
 =========================================================-->
     <section class="footer">
-    	@include('frontend.partials._footer')
+    	{!! $footer->show() !!}
 	</section>
 	<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 
