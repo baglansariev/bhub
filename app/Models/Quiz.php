@@ -9,9 +9,9 @@ use App\Models\QuizAnswer;
 class Quiz extends Model
 {
     protected $table = 'quizs';
-    protected $fillable = ['question', 'post_id'];
+    protected $fillable = ['question', 'business_news_id'];
 
-    public function BusinessNews()
+    public function business_news()
     {
     	return $this->hasMany(BusinessNews::class);
     }

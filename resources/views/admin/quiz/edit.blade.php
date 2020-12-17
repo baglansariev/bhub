@@ -42,8 +42,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="inputPostName">Привязанная новость</label>
-                        <input type="text" name="post_id" class="form-control" id="inputPostName" placeholder="{{ $quiz_post->title }}" value="{{ $quiz_post->title }}" readonly>
-                        <input type="hidden" name="post_id" value="{{ $quiz_post->id }}">
+                        <input type="text" name="business_news_id" class="form-control" id="inputPostName" placeholder="{{ $quiz_post->title }}" value="{{ $quiz_post->title }}" readonly>
+                        <input type="hidden" name="business_news_id" value="{{ $quiz_post->id }}">
                         @error('question')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -55,7 +55,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="inputPostsName">Привязать к другой новости</label>
-                        <select id="inputPostsName" name="select_post_id" class="form-control">
+                        <select id="inputPostsName" name="select_business_news_id" class="form-control">
                             <option value="">Выбрать пост...</option>
                             @foreach($posts as $post)
                             <option value="{{ $post->id }}">{{ $post->title }}</option>

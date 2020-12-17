@@ -46,7 +46,7 @@
 					<tr>
 						<td>{{ $loop->iteration }}</td>
 						<td>{{ $item->question }}</td>
-						<td>{{ $item->post_id }}</td>
+						<td>{{ $item->business_news_id }}</td>
 						<td>
 							<form action="{{ route('quiz.destroy',$item->id) }}" method="POST">
 

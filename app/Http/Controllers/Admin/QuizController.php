@@ -17,7 +17,7 @@ class QuizController extends Controller
     public function index()
     {
         $quiz = Quiz::all();
-        
+        //dd($quiz);
         return view('admin.quiz.index', compact('quiz'));
     }
 
@@ -43,7 +43,7 @@ class QuizController extends Controller
     {
         $validated_date = $request->validate([
             'question' => 'required',
-            'post_id' => 'required',
+            'business_news_id' => 'required',
         ]);
   
         $quiz = Quiz::create($validated_date);
@@ -67,7 +67,7 @@ class QuizController extends Controller
     public function show($id)
     {
         $quiz = Quiz::find($id);
-        $quiz_post = BusinessNews::where('id', $quiz->post_id)->first();
+        $quiz_post = BusinessNews::where('id', $quiz->business_news_id)->first();
         return view('admin.quiz.show', compact('quiz', 'quiz_post'));
     }
 
@@ -80,11 +80,12 @@ class QuizController extends Controller
     public function edit($id)
     {
         $quiz = Quiz::findOrFail($id);
-        $quiz_post = BusinessNews::where('id', $quiz->post_id)->first();
+        $quiz_post = BusinessNews::where('id', $quiz->business_news_id)->first();
         $posts = BusinessNews::all();
         $data = [
             'title' => 'Изменение опроса'
         ];
+        //dd($posts);
         return view('admin.quiz.edit', compact('data', 'quiz_post', 'quiz', 'posts'));
     }
 
@@ -99,13 +100,14 @@ class QuizController extends Controller
     {
         // $this->validate($request, [
         //     'question' => 'required',
-        //     'post_id' => 'required'
+        //     'business_news_id' => 'required'
         // ]);
         $quiz = Quiz::findOrFail($id);
         $data = $request->except('_token');
-        if (!is_null($data["select_post_id"])) {
-            $data['post_id'] = $data["select_post_id"];
+        if (!is_null($data["select_business_news_id"])) {
+            $data['business_news_id'] = $data["select_business_news_id"];
         };
+        //dd($data);
         if ($quiz->update($data)) {
             $request->session()->flash('msg_success', 'Опрос успешно изменен!');
         }

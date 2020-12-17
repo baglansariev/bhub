@@ -19,8 +19,8 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6">
                     <div class="form-group">
-                        {{ Form::label('post_id', 'Бизнес новости:') }}
-                        {{ Form::select('post_id', $posts, null, ['class' => 'form-control', 'placeholder' => 'Выбор новостей...']) }}
+                        {{ Form::label('business_news_id', 'Бизнес новости:') }}
+                        {{ Form::select('business_news_id', $posts, null, ['class' => 'form-control', 'placeholder' => 'Выбор новостей...']) }}
                     </div>
                 </div>
             </div>

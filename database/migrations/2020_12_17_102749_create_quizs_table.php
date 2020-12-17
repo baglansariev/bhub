@@ -17,7 +17,7 @@ class CreateQuizsTable extends Migration
             $table->id();
             $table->string('question');
             $table
-                ->foreignId('post_id')
+                ->foreignId('business_news_id')
                 ->constrained('business_news')
                 ->onDelete('cascade');
             $table->timestamps();

@@ -16,7 +16,11 @@ class BusinessNews extends Model
 
     public function quiz()
     {
-    	return $this->belongsTo(Quiz::class);
+    	return $this->hasMany(Quiz::class);
+    }
+
+    public function test () {
+    	echo "123";
     }
 
 }
