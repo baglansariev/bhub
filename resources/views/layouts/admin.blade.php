@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-4.5.3/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('panel/vendor/fonts/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('panel/libs/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('panel/libs/css/custom.css') }}">
 {{--    <link rel="stylesheet" href="{{ asset('panel/libs/css/custom.css') }}">--}}
 {{--    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">--}}
     <script src="{{ asset('panel/vendor/jquery/jquery-3.3.1.min.js') }}"></script>

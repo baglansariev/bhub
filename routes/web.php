@@ -62,5 +62,6 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
         Route::resource('/freelancers', 'Admin\FreelancerController');
         Route::resource('/portfolios', 'Admin\PortfolioController');
         Route::resource('/quiz', 'Admin\QuizController');
+        Route::resource('/quiz-answers', 'Admin\QuizAnswersController');
     });
 });

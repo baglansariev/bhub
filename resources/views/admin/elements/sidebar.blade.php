@@ -29,6 +29,12 @@
                             <span>Опросник</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/quiz-answers">
+                            <i class="fab fa-fw fa-wpforms mr-1"></i>
+                            <span>Ответы к опроснику</span>
+                        </a>
+                    </li>
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">
                         <i class="fa fa-fw fa-rocket mr-1"></i>
                         <span class="link-title">Фрилансеры</span>
