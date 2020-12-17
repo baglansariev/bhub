@@ -7,6 +7,8 @@ use App\Models\Quiz;
 
 class QuizAnswer extends Model
 {
+
+	protected $fillable = ['answer', 'quiz_id'];
     
     public function quiz()
     {

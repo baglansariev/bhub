@@ -63,8 +63,6 @@
 													<a href="#">
 														<form action="{{ route('quiz-answers.destroy',$answer->id) }}" method="POST">
 
-															<a class="btn btn-info" href="{{ route('quiz-answers.show',$answer->id) }}"><i class="fas fa-eye"></i></a>
-
 															<a class="btn btn-primary" href="{{ route('quiz-answers.edit',$answer->id) }}"><i class="far fa-edit"></i></a>
 
 															@csrf

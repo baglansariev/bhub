@@ -28,7 +28,8 @@ class QuizAnswersController extends Controller
      */
     public function create()
     {
-        //
+        $quizs = Quiz::pluck("question", "id");
+        return view('admin.quiz-answers.create', compact('quizs'));
     }
 
     /**
@@ -39,7 +40,21 @@ class QuizAnswersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedInput = $request->validate([
+            'answer' => 'required',
+            'quiz_id' => 'required'
+        ]);
+
+        $quizAnswer = QuizAnswer::create($validatedInput);
+
+        if ($quizAnswer->save()) {
+            $request->session()->flash('msg_success', 'Ответ добавлен!');
+        } else {
+            $request->session()->flash('msg_error', 'Ошибка попробуйте позже!');
+        }
+
+        return redirect(route('quiz-answers.index'));
+
     }
 
     /**
@@ -61,7 +76,8 @@ class QuizAnswersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $quizAnswer = QuizAnswer::findOrFail($id);
+        return view('admin.quiz-answers.edit', compact('quizAnswer'));
     }
 
     /**
@@ -73,7 +89,21 @@ class QuizAnswersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedDate = $request->validate([
+            'answer' => 'required'
+        ]);
+
+        $quizAnswer = QuizAnswer::findOrFail($id);
+        $data = $request->except('_token');
+
+        if ($quizAnswer->update($data)) {
+            $request->session()->flash('msg_success', 'Вопрос успешно изменен!');
+        }
+        else {
+            $request->session()->flash('msg_error', 'Ошибка попробуйте позже!');
+        }
+
+        return redirect(route('quiz-answers.index'));
     }
 
     /**
@@ -82,8 +112,16 @@ class QuizAnswersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $quizAnswer = QuizAnswer::findOrFail($id);
+
+        if ($quizAnswer->delete()) {
+            $request->session()->flash('msg_success', 'Ответ <b>' . $quizAnswer->answer . '</b> успешно удален.');
+        } else {
+            $request->session()->flash('msg_error', 'Ошибка попробуйте позже!');
+        }
+
+        return redirect(route('quiz-answers.index'));
     }
 }
