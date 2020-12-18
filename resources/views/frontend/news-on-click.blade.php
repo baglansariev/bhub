@@ -6,21 +6,6 @@
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/news.css') }}">
 
-@section('scripts')
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('.quiz-title').click(function(){
-			if(!$(this).hasClass('quiz-title-active')){
-				$(this).siblings().removeClass('quiz-title-active');
-				$(this).addClass('quiz-title-active');
-				$(this).find('.quiz-circle').addClass('quiz-circle-active');
-				$(this).siblings().find('.quiz-circle').removeClass('quiz-circle-active');
-			}
-		});
-	});
-</script>
-@endsection
-
 @section('content')
 <section class="news-on-click-wrapper">
 	<div class="container-fluid">
@@ -85,4 +70,18 @@
 		</div>
 	</div>
 </section>
+<!-- Не переность данный скрипт -->
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$('.quiz-title').click(function(){
+			if(!$(this).hasClass('quiz-title-active')){
+				$(this).siblings().removeClass('quiz-title-active');
+				$(this).addClass('quiz-title-active');
+				$(this).find('.quiz-circle').addClass('quiz-circle-active');
+				$(this).siblings().find('.quiz-circle').removeClass('quiz-circle-active');
+			}
+		});
+	});
+</script>
 @endsection
