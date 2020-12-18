@@ -19,8 +19,4 @@ class BusinessNews extends Model
     	return $this->hasMany(Quiz::class);
     }
 
-    public function test () {
-    	echo "123";
-    }
-
 }

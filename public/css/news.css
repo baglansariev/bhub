@@ -152,7 +152,8 @@
 	padding: 10px;
 	font: 20px 'intro';
 	margin-bottom: 23px;
-	width: 75%;
+	/*width: 75%;*/
+	width: fit-content;
 }
 
 .quiz-title-sp {
@@ -162,10 +163,22 @@
 .quiz-circle {
 	width: 21px;
 	height: 21px;
-	background-color: #dda326;
+	background-color: #fff;
 	border-radius: 50%;
 	border: 1px solid #695120;
-	display: inline-block;
+	/*display: inline-block;*/
+	display: block;
+	float: left;
+	cursor: pointer;
+	margin-right: 15px;
+}
+
+.quiz-title-active {
+	background-color: #fff;
+}
+
+.quiz-circle-active {
+	background-color: #dda326;
 }
 
 .advertising {
@@ -291,6 +304,10 @@
 .likes-area {
 	display: flex;
 	position: relative;
+}
+
+.form-check-input-answer {
+	opacity: 0;
 }
 
 @media (max-width: 575.98px) {

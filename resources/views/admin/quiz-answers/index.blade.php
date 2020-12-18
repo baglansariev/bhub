@@ -55,7 +55,7 @@
 										</h2>
 									</div>
 									@foreach($quiz->quiz_answers as $answer)
-									<div id="collapseOne-{{$answer->quiz_id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample-{{$answer->quiz_id}}">
+									<div id="collapseOne-{{$answer->quiz_id}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample-{{$answer->quiz_id}}">
 										<div class="card-body">
 											<ul class="quiz-answer-accordion">
 												<li>

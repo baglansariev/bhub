@@ -29,9 +29,7 @@ class FrontController extends Controller
 
 		$news = BusinessNews::take(3)->get();
 		$latestPost = BusinessNews::orderBy('id', 'DESC')->first();
-		$data = ['title' => "Бизнес новости"];
-		$quiz = $news->load('quiz');
-		dd($quiz);		
+		$data = ['title' => "Бизнес новости"];	
 
 		return view("frontend.business-news", compact("data", "news", "latestPost"));
 	}
@@ -43,9 +41,13 @@ class FrontController extends Controller
 			'comment_id' => 17,
 		];
 
-		$post = BusinessNews::whereSlug($slug)->first();
-		$data = ["title" => $post->title, "post" => $post];
-		//dd($data["post"]->title);
+		$post = BusinessNews::whereSlug($slug)->first();	
+		$quiz = $post->quiz()->first();
+		$quiz_answer = $quiz->load('quiz_answers');
+
+		$data = ["title" => $post->title, "post" => $post, "quiz" => $quiz_answer];
+		//dd($data["post"]->title);	
+		//dd($data['quiz']['quiz_answers']);
 
 		return view("frontend.news-on-click", compact("data"));
 	}

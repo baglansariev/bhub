@@ -5,6 +5,22 @@
 
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/news.css') }}">
+
+@section('scripts')
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.quiz-title').click(function(){
+			if(!$(this).hasClass('quiz-title-active')){
+				$(this).siblings().removeClass('quiz-title-active');
+				$(this).addClass('quiz-title-active');
+				$(this).find('.quiz-circle').addClass('quiz-circle-active');
+				$(this).siblings().find('.quiz-circle').removeClass('quiz-circle-active');
+			}
+		});
+	});
+</script>
+@endsection
+
 @section('content')
 <section class="news-on-click-wrapper">
 	<div class="container-fluid">
@@ -29,6 +45,21 @@
 						<h1 class="h1-title">Опрос</h1>
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12">
+								@if($data['quiz'] && !empty($data['quiz']))
+									<p class="quiz-title">{{ $data['quiz']->question }}</p>
+									<div class="container-quiz-answers">
+									@foreach($data['quiz']['quiz_answers'] as $answer)
+										<p class="quiz-title">
+											<label data-id="{{$answer->id}}" class="quiz-circle" for="btn-radio-{{$answer->id}}"></label>
+											<!-- <span class="quiz-title-sp"></span> -->
+											{{ $answer->answer }}
+											<input type="radio" name="answer" class="form-check-input form-check-input-answer" id="btn-radio-{{$answer->id}}" value="{{$answer->id}}">
+										</p>
+									@endforeach	
+									</div>
+								@endif
+							</div>
+							<!-- <div class="col-lg-12 col-md-12 col-sm-12">
 								<p class="quiz-title"><span class="quiz-circle"></span><span class="quiz-title-sp">опросник</span></p>
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12">
@@ -36,10 +67,7 @@
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12">
 								<p class="quiz-title"><span class="quiz-circle"></span><span class="quiz-title-sp">опросник</span></p>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12">
-								<p class="quiz-title"><span class="quiz-circle"></span><span class="quiz-title-sp">опросник</span></p>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<div class="discussion">
