@@ -12,7 +12,7 @@ class BusinessNews extends Model
 	use Commentable;
     //Укажем произвольно имя нашей таблицы
     protected $table = 'business_news';
-    protected $fillable = ['title','slug','body','img'];
+    protected $fillable = ['title','slug','body','img', 'video'];
 
     public function quiz()
     {

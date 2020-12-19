@@ -42,11 +42,16 @@ class FrontController extends Controller
 			'comment_id' => 17,
 		];
 
-		$post = BusinessNews::whereSlug($slug)->first();	
+		$post = BusinessNews::whereSlug($slug)->first();
 		$quiz = $post->quiz()->first();
-		$quiz_answer = $quiz->load('quiz_answers');
-		$quiz_user_answers = $quiz_answer->load('quiz_user_answers');
-		$data = ["title" => $post->title, "post" => $post, "quiz" => $quiz_user_answers];
+
+		if (!is_null($quiz)) {
+			$quiz_answer = $quiz->load('quiz_answers');
+			$quiz_user_answers = $quiz_answer->load('quiz_user_answers');
+			$data = ["title" => $post->title, "post" => $post, "quiz" => $quiz_user_answers];
+		} else {
+			$data = ["title" => $post->title, "post" => $post];	
+		}
 		// $data = ["title" => $post->title, "post" => $post, "quiz" => $quiz_answer];
 
 		return view("frontend.news-on-click", compact("data"));

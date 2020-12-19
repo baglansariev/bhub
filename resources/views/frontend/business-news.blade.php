@@ -13,8 +13,10 @@
 			<div class="col-md-6">
 				<div class="photo">
 					<h3 class="photo-title">фото</h1>
+						<a href="{{url('business-news/' .  $latestPost->slug)}}">
+							<img src="{{asset('img/business-news/')}}/{{$latestPost->img }}" align="{{$latestPost->img}}" title="{{ $latestPost->title }}">
+						</a>
 						<!-- <img src="https://via.placeholder.com/675x462"> -->
-						<img src="{{asset('img/business-news/')}}/{{$latestPost->img }}" align="{{$latestPost->img}}" title="{{ $latestPost->title }}">
 					</div>
 					<div class="new-content">
 						<p class="new-content-text">

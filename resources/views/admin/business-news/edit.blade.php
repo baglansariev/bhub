@@ -47,6 +47,12 @@
                     <input type="file" name="img" value="{{ $BusinessNews->img }}" class="form-control" placeholder="Картинка">
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="form-group">
+                    <strong>Видео ссылка на youtube:</strong>
+                    <textarea class="form-control" style="height:150px" name="video" placeholder="Видео ссылка на youtube">{{ $BusinessNews->video }}</textarea>
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Описание:</strong>
