@@ -46,21 +46,8 @@ class FrontController extends Controller
 		$quiz = $post->quiz()->first();
 		$quiz_answer = $quiz->load('quiz_answers');
 		$quiz_user_answers = $quiz_answer->load('quiz_user_answers');
-		//$quiz_user_answers = $quiz_answer->quiz_user_answers()->get();
-		// $test = [];
-		// foreach ($quiz_user_answers as $key => $value) {
-		// 	$test = $value->getAnswerCount($value->quiz_id, $value->quiz_answers_id);
-		// 	echo "<pre>";
-		// 	//print_r($value);
-		// 	echo "</pre>";
-		// }
-		// dd($test->count());
-		// die();
 		$data = ["title" => $post->title, "post" => $post, "quiz" => $quiz_user_answers];
 		// $data = ["title" => $post->title, "post" => $post, "quiz" => $quiz_answer];
-		//dd($data["post"]->title);	
-		//dd($data['quiz']['quiz_answers']);
-		//dd($data['quiz']['quiz_user_answers']);
 
 		return view("frontend.news-on-click", compact("data"));
 	}
