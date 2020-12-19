@@ -13,6 +13,7 @@ use App\Models\FreelanceCategory;
 use App\Models\Freelancer;
 use App\Models\Quiz;
 use App\Models\QuizAnswer;
+use App\Models\QuizUserAnswer;
 
 class FrontController extends Controller
 {
@@ -44,10 +45,22 @@ class FrontController extends Controller
 		$post = BusinessNews::whereSlug($slug)->first();	
 		$quiz = $post->quiz()->first();
 		$quiz_answer = $quiz->load('quiz_answers');
-
-		$data = ["title" => $post->title, "post" => $post, "quiz" => $quiz_answer];
+		$quiz_user_answers = $quiz_answer->load('quiz_user_answers');
+		//$quiz_user_answers = $quiz_answer->quiz_user_answers()->get();
+		// $test = [];
+		// foreach ($quiz_user_answers as $key => $value) {
+		// 	$test = $value->getAnswerCount($value->quiz_id, $value->quiz_answers_id);
+		// 	echo "<pre>";
+		// 	//print_r($value);
+		// 	echo "</pre>";
+		// }
+		// dd($test->count());
+		// die();
+		$data = ["title" => $post->title, "post" => $post, "quiz" => $quiz_user_answers];
+		// $data = ["title" => $post->title, "post" => $post, "quiz" => $quiz_answer];
 		//dd($data["post"]->title);	
 		//dd($data['quiz']['quiz_answers']);
+		//dd($data['quiz']['quiz_user_answers']);
 
 		return view("frontend.news-on-click", compact("data"));
 	}
@@ -222,6 +235,25 @@ class FrontController extends Controller
                     </div>
                 </div>";
     	return $html;
+    }
+
+    public function ajaxQuizUserAnswer(Request $request)
+    {
+    	$inputData = $request->except('_token');
+    	$validated = $request->validate([
+    		'user_id' => 'required',
+    		'quiz_id' => 'required',
+    		'quiz_answers_id' => 'required'
+    	]);
+    	$quiz_user_answer = QuizUserAnswer::create($validated);
+
+    	if ($quiz_user_answer->save()) {
+    		$request->session()->flash('msg_success', 'Ответ принят.');
+    	} else {
+    		$request->session()->flash('msg_error', 'Ошибка попробуйте позже!');
+    	}
+
+    	return redirect()->back();
     }
 
 }

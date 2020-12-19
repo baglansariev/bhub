@@ -43,6 +43,8 @@ Route::get('ajaxRequest', 'FrontController@ajaxRequest')->name('ajaxRequest');
 
 Route::get('ajaxPortfolio', 'FrontController@ajaxPortfolio')->name('ajaxPortfolio');
 
+Route::post('ajaxQuizUserAnswer', 'FrontController@ajaxQuizUserAnswer')->name('ajaxQuizUserAnswer');
+
 // Backend area
 
 Auth::routes();

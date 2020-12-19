@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\BusinessNews;
 use App\Models\QuizAnswer;
+use App\Models\QuizUserAnswer;
 
 class Quiz extends Model
 {
@@ -19,6 +20,11 @@ class Quiz extends Model
     public function quiz_answers()
     {
     	return $this->hasMany(QuizAnswer::class);
+    }
+
+    public function quiz_user_answers()
+    {
+    	return $this->hasMany(QuizUserAnswer::class);
     }
 
 }

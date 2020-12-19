@@ -28,32 +28,39 @@
 				<div class="col-md-6">
 					<div class="quiz-block">
 						<h1 class="h1-title">Опрос</h1>
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12">
-								@if($data['quiz'] && !empty($data['quiz']))
+						<form id="form-quiz-user-answer" action="{{route('ajaxQuizUserAnswer')}}" method="POST">
+							@csrf
+							<input type="hidden" name="user_id" value="{{(auth()->user()) ? auth()->user()->id : '' }}">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12">
+									@if($data['quiz'] && !empty($data['quiz']))
+									<input type="hidden" name="quiz_id" value="{{ $data['quiz']->id }}">
 									<p class="quiz-title">{{ $data['quiz']->question }}</p>
 									<div class="container-quiz-answers">
-									@foreach($data['quiz']['quiz_answers'] as $answer)
+										@foreach($data['quiz']['quiz_answers'] as $answer)
 										<p class="quiz-title">
 											<label data-id="{{$answer->id}}" class="quiz-circle" for="btn-radio-{{$answer->id}}"></label>
 											<!-- <span class="quiz-title-sp"></span> -->
 											{{ $answer->answer }}
-											<input type="radio" name="answer" class="form-check-input form-check-input-answer" id="btn-radio-{{$answer->id}}" value="{{$answer->id}}">
+											<input type="radio" name="quiz_answers_id" class="form-check-input form-check-input-answer" id="btn-radio-{{$answer->id}}" value="{{$answer->id}}" required>
+											&nbsp;
 										</p>
-									@endforeach	
+											@if(\App\Models\QuizUserAnswer::getAnswerCount($answer->id) > 0)
+												<span id="quizUserAnswerCount-{{$answer->id}}" class="quizUserAnswerCount" data-user-answer-count="{{\App\Models\QuizUserAnswer::getAnswerCount($answer->id)}}">{{\App\Models\QuizUserAnswer::getAnswerCount($answer->id)}} человек ответили</span>
+											@endif	
+										@endforeach	
 									</div>
+									@endif
+								</div>
+							</div>
+							<div class="form-group">
+								@if(auth()->user())
+								<button type="submit" class="btn btn-primary btn-sending-quiz-answer">Отправить</button>
+								@else
+								<h3 class="alert alert-warning" role="alert">Авторизуйтесь для участия в опросе.</h3>
 								@endif
 							</div>
-							<!-- <div class="col-lg-12 col-md-12 col-sm-12">
-								<p class="quiz-title"><span class="quiz-circle"></span><span class="quiz-title-sp">опросник</span></p>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12">
-								<p class="quiz-title"><span class="quiz-circle"></span><span class="quiz-title-sp">опросник</span></p>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12">
-								<p class="quiz-title"><span class="quiz-circle"></span><span class="quiz-title-sp">опросник</span></p>
-							</div> -->
-						</div>
+						</form>
 					</div>
 					<div class="discussion">
 						<h1 class="h1-title">Обсуждение</h1>
@@ -70,18 +77,25 @@
 		</div>
 	</div>
 </section>
-<!-- Не переность данный скрипт -->
-<script type="text/javascript">
-	$(document).ready(function() {
 
-		$('.quiz-title').click(function(){
-			if(!$(this).hasClass('quiz-title-active')){
-				$(this).siblings().removeClass('quiz-title-active');
-				$(this).addClass('quiz-title-active');
-				$(this).find('.quiz-circle').addClass('quiz-circle-active');
-				$(this).siblings().find('.quiz-circle').removeClass('quiz-circle-active');
-			}
-		});
+@if (session()->has('msg_success'))
+<script>
+	$.sweetModal({
+		content: '<p style="color: #252525;">{!! session()->get('msg_success') !!}</p>',
+		icon: $.sweetModal.ICON_SUCCESS
 	});
 </script>
+@endif
+
+@if(session()->has('msg_error'))
+<script>
+	$.sweetModal({
+		content: '{!! session()->get('msg_error') !!}',
+		icon: $.sweetModal.ICON_SUCCESS
+	});
+</script>
+@endif
+
+<!-- Не переность данный скрипт, иначе конфликтует со скриптом лайков, т.к. они подключаются сюда как кусок, и в нем уже используется section scripts -->
+<script type="text/javascript" src="{{ asset('js/quiz.js') }}"></script>
 @endsection

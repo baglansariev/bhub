@@ -310,6 +310,18 @@
 	opacity: 0;
 }
 
+.btn-sending-quiz-answer {
+	font: 8px 'intro-regular';
+}
+
+.quizUserAnswerCount {
+	font: 12px 'intro-regular';
+	margin-top: -15px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    display: inline-block;
+}
+
 @media (max-width: 575.98px) {
 	.news-wrapper {
 		padding: 80px 0;

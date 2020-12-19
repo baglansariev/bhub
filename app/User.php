@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Laravelista\Comments\Commenter;
 use Laravelista\Comments\Comment;
 use App\Models\Like;
+use App\Models\QuizUserAnswer;
 
 class User extends Authenticatable
 {
@@ -90,5 +91,10 @@ class User extends Authenticatable
         $path = route('profile', $this->username);
 
         return $append ? "{$path}/{$append}" : $path;
+    }
+
+    public function quiz_user_answer()
+    {
+        return $this->hasMany(QuizUserAnswer::class);
     }
 }
