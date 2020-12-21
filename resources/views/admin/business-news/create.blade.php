@@ -45,6 +45,12 @@
                 <input type="file" name="img" class="form-control" placeholder="">
             </div>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="form-group">
+                <strong>Видео ссылка на youtube:</strong>
+                <textarea class="form-control" style="height:180px" name="video" placeholder="Видео ссылка на youtube"></textarea>
+            </div>
+        </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Описание:</strong>

@@ -12,6 +12,9 @@ use App\Likable;
 use App\Models\FreelanceCategory;
 use App\Models\Freelancer;
 use App\Models\StartupCategory;
+use App\Models\Quiz;
+use App\Models\QuizAnswer;
+use App\Models\QuizUserAnswer;
 
 class FrontController extends Controller
 {
@@ -31,12 +34,11 @@ class FrontController extends Controller
 
 		$news = BusinessNews::take(3)->get();
 		$latestPost = BusinessNews::orderBy('id', 'DESC')->first();
-		$data = [
+        $data = [
             'title' => "Бизнес новости",
             'latestPost' => $latestPost,
             'news' => $news
         ];
-		//dd($latestPost);
 
 		return view("frontend.business-news", $data);
 	}
@@ -45,8 +47,16 @@ class FrontController extends Controller
 	{
 
 		$post = BusinessNews::whereSlug($slug)->first();
-		$data = ["title" => $post->title, "post" => $post];
-		//dd($data["post"]->title);
+		$quiz = $post->quiz()->first();
+
+		if (!is_null($quiz)) {
+			$quiz_answer = $quiz->load('quiz_answers');
+			$quiz_user_answers = $quiz_answer->load('quiz_user_answers');
+			$data = ["title" => $post->title, "post" => $post, "quiz" => $quiz_user_answers];
+		} else {
+			$data = ["title" => $post->title, "post" => $post];	
+		}
+		// $data = ["title" => $post->title, "post" => $post, "quiz" => $quiz_answer];
 
 		return view("frontend.news-on-click", $data);
 	}
@@ -213,6 +223,25 @@ class FrontController extends Controller
                     </div>
                 </div>";
     	return $html;
+    }
+
+    public function ajaxQuizUserAnswer(Request $request)
+    {
+    	$inputData = $request->except('_token');
+    	$validated = $request->validate([
+    		'user_id' => 'required',
+    		'quiz_id' => 'required',
+    		'quiz_answers_id' => 'required'
+    	]);
+    	$quiz_user_answer = QuizUserAnswer::create($validated);
+
+    	if ($quiz_user_answer->save()) {
+    		$request->session()->flash('msg_success', 'Ответ принят.');
+    	} else {
+    		$request->session()->flash('msg_error', 'Ошибка попробуйте позже!');
+    	}
+
+    	return redirect()->back();
     }
 
 }

@@ -39,6 +39,8 @@ Route::get('ajaxRequest', 'FrontController@ajaxRequest')->name('ajaxRequest');
 
 Route::get('ajaxPortfolio', 'FrontController@ajaxPortfolio')->name('ajaxPortfolio');
 
+Route::post('ajaxQuizUserAnswer', 'FrontController@ajaxQuizUserAnswer')->name('ajaxQuizUserAnswer');
+
 // Backend area
 
 Auth::routes();
@@ -60,6 +62,8 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
         Route::resource('/freelance-categories', 'Admin\FreelanceCategories');	
         Route::resource('/freelancers', 'Admin\FreelancerController');
         Route::resource('/portfolios', 'Admin\PortfolioController');
+        Route::resource('/quiz', 'Admin\QuizController');
+        Route::resource('/quiz-answers', 'Admin\QuizAnswersController');
     });
 });
 Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");

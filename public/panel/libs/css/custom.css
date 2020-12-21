@@ -1,0 +1,12 @@
+.quiz-answer-accordion li {
+	display: flex;
+	justify-content: space-between;
+}
+
+.accordion-quiz-answers .mb-0 {
+	display: flex;
+	justify-content: space-between;
+	color: #3d405c;
+	font-family: 'Circular Std Medium';
+	font-size: 14px;
+}

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravelista\Comments\Commentable;
+use App\Models\Quiz;
 
 class BusinessNews extends Model
 {
@@ -11,5 +12,11 @@ class BusinessNews extends Model
 	use Commentable;
     //Укажем произвольно имя нашей таблицы
     protected $table = 'business_news';
-    protected $fillable = ['title','slug','body','img'];
+    protected $fillable = ['title','slug','body','img', 'video'];
+
+    public function quiz()
+    {
+    	return $this->hasMany(Quiz::class);
+    }
+
 }
