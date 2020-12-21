@@ -78,6 +78,16 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/', 'AccountController@index')->name('account');
 
+        Route::prefix('startup')->group(function () {
+            Route::get('/', 'Account\StartupController@index')->name('account.startup.index');
+            Route::get('/pending', 'Account\StartupController@pending')->name('account.startup.pending');
+            Route::get('/archive', 'Account\StartupController@archive')->name('account.startup.archive');
+            Route::get('/edit/{id}', 'Account\StartupController@edit')->name('account.startup.edit');
+            Route::put('/update/{id}', 'Account\StartupController@update')->name('account.startup.update');
+            Route::delete('/destroy/{id}', 'Account\StartupController@destroy')->name('account.startup.destroy');
+        });
+
+
     });
 
 });

@@ -49,7 +49,7 @@
 						<div class="row">
 							@foreach($top_startups as $top_startup)
 								<div class="col-md-6">
-									<a href="/startup" class="startup-link" target="_blank">
+									<a href="{{ route('front-startup.show', $top_startup->id) }}" class="startup-link" target="_blank">
 										<div class="startups-main-top-startups" style="background-image: url({{ asset($top_startup->image) }})">
 											<p class="startups-main-top-startups-name">{{ $top_startup->title }}</p>
 											<p class="startups-main-top-startups-summ">{{ $top_startup->price }}</p>
@@ -72,7 +72,7 @@
 			<div class="row">
 				@foreach($startups as $startup)
 					<div class="col-md-4">
-						<a href="/startup" class="startup-link" target="_blank">
+						<a href="{{ route('front-startup.show', $startup->id) }}" class="startup-link" target="_blank">
 							<div class="startups-main-top-startups" style="background-image: url({{ asset($startup->image) }})">
 								<p class="startups-main-top-startups-name">{{ $startup->title }}</p>
 								<p class="startups-main-top-startups-summ">{{ $startup->price }}</p>

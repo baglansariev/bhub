@@ -63,3 +63,15 @@ function hasRoutePart($key_word, $separator = '/', $withoutParams = false) {
     }
     return in_array($key_word, explode($separator, $url));
 }
+
+function isDefaultImage($path) {
+    $default_images = [
+        'img/defaults/startup.png',
+        'img/defaults/user-image.jpg',
+        'img/defaults/no-image-grey.png',
+        'img/defaults/no-image-blue.png',
+        'img/defaults/no-image.png',
+    ];
+
+    return in_array($path, $default_images);
+}

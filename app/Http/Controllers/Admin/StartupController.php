@@ -19,7 +19,7 @@ class StartupController extends Controller
     {
         $data = [
             'title' => 'Все стартапы',
-            'startups' => Startup::where('status', '!=', 0)->paginate(25),
+            'startups' => Startup::whereNotIn('status', [0, 2])->paginate(25),
         ];
 
         return view('admin.startup.index', $data);
@@ -126,8 +126,9 @@ class StartupController extends Controller
         $startup->update($data);
 
         if ($file = $request->file('image')) {
-            $file_path = $this->user_image_dir . Auth::user()->id . '/' . $file->getClientOriginalName();
-            $file->move($this->user_image_dir . Auth::user()->id . '/', $file->getClientOriginalName());
+            $startup_dir = getUserImageDir() . Auth::user()->id . '/startups/';
+            $file_path = $startup_dir . $file->getClientOriginalName();
+            $file->move($startup_dir, $file->getClientOriginalName());
 
             $startup->image = $file_path;
         }
@@ -189,9 +190,7 @@ class StartupController extends Controller
         $startup_name = $startup->name;
         $user = Auth::user();
 
-        if (file_exists($this->user_image_dir . $user->id)) {
-            removeDir($this->user_image_dir . $user->id);
-        }
+        if (file_exists($startup->image) && !isDefaultImage($startup->image)) unlink($startup->image);
 
         if ($startup->delete()) {
             $request->session()->flash('msg_success', 'Стартап <b>' . $startup_name . '</b> успешно удален!');

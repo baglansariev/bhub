@@ -29,7 +29,7 @@ class StartupCreateRequest extends FormRequest
             'price'                 => 'required|integer|',
             'startup_category_id'   => 'required|integer|max:3|',
             'image'                 => 'image',
-            'video'                 => 'max:225|string',
+            'video'                 => 'url|max:225|string',
             'short_desc'            => 'required|string|',
             'full_desc'             => 'required|string|',
         ];
@@ -60,6 +60,7 @@ class StartupCreateRequest extends FormRequest
 
             'video.max'          => 'Максимальная длинна строки не должна превышать 225 символов',
             'video.string'       => 'Поле должно содежрать хоть одну букву',
+            'video.url'       => 'Не корректный URL адрес',
 
             'short_desc.required'    => 'Это поле обязательно к заполнению',
             'short_desc.string'       => 'Поле должно содежрать хоть одну букву',
