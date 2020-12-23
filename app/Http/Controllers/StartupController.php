@@ -41,6 +41,7 @@ class StartupController extends Controller
             $data = [
                 'title' => $category->name,
                 'startups' => $category->startups()->paginate(12),
+                'top_startups' => Startup::where('top', '!=', 0)->where('status', '!=', 0)->get(),
             ];
 
             return view('frontend.startup.index', $data);

@@ -16,6 +16,7 @@ use App\Models\QuizAnswer;
 use App\Models\QuizUserAnswer;
 use App\Models\StartupCategory;
 
+
 class FrontController extends Controller
 {
     //
@@ -34,11 +35,13 @@ class FrontController extends Controller
 
 		$news = BusinessNews::take(3)->get();
 		$latestPost = BusinessNews::orderBy('id', 'DESC')->first();
-		$data = [
+        $data = [
+
             'title' => "Бизнес новости",
             'latestPost' => $latestPost,
             'news' => $news
         ];
+
 		//dd($latestPost);
 
 		return view("frontend.business-news", $data);

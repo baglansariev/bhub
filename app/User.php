@@ -13,6 +13,7 @@ use App\Models\Like;
 use App\Models\QuizUserAnswer;
 use App\Models\Startup;
 
+
 class User extends Authenticatable
 {
     use Notifiable, Followable;

@@ -22,7 +22,7 @@
 								<div class="dropdown">
 									<a class="nav-link nav-link-desktop" href="#">стартапы</a>
 									<div class="dropdown-content">
-										<a href="{{ route('startup.index') }}">все</a>
+										<a href="{{ route('front-startup.index') }}">все</a>
 {{--										@if (isset($startup_categories) && $startup_categories->count())--}}
 										    @foreach($startup_categories as $startup_category)
 												<a href="/startup/{{ $startup_category->code }}">{{ $startup_category->name }}</a>
@@ -34,11 +34,11 @@
 								<a class="nav-link nav-link-mobile dropdown-toggle" data-toggle="dropdown" href="/startups">стартапы</a>
 								<div class="dropdown-menu megamenu megamenu-mobile">
 									<ul>
-											<li><a href="/all">все</a></li>
-											<li><a href="/startups">стартапы</a></li>
-											<li><a href="/business">бизнес</a></li>
-											<li><a href="/commercial-property" class="last">коммерческая недвижимость</a></li>
-										</ul>
+										<li><a href="{{ route('front-startup.index') }}">все</a></li>
+										@foreach($startup_categories as $startup_category)
+											<li><a href="/startup/{{ $startup_category->code }}">{{ $startup_category->name }}</a></li>
+										@endforeach
+									</ul>
 								</div>
 							</li>
 							<li class="nav-item {{ Request::is('freelancers','employee') ? 'active' : '' }}">

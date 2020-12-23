@@ -9,16 +9,19 @@
 
     <title>{{ $title ?? 'Личный кабинет' }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('font-awesome/css/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/account.css') }}" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="{{ asset('font-awesome/js/all.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 </head>
 <body>
     <div id="app">
@@ -59,7 +62,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        Выход
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -84,7 +87,34 @@
                                     <span>Меню</span>
                                 </div>
                                 <div class="card-body">
-                                    sidebar
+
+                                    <div class="announcements">
+                                        <b>Объявления</b>
+                                        <ul class="mt-2">
+                                            <li class="dropdown show">
+                                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Фрилансеры
+                                                </a>
+
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                                    <a class="dropdown-item" href="#">Активные</a>
+                                                    <a class="dropdown-item" href="#">Ожидающие</a>
+                                                    <a class="dropdown-item" href="#">Архивные</a>
+                                                </div>
+                                            </li>
+                                            <li class="dropdown show">
+                                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Стартапы
+                                                </a>
+
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
+                                                    <a class="dropdown-item" href="{{ route('account.startup.index') }}">Активные</a>
+                                                    <a class="dropdown-item" href="{{ route('account.startup.pending') }}">Ожидающие</a>
+                                                    <a class="dropdown-item" href="{{ route('account.startup.archive') }}">Архивные</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </aside>

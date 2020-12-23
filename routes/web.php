@@ -69,7 +69,7 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
 Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");
 
 Route::prefix('startup')->group(function() {
-    Route::get('/', 'StartupController@index')->name('front-startup.index');
+    Route::get('', 'StartupController@index')->name('front-startup.index');
     Route::get('{category}', 'StartupController@category')->name('startup.category')->where('category',  '[A-Za-z]+_*[A-Za-z]*');
     Route::get('create-new', 'StartupController@create')->name('front-startup.create');
     Route::post('', 'StartupController@store')->name('front-startup.store');

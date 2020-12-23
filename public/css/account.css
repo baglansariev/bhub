@@ -1,0 +1,19 @@
+.announcements ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.announcements ul li {
+    padding: 10px;
+    border-bottom: 1px dashed #cdcdcd;
+}
+.announcements a {
+    text-decoration: none;
+    color: #000;
+}
+#img_change {
+    margin-bottom: 10px;
+}
+#img_change img {
+    width: 200px;
+    height: auto;
+}
