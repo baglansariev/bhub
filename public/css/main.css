@@ -86,6 +86,13 @@ a.find-an-investor-categories {
 	font: 18px 'intro';
 	padding: 15px 10px;
 }
+#img_change {
+	margin-bottom: 10px;
+}
+#img_change img {
+	width: 200px;
+	height: auto;
+}
 
 .modal-title {
 	color: #272425;
@@ -100,6 +107,12 @@ a.find-an-investor-categories {
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+.form-group label {
+	color: #000;
+	margin-bottom: 10px;
+	text-transform: none;
+	margin-left: 5px;
 }
 
 .c-black-title {

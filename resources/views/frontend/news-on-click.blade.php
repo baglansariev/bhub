@@ -1,6 +1,5 @@
 @extends('frontend.layouts.master')
 
-@section('title', $data["title"])
 {{--@section('title', $data["post"]->title)--}}
 
 @section('styles')
@@ -18,21 +17,21 @@
 							<p>смотреть видео</p>
 						</div>
 						<!-- <video width="400" height="380" controls class="post-video">
-							<source src="{{$data['post']->video}}" type="video/mp4">
-								<source src="{{$data['post']->video}}" type="video/ogg">
+							<source src="{{$post->video}}" type="video/mp4">
+								<source src="{{$post->video}}" type="video/ogg">
 									Your browser does not support the video tag.
 								</video> -->
-								<p style="overflow: auto; display: contents;">{!!$data['post']->video!!}</p>
+								<p style="overflow: auto; display: contents;">{!!$post->video!!}</p>
 					</div>
 					<div class="advertising">
 						<h2>Реклама</h2>
 					</div>
 					<div class="advertising-text">
-						<p>{{ $data['post']->body }}</p>
+						<p>{{ $post->body }}</p>
 					</div>
 				</div>
 				<div class="col-md-6">
-					@if(isset($data['quiz']) && !empty($data['quiz']))
+					@if(isset($quiz) && !empty($quiz))
 					<div class="quiz-block">
 						<h1 class="h1-title">Опрос</h1>
 						<form id="form-quiz-user-answer" action="{{route('ajaxQuizUserAnswer')}}" method="POST">
@@ -40,10 +39,10 @@
 							<input type="hidden" name="user_id" value="{{(auth()->user()) ? auth()->user()->id : '' }}">
 							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12">
-									<input type="hidden" name="quiz_id" value="{{ $data['quiz']->id }}">
-									<p class="quiz-title">{{ $data['quiz']->question }}</p>
+									<input type="hidden" name="quiz_id" value="{{ $quiz->id }}">
+									<p class="quiz-title">{{ $quiz->question }}</p>
 									<div class="container-quiz-answers">
-										@foreach($data['quiz']['quiz_answers'] as $answer)
+										@foreach($quiz['quiz_answers'] as $answer)
 										<p class="quiz-title">
 											<label data-id="{{$answer->id}}" class="quiz-circle" for="btn-radio-{{$answer->id}}"></label>
 											<!-- <span class="quiz-title-sp"></span> -->
@@ -72,7 +71,7 @@
 						<h1 class="h1-title">Обсуждение</h1>
 						<div class="discussion-content">
 							<!-- <span>написал</span> -->
-							@comments(['model' => $data['post']])
+							@comments(['model' => $post])
 						</div>
 					</div>
 					<div class="to-write">

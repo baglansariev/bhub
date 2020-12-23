@@ -19,7 +19,7 @@ class CreateStartupsTable extends Migration
             $table->bigInteger('startup_category_id');
             $table->string('title');
             $table->string('phone');
-            $table->string('image')->nullable();
+            $table->string('image')->default('img/defaults/startup.png');
             $table->text('short_desc')->nullable();
             $table->text('full_desc')->nullable();
             $table->text('video')->nullable();

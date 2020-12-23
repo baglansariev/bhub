@@ -11,6 +11,7 @@ use Laravelista\Comments\Commenter;
 use Laravelista\Comments\Comment;
 use App\Models\Like;
 use App\Models\QuizUserAnswer;
+use App\Models\Startup;
 
 class User extends Authenticatable
 {
@@ -58,6 +59,11 @@ class User extends Authenticatable
         }
 
         return $this->email == $creator_email;
+    }
+
+    public function startups()
+    {
+        return $this->hasMany(Startup::class);
     }
 
     public function isAuthUser()
