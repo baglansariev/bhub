@@ -50,7 +50,9 @@ class FreelancerController extends Controller
             'position' => 'required',
             'characteristic' => 'required',
             'description' => 'required',
-            'image' => 'image|mime:png,jpg,jpeg|max:2048'
+            'image' => 'image|mime:png,jpg,jpeg|max:2048',
+            'facebook' => 'url',
+            'instagramm' => 'url',
             //'img' => 'mimes:jpeg,jpg,png,gif,svg|max:2048',
             // 'img' => 'required|mimes:jpeg,jpg,png,gif,svg|max:2048',
         ]);
@@ -62,9 +64,9 @@ class FreelancerController extends Controller
         if ($img) {
             $imgName = time().'-'.$img->getClientOriginalName();
             $img->move('img/freelancers/', $imgName);
-            $validatedData['img'] = "freelancers/" . $imgName;    
+            $validatedData['img'] = "img/freelancers/" . $imgName;
         } else {
-            $validatedData['img'] = "defaults/no-image.png";
+            $validatedData['img'] = "img/defaults/no-image.png";
         }
 
         if ($user_id) {

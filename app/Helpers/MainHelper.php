@@ -23,7 +23,7 @@ function removeDir($dir) {
 function devPrint($data, $options = []) {
     echo '<pre>';
 
-    if (isset($options['iteration']) && $options['iteration'] === true) {
+    if (isset($options['loop']) && $options['loop'] === true) {
         if (isset($options['key_val']) && $options['key_val'] === true) {
             foreach ($data as $key => $val) {
                 echo $key . ' => ' . $val;

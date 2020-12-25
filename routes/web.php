@@ -91,6 +91,15 @@ Route::middleware('auth')->group(function () {
             Route::delete('/destroy/{id}', 'Account\StartupController@destroy')->name('account.startup.destroy');
         });
 
+        Route::prefix('freelancer')->group(function () {
+            Route::get('/', 'Account\FreelancerController@index')->name('account.freelancer.index');
+            Route::get('/pending', 'Account\FreelancerController@pending')->name('account.freelancer.pending');
+            Route::get('/archive', 'Account\FreelancerController@archive')->name('account.freelancer.archive');
+            Route::get('/edit/{id}', 'Account\FreelancerController@edit')->name('account.freelancer.edit');
+            Route::put('/update/{id}', 'Account\FreelancerController@update')->name('account.freelancer.update');
+            Route::delete('/destroy/{id}', 'Account\FreelancerController@destroy')->name('account.freelancer.destroy');
+        });
+
 
     });
 

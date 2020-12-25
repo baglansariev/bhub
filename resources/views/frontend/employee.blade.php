@@ -1,7 +1,5 @@
 @extends('frontend.layouts.master')
 
-@section('title', $data["title"])
-
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/employee.css') }}">
 @endsection
@@ -13,7 +11,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="circle-photo">
-						<img src="{{ asset('img/' . $freelancer->img) }}" width="398" height="399" title="{{ $freelancer->name }}" alt="{{ $freelancer->img }}">
+						<img src="{{ asset($freelancer->img) }}" width="398" height="399" title="{{ $freelancer->name }}" alt="{{ $freelancer->img }}">
 					</div>
 				</div>
 				<div class="col-md-7 offset-md-1">

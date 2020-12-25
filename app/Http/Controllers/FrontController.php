@@ -63,18 +63,18 @@ class FrontController extends Controller
 
 	public function freelancers ($category_id = false)
 	{
-
+        $data = ['title' => 'Фрилансеры',];
 		$categories = FreelanceCategory::all();
 		if (!$category_id) {
 			$freelancers = Freelancer::where('status', 1)->get();
 		} else {
-			$freelancers = Freelancer::where('category_id', $category_id)->where('status', 1)->get();
+		    $category = FreelanceCategory::findOrFail($category_id);
+			$freelancers = Freelancer::where('category_id', $category->id)->where('status', 1)->get();
+            $data['title'] = $category->title;
 		}
-        $data = [
-            "title" => "Фрилансеры",
-            'categories' => $categories,
-            'freelancers' => $freelancers,
-        ];
+        $data['categories'] = $categories;
+        $data['freelancers'] = $freelancers;
+
 
 		return view("frontend.freelancers", $data);
 	}

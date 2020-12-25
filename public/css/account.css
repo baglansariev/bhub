@@ -10,10 +10,16 @@
     text-decoration: none;
     color: #000;
 }
-#img_change {
-    margin-bottom: 10px;
+#img_change, .img_change {
+    margin: 10px 0;
 }
-#img_change img {
-    width: 200px;
+#img_change img, .img_change img {
+    width: 100px;
     height: auto;
+}
+textarea {
+    min-height: 150px;
+}
+.portfolio-del {
+    border-bottom: 1px solid #cdcdcd;
 }

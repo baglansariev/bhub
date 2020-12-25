@@ -28,9 +28,9 @@
                         <label>Статус:</label>
                         <!-- <input type="text" name="status" class="form-control" placeholder="Статус" value="{{ old('status') }}"> -->
                         <select name="status" id="" class="form-control">
-                            <option value="0">0 - Не активный</option>
+                            <option value="0">0 - В ожидании</option>
                             <option value="1">1 - Активный</option>
-                            <option value="2">2 - В ожидании</option>
+                            <option value="2">2 - В архиве</option>
                         </select>
                     </div>
                 </div>

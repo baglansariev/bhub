@@ -27,10 +27,9 @@
                         <label>Статус:</label>
                         <!-- <input type="text" name="status" class="form-control" placeholder="Статус" value="{{ $Freelancer->status }}"> -->
                         <select name="status" id="" class="form-control">
-                            <option value="0" selected="">{{ $Freelancer->status }}</option>
-                            <option value="0">0 - Не активный</option>
-                            <option value="1">1 - Активный</option>
-                            <option value="2">2 - В ожидании</option>
+                            <option value="0" @if($Freelancer->status == 0) selected @endif>0 - В ожидании</option>
+                            <option value="1" @if($Freelancer->status == 1) selected @endif>1 - Активный</option>
+                            <option value="2" @if($Freelancer->status == 2) selected @endif>2 - В Архиве</option>
                         </select>
                     </div>
                 </div>

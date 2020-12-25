@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSlugFieldToFreelancerTable extends Migration
+class AddPhoneColumnToFreelancerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddSlugFieldToFreelancerTable extends Migration
     public function up()
     {
         Schema::table('freelancer', function (Blueprint $table) {
-            $table->string('slug')->after('name')->nullable();
+            $table->string('phone')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddSlugFieldToFreelancerTable extends Migration
     public function down()
     {
         Schema::table('freelancer', function (Blueprint $table) {
-            $table->dropColumn('slug');
+            $table->dropColumn('phone');
         });
     }
 }

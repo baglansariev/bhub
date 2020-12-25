@@ -21,7 +21,7 @@
     <!-- Scripts -->
     <script src="{{ asset('font-awesome/js/all.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/main.js') }}" defer></script>
+    <script src="{{ asset('js/script.js') }}" defer></script>
 </head>
 <body>
     <div id="app">
@@ -97,9 +97,9 @@
                                                 </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                                    <a class="dropdown-item" href="#">Активные</a>
-                                                    <a class="dropdown-item" href="#">Ожидающие</a>
-                                                    <a class="dropdown-item" href="#">Архивные</a>
+                                                    <a class="dropdown-item" href="{{ route('account.freelancer.index') }}">Активные</a>
+                                                    <a class="dropdown-item" href="{{ route('account.freelancer.pending') }}">Ожидающие</a>
+                                                    <a class="dropdown-item" href="{{ route('account.freelancer.archive') }}">Архивные</a>
                                                 </div>
                                             </li>
                                             <li class="dropdown show">

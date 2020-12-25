@@ -44,25 +44,51 @@
 							<li class="nav-item {{ Request::is('freelancers','employee') ? 'active' : '' }}">
 								<!-- Start desktop dropdown version -->
 								<div class="dropdown">
-									<a class="nav-link nav-link-desktop" href="/freelancers">Фрилансеры</a>
+									<a class="nav-link nav-link-desktop" href="#">Фрилансеры</a>
 									<div class="dropdown-content mega-menu">
-										<ul class="mega-menu-first-block">
-											<li><a href="/all">все</a></li>
-											<li><a href="/startups">иллюстрации</a></li>
-											<li><a href="/business">Реклама</a></li>
-											<li><a href="/commercial-property" class="last">Тексты</a></li>
-										</ul>
-										<ul>
-											<li><a href="/all">Дизайн</a></li>
-											<li><a href="/startups">вебразработчики</a></li>
-											<li><a href="/business">Продвижение</a></li>
-											<li><a href="/commercial-property" class="last">еще</a></li>
-										</ul>
+										@php($int = 0)
+										@foreach($freelance_categories as $freelance_category)
+											@if ($loop->iteration == 1)
+												<ul class="mega-menu-first-block">
+													<li><a href="/freelancers">все</a></li>
+											@endif
+											@if (mb_strlen($freelance_category->title) <= 16)
+												<li><a href="/freelancers/{{ $freelance_category->id }}">{{ $freelance_category->title }}</a></li>
+												@php($int++)
+											@endif
+											@if ($int == 3)
+												</ul>
+												<ul>
+											@endif
+											@if ($int == 7)
+												</ul>
+												@break
+											@endif
+										@endforeach
 									</div>
 								</div>
 								<!-- Start mobile dropdown version -->
 								<a class="nav-link nav-link-mobile dropdown-toggle" data-toggle="dropdown" href="{{route('freelancers')}}">Фрилансеры</a>
 								<div class="dropdown-menu megamenu megamenu-mobile">
+									@php($int = 0)
+									@foreach($freelance_categories as $freelance_category)
+										@if ($loop->iteration == 1)
+											<ul class="megamenu-mobile-inner">
+											<li><a href="/freelancers">все</a></li>
+										@endif
+										@if (mb_strlen($freelance_category->title) <= 16)
+											<li><a href="/freelancers/{{ $freelance_category->id }}">{{ $freelance_category->title }}</a></li>
+											@php($int++)
+										@endif
+										@if ($int == 3)
+											</ul>
+											<ul class="megamenu-mobile-inner">
+										@endif
+										@if ($int == 7)
+											</ul>
+											@break
+										@endif
+									@endforeach
 									<ul class="megamenu-mobile-inner">
 										<li><a href="/all">все</a></li>
 										<li><a href="/startups">иллюстрации</a></li>

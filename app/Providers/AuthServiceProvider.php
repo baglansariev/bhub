@@ -6,6 +6,8 @@ use App\Policies\StartupPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Startup;
+use App\Models\Freelancer;
+use App\Policies\FreelancerPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -17,6 +19,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
         Startup::class => StartupPolicy::class,
+        Freelancer::class => FreelancerPolicy::class,
 
     ];
 

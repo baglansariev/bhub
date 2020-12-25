@@ -21,7 +21,7 @@ class CreateQuizAnswersTable extends Migration
                 ->onDelete('cascade');
             $table->string('answer');
             $table->timestamps();
-            $table->unique(['quiz_id']);
+//            $table->unique(['quiz_id']);
         });
     }
 

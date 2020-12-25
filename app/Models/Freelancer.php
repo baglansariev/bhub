@@ -9,11 +9,11 @@ use App\Models\Portfolio;
 class Freelancer extends Model
 {
     protected $table = 'freelancer';
-    protected $fillable = ['user_id','category_id','name','position','img', 'status', 'characteristic', 'description'];
+    protected $fillable = ['user_id','category_id','name','position','img', 'status', 'characteristic', 'description', 'facebook', 'instagramm'];
 
     public function freelanceCategory()
     {
-    	return $this->belongsTo(FreelanceCategory::class);
+    	return $this->belongsTo(FreelanceCategory::class, 'category_id');
     }
 
     public function portfolio()

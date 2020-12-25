@@ -24,30 +24,36 @@
 					<ul class="freelance-categories-lists">
 						@foreach($categories as $category)
 						{{--<li><a href="{{ route('freelancerFilter', $category->id) }}">{{ $category->title }}</a></li>--}}
-						<li><a href="{{ route('freelancers', $category->id) }}">{{ $category->title }}</a></li>
+						<li><a href="{{ url('/freelancers/' . $category->id) }}">{{ $category->title }}</a></li>
 						@endforeach
 					</ul>		
 				</div>
 			</div>
 			<div class="col-lg-8 offset-lg-1 col-md-9 offset-md-0 col-sm-9">
 				<div class="row">
-					@foreach($freelancers as $freelancer)
-					<div class="col-lg-3 col-md-4">
-						<div class="freelance-card">
-							<a href="{{ url('freelancer/' . $freelancer->id . '/' . $freelancer->name) }}" target="_blank" title="" style="display: block;">
-								<div class="inner-card-block">
-									<img src="{{ asset('img') . '/' . $freelancer->img }}" align="Adilet" alt="{{ $freelancer->img }}" title="{{ $freelancer->name }}">
-									<h5 class="freelancer-name">{{ $freelancer->name }}</h5>
-									<p class="freelancer-position">{{ $freelancer->position }}</p>
+					@if ($freelancers->count())
+						@foreach($freelancers as $freelancer)
+							<div class="col-lg-3 col-md-4">
+								<div class="freelance-card">
+									<a href="{{ url('freelancer/' . $freelancer->id . '/' . $freelancer->name) }}" target="_blank" title="" style="display: block;">
+										<div class="inner-card-block">
+											<img src="{{ asset($freelancer->img) }}" align="Adilet" alt="{{ $freelancer->img }}" title="{{ $freelancer->name }}">
+											<h5 class="freelancer-name">{{ $freelancer->name }}</h5>
+											<p class="freelancer-position">{{ $freelancer->position }}</p>
+										</div>
+										<div class="freelance-social">
+											<a href="{{ $freelancer->facebook ? $freelancer->facebook : '#' }}" class="facebook-icon" target="_blank" title="facebook"></a>
+											<a href="{{ $freelancer->instagramm ? $freelancer->instagramm : '#' }}" class="instagramm-icon" target="_blank" title="instagramm"></a>
+										</div>
+									</a>
 								</div>
-								<div class="freelance-social">
-									<a href="{{ $freelancer->facebook ? $freelancer->facebook : '#' }}" class="facebook-icon" target="_blank" title="facebook"></a>
-									<a href="{{ $freelancer->instagramm ? $freelancer->instagramm : '#' }}" class="instagramm-icon" target="_blank" title="instagramm"></a>
-								</div>
-							</a>
+							</div>
+						@endforeach
+					@else
+						<div class="col-sm-12">
+							<p class="text-black-50">В данной категории пока нет фрилансеров</p>
 						</div>
-					</div>
-					@endforeach
+					@endif
 				</div>
 			</div>
 		</div>
@@ -83,12 +89,12 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" class="form-control" name="Facebook" placeholder="Facebook">
+								<input type="text" class="form-control" name="facebook" placeholder="Facebook">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" class="form-control" name="Instagramm" placeholder="Instagramm">
+								<input type="text" class="form-control" name="instagramm" placeholder="Instagramm">
 							</div>
 						</div>
 						<div class="col-md-12">

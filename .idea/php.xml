@@ -111,6 +111,7 @@
       <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-honeypot" />
       <path value="$PROJECT_DIR$/vendor/laravelrus/localized-carbon" />
+      <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
     </include_path>
   </component>
   <component name="PhpUnit">

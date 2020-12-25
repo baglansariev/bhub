@@ -23,18 +23,6 @@
                             <span>Бизнес новости</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/quiz">
-                            <i class="fab fa-fw fa-wpforms mr-1"></i>
-                            <span>Опросник</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/quiz-answers">
-                            <i class="fab fa-fw fa-wpforms mr-1"></i>
-                            <span>Ответы к опроснику</span>
-                        </a>
-                    </li>
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">
                         <i class="fa fa-fw fa-rocket mr-1"></i>
                         <span class="link-title">Фрилансеры</span>
@@ -103,20 +91,36 @@
 {{--                </li>--}}
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5">
-                        <i class="fas fa-fw fa-chart-bar mr-1"></i>
-                        <span class="link-title">Статистика</span>
+                        <i class="fas fa-question-circle mr-2"></i>
+                        <span class="link-title">Опросник</span>
                     </a>
                     <div id="submenu-5" class="collapse submenu" style="">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="general-table.html">General Tables</a>
+                                <a class="nav-link" href="/admin/quiz">Вопросы</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="data-tables.html">Data Tables</a>
+                                <a class="nav-link" href="/admin/quiz-answers">Ответы</a>
                             </li>
                         </ul>
                     </div>
                 </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5">--}}
+{{--                        <i class="fas fa-fw fa-chart-bar mr-1"></i>--}}
+{{--                        <span class="link-title">Статистика</span>--}}
+{{--                    </a>--}}
+{{--                    <div id="submenu-5" class="collapse submenu" style="">--}}
+{{--                        <ul class="nav flex-column">--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="general-table.html">General Tables</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="data-tables.html">Data Tables</a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7">
                         <i class="fa fa-fw fa-rocket mr-1"></i>
