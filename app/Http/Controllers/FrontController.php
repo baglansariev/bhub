@@ -61,52 +61,6 @@ class FrontController extends Controller
 		return view("frontend.news-on-click", $data);
 	}
 
-	public function freelancers ($category_id = false)
-	{
-        $data = ['title' => 'Фрилансеры',];
-		$categories = FreelanceCategory::all();
-		if (!$category_id) {
-			$freelancers = Freelancer::where('status', 1)->get();
-		} else {
-		    $category = FreelanceCategory::findOrFail($category_id);
-			$freelancers = Freelancer::where('category_id', $category->id)->where('status', 1)->get();
-            $data['title'] = $category->title;
-		}
-        $data['categories'] = $categories;
-        $data['freelancers'] = $freelancers;
-
-
-		return view("frontend.freelancers", $data);
-	}
-
-	// public function freelancerFilter($id)
-	// {
-	// 	$data = ["title" => "Фрилансеры"];
-	// 	$categories = FreelanceCategory::all();
-	// 	$freelancers = Freelancer::where('category_id', $id)->get();
-	// 	//dd($freelancers);
-	// 	return redirect()->route("freelancers");
-	// 	// return view("frontend.freelancers", compact('data', 'categories', 'freelancers'));
-	// }
-
-	public function employee ( $id )
-	{
-		// $freelancer = Freelancer::where('id', $id)->first();
-		// $portfolio = $freelancer->portfolio()->first();
-		$freelancer = Freelancer::findOrFail($id);
-		$portfolios = $freelancer->portfolio()->get();
-
-
-		$data = [
-		    'title' => $freelancer->name,
-            'freelancer' => $freelancer,
-            'portfolios' => $portfolios,
-        ];
-		// dd($freelancer->portfolio()->get());
-		//dd($freelancer);
-		return view("frontend.employee", $data);
-	}
-
 	public function findAnInvestor ()
 	{
 		$data = ["title" => "Найти инвестора"];

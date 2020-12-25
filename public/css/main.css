@@ -93,6 +93,13 @@ a.find-an-investor-categories {
 	width: 200px;
 	height: auto;
 }
+.img_change {
+	margin-bottom: 10px;
+}
+.img_change img {
+	width: 200px;
+	height: auto;
+}
 
 .modal-title {
 	color: #272425;

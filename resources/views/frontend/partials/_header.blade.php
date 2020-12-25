@@ -50,7 +50,7 @@
 										@foreach($freelance_categories as $freelance_category)
 											@if ($loop->iteration == 1)
 												<ul class="mega-menu-first-block">
-													<li><a href="/freelancers">все</a></li>
+													<li><a href="{{ route('front.freelancer.index') }}">все</a></li>
 											@endif
 											@if (mb_strlen($freelance_category->title) <= 16)
 												<li><a href="/freelancers/{{ $freelance_category->id }}">{{ $freelance_category->title }}</a></li>
@@ -74,7 +74,7 @@
 									@foreach($freelance_categories as $freelance_category)
 										@if ($loop->iteration == 1)
 											<ul class="megamenu-mobile-inner">
-											<li><a href="/freelancers">все</a></li>
+											<li><a href="{{ route('front.freelancer.index') }}">все</a></li>
 										@endif
 										@if (mb_strlen($freelance_category->title) <= 16)
 											<li><a href="/freelancers/{{ $freelance_category->id }}">{{ $freelance_category->title }}</a></li>

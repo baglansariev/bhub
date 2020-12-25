@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('scripts')
+    <script src="{{ asset('js/portfolio.js') }}" defer></script>
+@endsection
+
 @section('content')
 
     <form action="{{ route('account.freelancer.update', $freelancer->id) }}" method="post" enctype="multipart/form-data">
@@ -130,11 +134,11 @@
                     </div>
                 @endforeach
             </div>
-        <div class="deleted_portfolios"></div>
-            <div class="portfolio-add-actions mb-3 mt-3 d-flex justify-content-center">
-                <button type="button" class="btn btn-success addPortfolioRow">Добавить еще</button>
-            </div>
+            <div class="deleted_portfolios"></div>
         @endif
+        <div class="portfolio-add-actions mb-3 mt-3 d-flex justify-content-center">
+            <button type="button" class="btn btn-success addPortfolioRow">Добавить портфолио</button>
+        </div>
         <div class="form-row">
             <div class="col-sm-12">
                 <div class="form-actions d-flex justify-content-end">

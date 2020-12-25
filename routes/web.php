@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 // Frontend area
 Route::get('/', 'FrontController@index')->name('home');
 
@@ -25,12 +21,6 @@ Route::get('/business-news', "FrontController@businessNews")->name("businessNews
 //Route::get('/news-on-click', "FrontController@newsDetail")->name("newsDetail");
 Route::get('/business-news/{slug?}', "FrontController@newsDetail")->name("newsDetail");
 
-Route::get('/freelancers/{category_id?}', "FrontController@freelancers")->name("freelancers");
-// Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");
-// Route::get('freelancer-filter/{category_id?}', "FrontController@freelancerFilter")->name('freelancerFilter');
-
-// Route::get('/employee', "FrontController@employee")->name("employee");
-Route::get('/freelancer/{id?}', "FrontController@employee")->name("freelancer");
 
 Route::get('/find-an-investor', "FrontController@findAnInvestor")->name('findAnInvestor');
 
@@ -40,6 +30,13 @@ Route::get('ajaxRequest', 'FrontController@ajaxRequest')->name('ajaxRequest');
 Route::get('ajaxPortfolio', 'FrontController@ajaxPortfolio')->name('ajaxPortfolio');
 
 Route::post('ajaxQuizUserAnswer', 'FrontController@ajaxQuizUserAnswer')->name('ajaxQuizUserAnswer');
+
+Route::prefix('freelancers')->group(function () {
+    Route::get('{category_id?}', 'FreelancerController@index')->name('front.freelancer.index')->where('category_id', '[0-9]*');
+    Route::get('show/{id}', 'FreelancerController@show')->name('front.freelancer.show');
+    Route::get('create', 'FreelancerController@create')->name('front.freelancer.create');
+    Route::post('store', 'FreelancerController@store')->name('front.freelancer.store');
+});
 
 // Backend area
 

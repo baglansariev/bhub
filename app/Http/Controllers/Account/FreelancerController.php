@@ -119,7 +119,6 @@ class FreelancerController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        devPrint($request->all(), ['exit', true]);
         $freelancer = Freelancer::findOrFail($id);
         $data       = $request->all();
         $updates    = false;
@@ -257,8 +256,34 @@ class FreelancerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($user = Auth::user()->id) {
+
+            $freelancer = Freelancer::findOrFail($id);
+            $freelancer_name = $freelancer->name;
+
+            if ($freelancer->portfolio->count()) {
+                foreach ($freelancer->portfolio as $portfolio) {
+                    if (file_exists($portfolio->img)) {
+                        unlink($portfolio->img);
+                    }
+                    $portfolio->delete();
+                }
+            }
+
+            if (file_exists($freelancer->img)) {
+                unlink($freelancer->img);
+            }
+
+            if ($freelancer->delete()) {
+                $request->session()->flash('msg_success', 'Фрилансер ' . $freelancer_name . ' успешно удален.');
+            } else {
+                $request->session()->flash('msg_error', 'Ошибка, попробуйте позже!');
+            }
+
+        }
+
+        return redirect()->route('account.freelancer.index');
     }
 }
