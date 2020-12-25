@@ -139,7 +139,7 @@
             <div class="col-sm-12">
                 <div class="form-actions d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary mr-2">Сохранить</button>
-                    <a href="{{ route('account.startup.index') }}" class="btn btn-danger">Отменить</a>
+                    <a href="{{ route('account.freelancer.index') }}" class="btn btn-danger">Отменить</a>
                 </div>
             </div>
         </div>

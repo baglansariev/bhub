@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use App\Models\FreelanceCategory;
 use App\Models\Freelancer;
@@ -25,6 +26,30 @@ class FreelancerController extends Controller
         ];
 
         return view('account.freelancer.index', $data);
+    }
+
+    public function pending()
+    {
+        $title = 'Ожидающие фрилансеры';
+        $data = [
+            'title' => $title,
+            'card_title' => $title,
+            'freelancers' => Freelancer::where('status', 0)->paginate(15),
+        ];
+
+        return view('account.freelancer.pending', $data);
+    }
+
+    public function archive()
+    {
+        $title = 'Архивные фрилансеры';
+        $data = [
+            'title' => $title,
+            'card_title' => $title,
+            'freelancers' => Freelancer::where('status', 2)->paginate(15),
+        ];
+
+        return view('account.freelancer.archive', $data);
     }
 
     /**
@@ -142,47 +167,24 @@ class FreelancerController extends Controller
         }
 
         $freelancer->status = 0;
-        if ($freelancer->save() && isset($data['portfolios']) && !empty($data['portfolios'])) {
-            $updates = true;
+        if ($freelancer->save()) {
 
-            foreach ($data['portfolios'] as $portfolio) {
-                if (isset($portfolio['p_id']) && $user_portfolio = $freelancer->portfolio()->find($portfolio['p_id'])) {
-                    $portfolio_changes = 0;
+            if (isset($data['portfolios']) && !empty($data['portfolios'])) {
 
-                    if (isset($portfolio['title']) && $portfolio['title'] !== $user_portfolio->title) {
-                        $user_portfolio->title = $portfolio['title'];
-                        $portfolio_changes++;
-                    }
+                $updates = true;
 
-                    if (isset($portfolio['url']) && $portfolio['url'] !== $user_portfolio->url) {
-                        $user_portfolio->url = $portfolio['url'];
-                        $portfolio_changes++;
-                    }
+                foreach ($data['portfolios'] as $portfolio) {
+                    if (isset($portfolio['p_id']) && $user_portfolio = $freelancer->portfolio()->find($portfolio['p_id'])) {
+                        $portfolio_changes = 0;
 
-                    if (isset($portfolio['img']) && $file = $portfolio['img']) {
-                        $portfolio_dir = getUserImageDir() . Auth::user()->id . '/portfolios/';
-                        $file_path = $portfolio_dir . $file->getClientOriginalName();
-                        $file->move($portfolio_dir, $file->getClientOriginalName());
+                        if (isset($portfolio['title']) && $portfolio['title'] !== $user_portfolio->title) {
+                            $user_portfolio->title = $portfolio['title'];
+                            $portfolio_changes++;
+                        }
 
-                        $user_portfolio->img = $file_path;
-                        $portfolio_changes++;
-                    }
-
-                    if ($portfolio_changes > 0) {
-                        $user_portfolio->save();
-                    }
-
-                }
-                else {
-
-                    if (isset($portfolio['title'])) {
-
-                        $user_portfolio = $freelancer->portfolio()->create([
-                            'title' => $portfolio['title']
-                        ]);
-
-                        if (isset($portfolio['url'])) {
+                        if (isset($portfolio['url']) && $portfolio['url'] !== $user_portfolio->url) {
                             $user_portfolio->url = $portfolio['url'];
+                            $portfolio_changes++;
                         }
 
                         if (isset($portfolio['img']) && $file = $portfolio['img']) {
@@ -191,10 +193,49 @@ class FreelancerController extends Controller
                             $file->move($portfolio_dir, $file->getClientOriginalName());
 
                             $user_portfolio->img = $file_path;
+                            $portfolio_changes++;
                         }
 
-                        $user_portfolio->save();
+                        if ($portfolio_changes > 0) {
+                            $user_portfolio->save();
+                        }
 
+                    }
+                    else {
+
+                        if (isset($portfolio['title'])) {
+
+                            $user_portfolio = $freelancer->portfolio()->create([
+                                'title' => $portfolio['title']
+                            ]);
+
+                            if (isset($portfolio['url'])) {
+                                $user_portfolio->url = $portfolio['url'];
+                            }
+
+                            if (isset($portfolio['img']) && $file = $portfolio['img']) {
+                                $portfolio_dir = getUserImageDir() . Auth::user()->id . '/portfolios/';
+                                $file_path = $portfolio_dir . $file->getClientOriginalName();
+                                $file->move($portfolio_dir, $file->getClientOriginalName());
+
+                                $user_portfolio->img = $file_path;
+                            }
+
+                            $user_portfolio->save();
+
+                        }
+                    }
+                }
+
+            }
+
+            if (isset($data['deleted_portfolios']) && !empty($data['deleted_portfolios'])) {
+                foreach ($data['deleted_portfolios'] as $delPortfolioId) {
+                    if ($deletedPortfolio = $freelancer->portfolio()->find($delPortfolioId)) {
+                        if (file_exists($deletedPortfolio->img)) {
+                            unlink($deletedPortfolio->img);
+                        }
+                        $deletedPortfolio->delete();
                     }
                 }
             }

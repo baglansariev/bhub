@@ -76,9 +76,21 @@
 }
 
 .portfolio-inner {
+	background-size: cover;
+	background-position: center;
 	background-color: #353942;
 	margin-bottom: 30px;
 	height: 281px;
+	padding: 20px;
+	display: flex;
+	text-decoration: none;
+	color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+}
+.portfolio-inner:hover {
+	text-decoration: none;
+	color: #fff;
 }
 
 

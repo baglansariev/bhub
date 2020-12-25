@@ -39,16 +39,14 @@
 </section>
 <section class="portfolio-wrapper">
 	<div class="container">
-		@if(isset($portfolio) && !empty($portfolio))
+		@if(isset($portfolios) && !empty($portfolios))
 		<h1 class="portfolio-title">портфолио</h1>
 		<div class="row">
-			@forelse ($portfolio as $key => $item)
+			@forelse ($portfolios as $portfolio)
 			<div class="col-md-3">
-				<div class="portfolio-inner">
-					<a href=""></a>
-					<h3>{{ $item->title }}</h3>
-					<img src="{{asset('img/portfolios/' . $item->img)}}" style="max-width: 100%" title="{{ $item->title }}" alt="{{ $item->title }}">
-				</div>
+				<a class="portfolio-inner" style="background-image: url({{asset($portfolio->img)}})">
+					<h3>{{ $portfolio->title }}</h3>
+				</a>
 			</div>
 			@empty
 			<h2 class="c-black-title">Пользователь не внес портфолио</h2>

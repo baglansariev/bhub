@@ -17,8 +17,8 @@ class CreatePortfoliosTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->nullable();
-            $table->string('url');
-            $table->string('img');
+            $table->string('url')->nullable();
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }

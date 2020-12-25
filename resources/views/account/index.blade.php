@@ -2,6 +2,6 @@
 
 @section('content')
 
-    dsadsads
+    Панель управления в работе ...
 
 @endsection

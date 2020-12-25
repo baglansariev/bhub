@@ -89,45 +89,22 @@ class FrontController extends Controller
 	// 	// return view("frontend.freelancers", compact('data', 'categories', 'freelancers'));
 	// }
 
-	public function employee ( $id = "" )
+	public function employee ( $id )
 	{
 		// $freelancer = Freelancer::where('id', $id)->first();
 		// $portfolio = $freelancer->portfolio()->first();
-		$freelancer = Freelancer::where('id', $id)->first();
-		$portfolio = $freelancer->portfolio()->get();
-		//dd($portfolio);
-		// foreach ($portfolios as $key => $portfolio) {
-		// 	//dd(json_decode($portfolio->img));
-		// 	$portfolios = [
-		// 		// 'name' => $portfolio->title,
-		// 		// 'slug' => $portfolio->slug,
-		// 		// 'url' => $portfolio->url,
-		// 		'imgs' => json_decode($portfolio->img)
-		// 	];
-		// };
+		$freelancer = Freelancer::findOrFail($id);
+		$portfolios = $freelancer->portfolio()->get();
 
-		//dd(json_decode($portfolio->img));
-		// function isJson($string) {
-		// 	json_decode($string);
-		// 	return (json_last_error() == JSON_ERROR_NONE);
-		// }
 
-		// if (isJson($portfolio->img)) {
-		// 	$portfolio['img'] = json_decode($portfolio->img);
-		// }
-
-		// if (isJson($portfolio->title)) {
-		// 	$portfolio['title'] = json_decode($portfolio->title);
-		// }
-	
-		
-		//dd($portfolio);
-		//dd(is_array($portfolio->img));
-
-		$data = ["title" => $freelancer->name];
+		$data = [
+		    'title' => $freelancer->name,
+            'freelancer' => $freelancer,
+            'portfolios' => $portfolios,
+        ];
 		// dd($freelancer->portfolio()->get());
 		//dd($freelancer);
-		return view("frontend.employee", compact("data", "freelancer", "portfolio"));
+		return view("frontend.employee", $data);
 	}
 
 	public function findAnInvestor ()
