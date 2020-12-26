@@ -12,11 +12,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="watch-the-video">
-						<div class="bnt-play-video">
-							<img src="{{ asset('img/play-video.png') }}" width="59" height="51">
-							<p>смотреть видео</p>
-						</div>
-						<p style="overflow: auto; display: contents;">{!! $post->video !!}</p>
+						<iframe src="{{ parseYoutubeVideo($post->video) }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 					<div class="advertising">
 						<h2>Реклама</h2>

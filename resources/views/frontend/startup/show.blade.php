@@ -32,7 +32,7 @@
 				<div class="col-md-6">
 					<div class="startup-video">
 						@if (isset($startup->video) && !empty($startup->video))
-							<iframe src="{{ $startup->video }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							<iframe src="{{ parseYoutubeVideo($startup->video) }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 						@else
 							<h1 class="startup-video-title">без видео</h1>
 						@endif

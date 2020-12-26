@@ -76,3 +76,25 @@ function isDefaultImage($path) {
 function currentUser() {
     return Auth::user();
 }
+
+function parseYoutubeVideo($url) {
+    $resource_link = 'https://www.youtube.com/embed/';
+    if (preg_match('#^(https|http)://(www\.)?(youtube|youtu)\.[a-zA-Z]{2,3}.*$#', $url)) {
+
+        if (strpos($url, '?v=')) {
+            $url_parts = explode('?v=', $url);
+            return $resource_link . trim($url_parts[1]);
+        }
+        else if (strpos($url, '.be/')) {
+            $url_parts = explode('.be/', $url);
+            return $resource_link . trim($url_parts[1]);
+        }
+        else {
+            return $url;
+        }
+
+    }
+    else {
+        return false;
+    }
+}
