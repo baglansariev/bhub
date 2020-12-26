@@ -136,6 +136,9 @@
 					<div class="place-name-second-pages">
 						<h2 class="place-name-second-pages-title">@if(isset($title)) {{ $title }} @endif</h2>
 						{{ Request::is('all') }}
+						@if (hasRoutePart('startup'))
+						    <span class="d-block mt-3 mb-3">Количество инвесторов: {{ $investors_count }}</span>
+						@endif
 					</div>
 				</div>
 			@endif

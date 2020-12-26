@@ -30,6 +30,7 @@
                         </span>
                     @enderror
                 </div>
+
                 <div class="form-group">
                     <input class="form-control form-control-lg @error('password') is-invalid @enderror" id="password" type="password" name="password" required placeholder="Пароль">
 
@@ -42,6 +43,18 @@
                 <div class="form-group">
                     <input id="password-confirm" class="form-control form-control-lg" required name="password_confirmation" type="password"  placeholder="Подтверждение пароля">
                 </div>
+                @if (isset($roles) && $roles->count())
+                    <div class="form-group">
+                        <span>Кто вы?</span>
+                        @foreach($roles as $role)
+                            <div class="form-check">
+                                <label class="custom-control custom-radio">
+                                    <input type="radio" name="role_id" class="custom-control-input" @if($role->id == 7) checked @endif value="{{ $role->id }}"><span class="custom-control-label">{{ $role->name }}</span>
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
                 <div class="form-group pt-2">
                     <button class="btn btn-block btn-primary" type="submit">Зарегистрироваться</button>
                 </div>
