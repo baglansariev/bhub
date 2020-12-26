@@ -23,7 +23,7 @@ class FrontController extends Controller
 	{
 		$data = [
 		    'title' => 'Главная',
-            'startup_categories' => StartupCategory::all(),
+            'latest_post' => BusinessNews::orderBy('id', 'DESC')->first(),
         ];
 
 		return view("frontend.index", $data);
@@ -32,11 +32,12 @@ class FrontController extends Controller
 	public function businessNews ()
 	{
 
-		$news = BusinessNews::take(3)->get();
-		$latestPost = BusinessNews::orderBy('id', 'DESC')->first();
+		$news = BusinessNews::paginate(15);
+		$latestPosts = BusinessNews::orderBy('id', 'DESC')->limit(4)->get();
+
         $data = [
             'title' => "Бизнес новости",
-            'latestPost' => $latestPost,
+            'latestPosts' => $latestPosts,
             'news' => $news
         ];
 

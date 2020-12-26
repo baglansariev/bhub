@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Auth;
 
 function getUserImageDir() {
     return 'img/user/';
@@ -21,12 +22,13 @@ function removeDir($dir) {
 }
 
 function devPrint($data, $options = []) {
+    $options['dump_func'] = 'print_r';
     echo '<pre>';
 
     if (isset($options['loop']) && $options['loop'] === true) {
         if (isset($options['key_val']) && $options['key_val'] === true) {
             foreach ($data as $key => $val) {
-                echo $key . ' => ' . $val;
+                $options['dump_func']($key . ' => ' . $val);
                 if (isset($options['br']) && $options['br'] === true) {
                     echo '<br>';
                 }
@@ -34,7 +36,7 @@ function devPrint($data, $options = []) {
         }
         else {
             foreach ($data as $item) {
-                echo $item;
+                $options['dump_func']($item);
                 if (isset($options['br']) && $options['br'] === true) {
                     echo '<br>';
                 }
@@ -42,12 +44,7 @@ function devPrint($data, $options = []) {
         }
     }
     else {
-        if (isset($options['dump_func']) && $options['dump_func']) {
-            $options['dump_func']($data);
-        }
-        else {
-            print_r($data);
-        }
+        $options['dump_func']($data);
     }
 
     if (isset($options['exit']) && $options['exit'] === true) {
@@ -74,4 +71,8 @@ function isDefaultImage($path) {
     ];
 
     return in_array($path, $default_images);
+}
+
+function currentUser() {
+    return Auth::user();
 }

@@ -11,14 +11,15 @@
 			<div class="col-md-6">
 				<div class="photo">
 					<h3 class="photo-title">фото</h1>
-						<a href="{{url('business-news/' .  $latestPost->slug)}}">
-							<img src="{{asset('img/business-news/')}}/{{$latestPost->img }}" align="{{$latestPost->img}}" title="{{ $latestPost->title }}">
+						<a href="{{url('business-news/' .  $latestPosts[0]->slug)}}">
+							<img src="{{asset('img/business-news/')}}/{{$latestPosts[0]->img }}" align="{{$latestPosts[0]->img}}" title="{{ $latestPosts[0]->title }}">
 						</a>
 						<!-- <img src="https://via.placeholder.com/675x462"> -->
-					</div>
+					</h3>
+				</div>
 					<div class="new-content">
 						<p class="new-content-text">
-							{{ $latestPost->body }}
+							{{ $latestPosts[0]->body }}
 						</p>
 					</div>
 					<div class="advertising">
@@ -27,7 +28,10 @@
 				</div>
 				<div class="col-md-5 offset-md-1">
 					<div class="row">
-						@foreach ( $news as $item )
+						@foreach ( $latestPosts as $item )
+							@if ($loop->iteration == 1)
+							    @continue
+							@endif
 						<div class="col-md-12">
 							<a href="{{ url('business-news/' .  $item->slug) }}" title="Подробнее об '{{$item->title}}'" class="right-blocks-wrapper-link">
 								<div class="right-blocks">
@@ -37,30 +41,7 @@
 							</a>
 						</div>
 						@endforeach
-						<!-- <div class="col-md-12">
-							<a href="/news-on-click" title="Подробнее" class="right-blocks-wrapper-link">
-								<div class="right-blocks">
-									<img src="https://via.placeholder.com/405x233" alt="">
-									<h5 class="news-details-title">BHub бизнес платформа в Шымкенте</h5>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-12">
-							<a href="/news-on-click" title="Подробнее" class="right-blocks-wrapper-link">
-								<div class="right-blocks">
-									<img src="https://via.placeholder.com/405x233" alt="">
-									<h5 class="news-details-title">BHub бизнес платформа в Казахстане</h5>
-								</div>
-							</a>
-						</div>			
-						<div class="col-md-12">
-							<a href="/news-on-click" title="Подробнее" class="right-blocks-wrapper-link">
-								<div class="right-blocks">
-									<img src="https://via.placeholder.com/405x233" alt="">
-									<h5 class="news-details-title">Новости мирового бизнеса</h5>
-								</div>
-							</a>
-						</div> -->
+
 					</div>
 				</div>
 			</div>
@@ -72,31 +53,13 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4">
-					<div class="three-blocks">
-						
+				@foreach ($news as $post)
+					<div class="col-md-4">
+						<a href="{{ url('business-news/' . $post->slug) }}" class="three-blocks" style="background-image: url({{ 'img/business-news/' . $post->img }})">
+							<h3>{{ $post->title }}</h3>
+						</a>
 					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="three-blocks">
-						
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="three-blocks">
-						
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="three-blocks">
-						
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="three-blocks">
-						
-					</div>
-				</div>
+				@endforeach
 				<div class="col-md-4">
 					<div class="three-blocks">
 						<h4 class="three-blocks-title">реклама</h4>

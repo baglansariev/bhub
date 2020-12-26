@@ -110,4 +110,12 @@ class BusinessNewsController extends Controller
         return redirect()->route('business-news.index')
                         ->with('success','Данные успешно удалены');
     }
+
+    public function mainNews()
+    {
+        $data = [
+            'title' => 'Главные новости',
+        ];
+        return view('admin.business-news.main-news', $data);
+    }
 }

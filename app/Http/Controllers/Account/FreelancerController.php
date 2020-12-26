@@ -272,7 +272,7 @@ class FreelancerController extends Controller
                 }
             }
 
-            if (file_exists($freelancer->img)) {
+            if (file_exists($freelancer->img) && !isDefaultImage($freelancer->img)) {
                 unlink($freelancer->img);
             }
 

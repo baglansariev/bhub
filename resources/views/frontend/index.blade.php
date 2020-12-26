@@ -13,7 +13,9 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="video">
-						<h1>ВИДЕО</h1>
+						<video style="width: 100%; height: 100%;" controls="controls" poster="{{ asset('img/defaults/video_poster.jpg') }}">
+							<source src="{{ asset('videos/bhub_video.mp4') }}">
+						</video>
 					</div>
 					<div class="finds-wrap">
 						<div class="row">
@@ -29,11 +31,9 @@
 				<!-- <div class="col-md-1"></div> -->
 				<div class="col-md-6">
 					<div class="news">
-						<h1 class="news-title">News</h1>
+						<h1 class="news-title">Новости</h1>
 						<div class="news-inner">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem nobis reprehenderit commodi ut itaque dolores deleniti et libero, eveniet temporibus dignissimos non magnam tempore sint sed, facilis soluta quia quod.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem nobis reprehenderit commodi ut itaque dolores deleniti et libero, eveniet temporibus dignissimos non magnam tempore sint sed, facilis soluta quia quod.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem nobis reprehenderit commodi ut itaque dolores deleniti et libero, eveniet temporibus dignissimos non magnam tempore sint sed, facilis soluta quia quod.
+							{{ $latest_post->body }}
 						</div>
 					</div>
 				</div>

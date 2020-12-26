@@ -87,10 +87,22 @@
 }
 
 .three-blocks {
+	display: flex;
 	background-color: #dda426;
+	background-size: cover;
+	background-position: center;
 	padding: 21px;
 	margin-top: 61px;
 	height: 280px;
+}
+.three-blocks:hover {
+	text-decoration: none;
+	color: #dda426;
+}
+.three-blocks h3 {
+	text-decoration: none;
+	color: #dda426;
+	font-weight: bold;
 }
 
 .three-blocks-title {

@@ -55,8 +55,9 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
         Route::get('/startup-pending', 'Admin\StartupController@pending')->name('startup.pending');
         Route::resource('/startup-category', 'Admin\StartupCategoryController');
 
+        Route::get('/main-news', 'Admin\BusinessNewsController@mainNews')->name('main-news');
         Route::resource('/business-news', 'Admin\BusinessNewsController');
-        Route::resource('/freelance-categories', 'Admin\FreelanceCategories');	
+        Route::resource('/freelance-categories', 'Admin\FreelanceCategories');
         Route::resource('/freelancers', 'Admin\FreelancerController');
         Route::resource('/portfolios', 'Admin\PortfolioController');
         Route::resource('/quiz', 'Admin\QuizController');

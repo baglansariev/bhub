@@ -3,6 +3,7 @@
 
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/news.css') }}">
+@endsection
 
 @section('content')
 <section class="news-on-click-wrapper">
