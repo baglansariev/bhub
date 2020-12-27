@@ -78,7 +78,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('account')->group(function () {
 
-        Route::get('/', 'AccountController@index')->name('account');
+        Route::get('/{user_id?}', 'AccountController@index')->name('account');
 
         Route::prefix('startup')->group(function () {
             Route::get('/', 'Account\StartupController@index')->name('account.startup.index');

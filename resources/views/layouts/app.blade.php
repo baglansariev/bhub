@@ -115,6 +115,14 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        <a href="{{ route('account', Auth::user()->id) }}"><b>Личные данные</b></a>
+                                        <ul class="mt-2">
+                                            <li class="dropdown show">
+                                                <a class="dropdown-toggle" href="#" role="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Редактировать
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
