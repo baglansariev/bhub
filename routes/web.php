@@ -82,6 +82,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/personal-data/{user_id?}', 'AccountController@pesonalData')->name('account.personalData');
         Route::get('/personal/edit/{user_id}/{user_name?}', 'AccountController@personalDataEdit')->name('account.personalDataEdit');
+        Route::put('personal-data/update/{user_id}', 'AccountController@personalDataUpdate')->name('account.personalDataUpdate');
 
         Route::prefix('startup')->group(function () {
             Route::get('/', 'Account\StartupController@index')->name('account.startup.index');
