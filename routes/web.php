@@ -80,6 +80,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/{user_id?}', 'AccountController@index')->name('account');
 
+        Route::get('/personal-data/{user_id?}', 'AccountController@pesonalData')->name('account.personalData');
+        Route::get('/personal/edit/{user_id}/{user_name?}', 'AccountController@personalDataEdit')->name('account.personalDataEdit');
+
         Route::prefix('startup')->group(function () {
             Route::get('/', 'Account\StartupController@index')->name('account.startup.index');
             Route::get('/pending', 'Account\StartupController@pending')->name('account.startup.pending');

@@ -115,10 +115,10 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                        <a href="{{ route('account', Auth::user()->id) }}"><b>Личные данные</b></a>
+                                        <a href="{{ route('account.personalData', Auth::user()->id) }}"><b>Личные данные</b></a>
                                         <ul class="mt-2">
                                             <li class="dropdown show">
-                                                <a class="dropdown-toggle" href="#" role="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a class="" href="{{ route('account.personalDataEdit', ['user_id' => Auth::user()->id, 'user_name' => Auth::user()->name]) }}">
                                                     Редактировать
                                                 </a>
                                             </li>
@@ -132,7 +132,7 @@
                         <div class="main-content">
                             <div class="card">
                                 <div class="card-header">
-                                    <span>{{ $card_title ?? 'Панель управления' }}</span>
+                                    <a href="{{route('account')}}"><span>{{ $card_title ?? 'Панель управления' }}</span></a>
                                 </div>
                                 <div class="card-body">
                                     @yield('content')

@@ -7,14 +7,25 @@ use App\User;
 
 class AccountController extends Controller
 {
-    public function index(Request $request, $user_id)
+    public function index()
     {
-    	$user = User::findOrFail($user_id);
-        return view('account.index', compact('user'));
+    	return view('account.index');
     }
 
-    public function edit(Request $request, $id)
+    public function pesonalData(Request $request, $user_id)
     {
+    	$user = User::findOrFail($user_id);
+    	return view('account.personal-data.index', $user);	
+    }
 
+    public function personalDataEdit(Request $request, $user_id)
+    {
+    		$user = User::findOrFail($user_id);
+    		$title = "Изменение личных данных " . "<strong>" . $user->name . "</strong>";
+    		$data = [
+    			'title' => $title,
+    			'user' => $user
+    		];
+    		return view('account.personal-data.edit', $data);
     }
 }
