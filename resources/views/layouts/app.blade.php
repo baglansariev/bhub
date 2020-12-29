@@ -115,7 +115,7 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                        <a href="{{ route('account.personalData', Auth::user()->id) }}"><b>Личные данные</b></a>
+                                        <a href="{{ route('account.personalData', ['user_id' => Auth::user()->id, 'user_name' => Auth::user()->name]) }}"><b>Личные данные</b></a>
                                         <ul class="mt-2">
                                             <li class="dropdown show">
                                                 <a class="" href="{{ route('account.personalDataEdit', ['user_id' => Auth::user()->id, 'user_name' => Auth::user()->name]) }}">

@@ -1,6 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="alerts mt-3 mb-3">
+	@if (session()->has('msg_success'))
+	<div class="card-alert alert alert-success alert-dismissible fade show" role="alert">
+		{!! session()->get('msg_success') !!}
+		<a href="#" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">×</span>
+		</a>
+	</div>
+	@endif
+
+	@if (session()->has('msg_error'))
+	<div class="card-alert alert alert-danger alert-dismissible fade show" role="alert">
+		{{ session()->get('msg_error') }}
+		<a href="#" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">×</span>
+		</a>
+	</div>
+	@endif
+</div>
 <form action="{{ route('account.personalDataUpdate', $user->id) }}" method="post" enctype="multipart/form-data">
 	@csrf
 	<input type="hidden" name="_method" value="PUT">
@@ -14,7 +33,7 @@
 		<div class="col-md-6">
 			<div class="form-group">
 				<label for="userPhone">Телефон</label>
-				<input type="text" id="userPhone" class="form-control" name="phone" value="{{ $user->phone ?? '' }}">
+				<input type="phone" id="userPhone" class="form-control" name="phone" value="{{ $user->phone ?? '' }}">
 			</div>
 		</div>
 	</div>

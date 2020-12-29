@@ -24,9 +24,10 @@
 	<thead>
 		<tr>
 			<th scope="col">Ф.И.О</th>
+			<th scope="col">Телефон</th>
 			<th scope="col">Email</th>
 			<th scope="col">Дата создания</th>
-			<th scope="col">Действие</th>
+			<th scope="col">Аватар</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -34,9 +35,10 @@
 		@if (isset($user) && !empty($user))
 		<tr>
 			<td>{{ $user->name }}</td>
+			<td>{{ $user->phone }}</td>
 			<td>{{ $user->email }}</td>
 			<td>{{ $user->created_at }}</td>
-			<td>Редактировать</td>
+			<td><img src="{{ asset('/') . $user->image }}" width="50" height="50" style="max-width: 100%; object-fit: contain;"></td>
 		</tr>
 		@endif
 	</tbody>
