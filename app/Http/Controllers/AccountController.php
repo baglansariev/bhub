@@ -18,7 +18,7 @@ class AccountController extends Controller
     {
     	$user = User::findOrFail($user_id);
     	$data = [
-    		'title' => "Пользовател BHub -" . $user->name,
+    		'title' => "BHub пользователь - " . $user->name,
     		'user' => $user
     	];
     	return view('account.personal-data.index', $data);	
@@ -27,7 +27,7 @@ class AccountController extends Controller
     public function personalDataEdit(Request $request, $user_id)
     {
     		$user = User::findOrFail($user_id);
-    		$title = "Изменение личных данных " . "<strong>" . $user->name . "</strong>";
+    		$title = "Изменение личных данных - {$user->name}";
     		$data = [
     			'title' => $title,
     			'user' => $user
