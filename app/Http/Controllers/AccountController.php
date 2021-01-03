@@ -19,7 +19,7 @@ class AccountController extends Controller
     	$user = User::findOrFail($user_id);
     	$data = [
     		'title' => "BHub пользователь - " . $user->name,
-    		'user' => $user
+    		'user' => $user,
     	];
     	return view('account.personal-data.index', $data);	
     }

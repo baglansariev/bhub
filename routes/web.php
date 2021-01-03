@@ -40,7 +40,7 @@ Route::prefix('freelancers')->group(function () {
 
 // Backend area
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'staff_roles'])->group(function () {
     Route::prefix('admin')->group(function () {

@@ -20,6 +20,18 @@
 	</div>
 	@endif
 </div>
+
+@if (isset($user) && !empty($user) && is_null($user->email_verified_at))
+<div class="alert alert-warning" role="alert">
+  Ваш email {{ $user->email }} не подтвержден. На Ваш указанный при регистрации email была отправлена ссылка для подтверждения.
+  <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+  	@csrf
+  	<button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('Кликните здесь что бы отпавить повторно ссылку на подтверждение') }}</button>.
+  </form>
+</div>
+@endif
+
+
 <form action="{{ route('account.personalDataUpdate', $user->id) }}" method="post" enctype="multipart/form-data">
 	@csrf
 	<input type="hidden" name="_method" value="PUT">

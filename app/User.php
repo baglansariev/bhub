@@ -13,7 +13,7 @@ use App\Models\Like;
 use App\Models\Startup;
 use App\Models\QuizUserAnswer;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, Followable;
 
