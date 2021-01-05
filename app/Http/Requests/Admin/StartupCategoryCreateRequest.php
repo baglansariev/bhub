@@ -26,6 +26,7 @@ class StartupCategoryCreateRequest extends FormRequest
         return [
             'name' => 'required|max:225|string',
             'code' => 'required|max:225|string|unique:startup_categories',
+            'pricing_id' => 'integer',
         ];
     }
 

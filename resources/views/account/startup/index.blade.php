@@ -27,6 +27,7 @@
             <th scope="col">Заголовок</th>
             <th scope="col">Телефон</th>
             <th scope="col">Цена</th>
+            <th scope="col">Оплата</th>
             <th scope="col">Действие</th>
         </tr>
         </thead>
@@ -40,6 +41,13 @@
                     </td>
                     <td>{{ $startup->phone }}</td>
                     <td>{{ $startup->price }}</td>
+                    <td>
+                        @if (isset($startup->paid) && $startup->paid == 1)
+                            Оплачен
+                        @else
+                            Не оплачен
+                        @endif
+                    </td>
                     <td>
                         <div class="dropdown show">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink_{{ $loop->iteration }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

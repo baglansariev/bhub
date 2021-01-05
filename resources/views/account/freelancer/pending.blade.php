@@ -26,7 +26,7 @@
             <th scope="col">#</th>
             <th scope="col">Ф.И.О</th>
             <th scope="col">Позиция</th>
-            <th scope="col">Категория</th>
+            <th scope="col">Оплата</th>
             <th scope="col">Дата создания</th>
             <th scope="col">Действие</th>
         </tr>
@@ -40,7 +40,13 @@
                         <a href="{{ route('account.freelancer.edit', $freelancer->id) }}">{{ $freelancer->name }}</a>
                     </td>
                     <td>{{ $freelancer->position }}</td>
-                    <td>{{ $freelancer->freelanceCategory->title ?? 'Без категории' }}</td>
+                    <td>
+                        @if (isset($freelancer->paid) && $freelancer->paid == 1)
+                            Оплачен
+                        @else
+                            Не оплачен
+                        @endif
+                    </td>
                     <td>{{ $freelancer->created_at }}</td>
                     <td>
                         <div class="dropdown show">

@@ -96,7 +96,20 @@ class StartupController extends Controller
             $request->session()->flash('msg_error', 'Ошибка попробуйте позже!');
         }
 
+        if (isset($startup->category->pricing)) {
+            return redirect()->route('front-startup.pricing', $startup->id);
+        }
         return redirect(route('front-startup.index'));
 
+    }
+
+    public function pricing($id)
+    {
+        $starup = Startup::findOrFail($id);
+        $data = [
+            'startup' => $starup,
+            'pricing' => $starup->category->pricing,
+        ];
+        return view('frontend.pricing', $data);
     }
 }

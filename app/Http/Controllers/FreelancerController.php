@@ -139,6 +139,9 @@ class FreelancerController extends Controller
             $request->session()->flash('msg_error', 'Ошибка, попробуйте позже!');
         }
 
+        if (isset($freelancer->freelanceCategory->pricing)) {
+            return redirect()->route('front-freelancer.pricing', $freelancer->id);
+        }
         return redirect()->route('front.freelancer.index');
     }
 
@@ -193,5 +196,15 @@ class FreelancerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function pricing($id)
+    {
+        $freelancer = Freelancer::findOrFail($id);
+        $data = [
+            'freelancer' => $freelancer,
+            'pricing' => $freelancer->freelanceCategory->pricing,
+        ];
+        return view('frontend.pricing', $data);
     }
 }

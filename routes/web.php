@@ -36,6 +36,12 @@ Route::prefix('freelancers')->group(function () {
     Route::get('show/{id}', 'FreelancerController@show')->name('front.freelancer.show');
     Route::get('create', 'FreelancerController@create')->name('front.freelancer.create');
     Route::post('store', 'FreelancerController@store')->name('front.freelancer.store');
+    Route::get('pricing/{id}', 'FreelancerController@pricing')->name('front-freelancer.pricing');
+});
+
+Route::prefix('pricing')->group(function() {
+    Route::post('startup/pay', 'PricingController@startup')->name('pricing.startup.pay');
+    Route::post('freelancer/pay', 'PricingController@freelancer')->name('pricing.freelancer.pay');
 });
 
 // Backend area
@@ -62,6 +68,8 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
         Route::resource('/portfolios', 'Admin\PortfolioController');
         Route::resource('/quiz', 'Admin\QuizController');
         Route::resource('/quiz-answers', 'Admin\QuizAnswersController');
+
+        Route::resource('pricing', 'Admin\PricingController');
     });
 });
 Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");
@@ -72,6 +80,7 @@ Route::prefix('startup')->group(function() {
     Route::get('create-new', 'StartupController@create')->name('front-startup.create');
     Route::post('', 'StartupController@store')->name('front-startup.store');
     Route::get('show/{id}', 'StartupController@show')->name('front-startup.show');
+    Route::get('pricing/{id}', 'StartupController@pricing')->name('front-startup.pricing');
 });
 
 Route::middleware('auth')->group(function () {

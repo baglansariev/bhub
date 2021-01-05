@@ -10,3 +10,10 @@
 	font-family: 'Circular Std Medium';
 	font-size: 14px;
 }
+.pr-plan {
+	border: 1px solid #ebebeb;
+	margin-bottom: 30px;
+}
+.plan-advantage {
+	margin-bottom: 10px;
+}

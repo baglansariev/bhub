@@ -10,7 +10,7 @@
                 @csrf
                 <input type="hidden" name="_method" value="PUT">
                 <div class="form-row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="inputName">Название</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="inputName" placeholder="Название" value="{{ $category->name }}" required>
@@ -22,7 +22,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="inputUserCode">Код</label>
                             <input type="text" name="code" class="form-control @error('code') is-invalid @enderror" id="inputUserCode" placeholder="Код" value="{{ $category->code }}" required>
@@ -31,6 +31,19 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="inputUserPricing">Тариф</label>
+                            <select name="pricing_id" id="inputUserPricing" class="form-control">
+                                <option value="0">Нет</option>
+                                @if (isset($pricings) && $pricings->count())
+                                    @foreach($pricings as $pricing)
+                                        <option value="{{ $pricing->id }}" @if($category->pricing_id == $pricing->id) selected @endif>{{ $pricing->title }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
                         </div>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\FreelanceCategory;
 use Illuminate\Http\Request;
+use App\Models\Pricing;
 
 class FreelanceCategories extends Controller
 {
@@ -15,9 +16,13 @@ class FreelanceCategories extends Controller
      */
     public function index()
     {
-        $categories = FreelanceCategory::all();
-        //dd($categories);
-        return view('admin.freelance-categories.index', compact('categories'));
+        $data = [
+            'title' => 'Все категории',
+            'categories' => FreelanceCategory::all(),
+            'pricings' => Pricing::all(),
+        ];
+
+        return view('admin.freelance-categories.index', $data);
     }
 
     /**
@@ -39,7 +44,8 @@ class FreelanceCategories extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required'
+            'title' => 'required',
+            'pricing_id' => 'integer'
         ]);
         //dd($request->all());
         FreelanceCategory::create($request->all());
@@ -69,10 +75,15 @@ class FreelanceCategories extends Controller
      * @param  \App\Freelance  $freelance
      * @return \Illuminate\Http\Response
      */
-    public function edit(FreelanceCategory $FreelanceCategory)
+    public function edit($id)
     {
-        //dd($FreelanceCategory);
-        return view('admin.freelance-categories.edit', compact('FreelanceCategory'));
+        $category = FreelanceCategory::findOrFail($id);
+        $data = [
+            'title' => 'Изменение категории ' . $category->title,
+            'category' => $category,
+            'pricings' => Pricing::all(),
+        ];
+        return view('admin.freelance-categories.edit', $data);
     }
 
     /**
@@ -86,6 +97,7 @@ class FreelanceCategories extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'pricing_id' => 'integer',
         ]);
   
         $FreelanceCategory->update($request->all());

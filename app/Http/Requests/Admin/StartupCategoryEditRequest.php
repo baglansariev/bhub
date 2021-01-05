@@ -26,6 +26,7 @@ class StartupCategoryEditRequest extends FormRequest
         return [
             'name' => 'required|max:225|string',
             'code' => 'required|max:225|string|unique:startup_categories,code,' . $this->id,
+            'pricing_id' => 'integer',
         ];
     }
 

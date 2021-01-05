@@ -11,7 +11,7 @@
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link active" href="{{ route('admin') }}">
-                        <i class="fa fa-fw fa-user-circle"></i>
+                        <i class="fas fa-tachometer-alt"></i>
                         <span class="link-title">Панель управления</span>
                     </a>
                 </li>
@@ -19,7 +19,7 @@
                     <li class="nav-item">
 
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-3">
-                            <i class="fa fa-fw fa-rocket mr-1"></i>
+                            <i class="fas fa-newspaper mr-1"></i>
                             <span class="link-title">Бизнес новости</span>
                         </a>
                         <div id="submenu-2" class="collapse submenu" style="">
@@ -35,7 +35,7 @@
 
                     </li>
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">
-                        <i class="fa fa-fw fa-rocket mr-1"></i>
+                        <i class="fa fa-fw fa-user-circle mr-1"></i>
                         <span class="link-title">Фрилансеры</span>
                     </a>
                     <div id="submenu-3" class="collapse submenu" style="">
@@ -150,6 +150,12 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pricing.index') }}">
+                        <i class="fas fa-tags mr-1"></i>
+                        <span class="link-title">Тарифы</span>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6">

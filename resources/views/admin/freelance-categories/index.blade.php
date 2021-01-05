@@ -83,12 +83,25 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="form-row">
+					<div class="col-sm-12">
 						<div class="form-group">
-							<strong>Наименование:</strong>
-							<input type="text" name="title" class="form-control" placeholder="Заголовок">
+							<label for="inputTitle">Наименование:</label>
+							<input id="inputTitle" type="text" name="title" class="form-control" placeholder="Заголовок">
 						</div>
+					</div>
+					<div class="col-sm-12">
+						@if (isset($pricings) && $pricings->count())
+							<div class="form-group">
+								<label for="selectPricing">Тариф:</label>
+								<select name="pricing_id" id="selectPricing" class="form-control">
+									<option value="0">Нет</option>
+									@foreach($pricings as $pricing)
+										<option value="{{ $pricing->id }}">{{ $pricing->title }}</option>
+									@endforeach
+								</select>
+							</div>
+						@endif
 					</div>
 				</div>
 			</div>

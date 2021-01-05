@@ -9,7 +9,7 @@
             <form id="userForm" method="post" enctype="multipart/form-data" action="{{ route('startup-category.store') }}">
                 @csrf
                 <div class="form-row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="inputName">Название</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="inputName" placeholder="Название" value="{{ old('name') }}" required>
@@ -20,7 +20,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="inputUserCode">Код</label>
                             <input type="text" name="code" class="form-control @error('code') is-invalid @enderror" id="inputUserCode" placeholder="Код" value="{{ old('code') }}" required>
@@ -29,6 +29,19 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="inputUserPricing">Тариф</label>
+                            <select name="pricing_id" id="inputUserPricing" class="form-control">
+                                <option value="0">Нет</option>
+                                @if (isset($pricings) && $pricings->count())
+                                    @foreach($pricings as $pricing)
+                                        <option value="{{ $pricing->id }}">{{ $pricing->title }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
                         </div>
                     </div>
                 </div>

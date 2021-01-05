@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\StartupCategoryCreateRequest;
 use App\Http\Requests\Admin\StartupCategoryEditRequest;
 use App\Models\StartupCategory;
 use Illuminate\Http\Request;
+use App\Models\Pricing;
 
 class StartupCategoryController extends Controller
 {
@@ -33,6 +34,7 @@ class StartupCategoryController extends Controller
     {
         $data = [
             'title' => 'Создание новой категории',
+            'pricings' => Pricing::all(),
         ];
 
         return view('admin.startup-category.create', $data);
@@ -81,6 +83,7 @@ class StartupCategoryController extends Controller
         $data = [
             'title' => 'Изменение категории стартапа',
             'category' => $category,
+            'pricings' => Pricing::all(),
         ];
 
         return view('admin.startup-category.edit', $data);
