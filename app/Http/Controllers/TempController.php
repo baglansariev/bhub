@@ -14,7 +14,7 @@ class TempController extends Controller
      */
     public function index()
     {
-
+        echo env('MAIL_FROM_ADDRESS');
     }
 
     /**
