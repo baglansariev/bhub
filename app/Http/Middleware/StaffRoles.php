@@ -17,9 +17,8 @@ class StaffRoles
      */
     public function handle($request, Closure $next)
     {
-        $role = new Role();
-
-        if (!in_array(Auth::user()->role->code, $role->staffRoles())) {
+        $see_admin = Auth::user()->role->permissions()->where('code', 'see_admin_panel')->get();
+        if (!$see_admin->count()) {
             return redirect('/');
         }
 

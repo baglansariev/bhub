@@ -33,16 +33,16 @@ class Role extends Model
 
     public function isSystemRole()
     {
-        return in_array($this->code, $this->system_roles);
+        return isset($this->is_system_role) && $this->is_system_role == 1;
     }
 
-    public function staffRoles()
+    public function isAdmin()
     {
-        return [
-            'super_admin',
-            'admin',
-            'moderator',
-            'journalist',
-        ];
+        return $this->code === 'super_admin';
+    }
+
+    public function isStaffRole()
+    {
+        return isset($this->is_staff) && $this->is_staff == 1;
     }
 }

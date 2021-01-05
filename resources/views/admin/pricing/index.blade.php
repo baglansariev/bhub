@@ -8,7 +8,9 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5>Список всех тарифов</h5>
                     <div class="card-actions">
-                        <a href="{{ route('pricing.create') }}" class="btn btn-success">Добавить тариф</a>
+                        @if (canDo('add_pricings'))
+                            <a href="{{ route('pricing.create') }}" class="btn btn-success">Добавить тариф</a>
+                        @endif
                     </div>
                 </div>
 
@@ -48,12 +50,16 @@
                                         <td>{{ $pricing->title }}</td>
                                         <td>{{ $pricing->created_at }}</td>
                                         <td class="d-flex">
-                                            <a class="btn btn-primary mr-1" href="{{ route('pricing.edit', $pricing->id) }}"><i class="far fa-edit"></i></a>
-                                            <form action="{{ route('pricing.destroy', $pricing->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                                            </form>
+                                            @if (canDo('edit_pricings'))
+                                                <a class="btn btn-primary mr-1" href="{{ route('pricing.edit', $pricing->id) }}"><i class="far fa-edit"></i></a>
+                                            @endif
+                                            @if (canDo('delete_pricings'))
+                                                    <form action="{{ route('pricing.destroy', $pricing->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                                    </form>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

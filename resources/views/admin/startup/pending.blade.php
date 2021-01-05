@@ -61,16 +61,22 @@
                                                     Действия
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_{{ $loop->iteration }}">
-                                                    <form action="{{ route('startup.approve', $startup->id) }}" method="post">
-                                                        @csrf
-                                                        <button type="submit" class="dropdown-item">Подтвердить</button>
-                                                    </form>
-                                                    <a href="{{ route('startup.edit', $startup->id) }}" class="dropdown-item">Изменить</a>
-                                                    <form action="{{ route('startup.destroy', $startup->id) }}" method="post">
-                                                        @csrf
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        <button type="submit" class="dropdown-item">Удалить</button>
-                                                    </form>
+                                                    @if (canDo('add_startups'))
+                                                        <form action="{{ route('startup.approve', $startup->id) }}" method="post">
+                                                            @csrf
+                                                            <button type="submit" class="dropdown-item">Подтвердить</button>
+                                                        </form>
+                                                    @endif
+                                                    @if (canDo('edit_startups'))
+                                                        <a href="{{ route('startup.edit', $startup->id) }}" class="dropdown-item">Изменить</a>
+                                                    @endif
+                                                    @if (canDo('delete_startups'))
+                                                            <form action="{{ route('startup.destroy', $startup->id) }}" method="post">
+                                                                @csrf
+                                                                <input type="hidden" name="_method" value="DELETE">
+                                                                <button type="submit" class="dropdown-item">Удалить</button>
+                                                            </form>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </td>

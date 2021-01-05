@@ -14,7 +14,7 @@ class AddPhoneItemToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('phone')->after('name');
+            $table->string('phone')->after('name')->nullable();
         });
     }
 

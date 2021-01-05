@@ -10,7 +10,9 @@
 					<h2>Ответы</h2>
 				</div>
 				<div class="pull-right">
-					<a class="btn btn-success" href="{{ route('quiz-answers.create') }}"> Добавить ответ</a>
+					@if (canDo('add_questions'))
+						<a class="btn btn-success" href="{{ route('quiz-answers.create') }}"> Добавить ответ</a>
+					@endif
 				</div>
 			</div>
 			<div class="card-body">
@@ -63,12 +65,16 @@
 													<a href="#">
 														<form action="{{ route('quiz-answers.destroy',$answer->id) }}" method="POST">
 
-															<a class="btn btn-primary" href="{{ route('quiz-answers.edit',$answer->id) }}"><i class="far fa-edit"></i></a>
+															@if (canDo('edit_questions'))
+																<a class="btn btn-primary" href="{{ route('quiz-answers.edit',$answer->id) }}"><i class="far fa-edit"></i></a>
+															@endif
 
 															@csrf
 															@method('DELETE')
 
-															<button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+															@if (canDo('delete_questions'))
+																	<button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+															@endif
 														</form>
 													</a>
 												</li>

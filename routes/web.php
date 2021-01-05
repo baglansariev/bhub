@@ -87,11 +87,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('account')->group(function () {
 
-        Route::get('/{user_id?}', 'AccountController@index')->name('account');
-
-        Route::get('/personal-data/{user_id?}/{user_name?}', 'AccountController@pesonalData')->name('account.personalData');
-        Route::get('/personal/edit/{user_id}/{user_name?}', 'AccountController@personalDataEdit')->name('account.personalDataEdit');
-        Route::put('personal-data/update/{user_id}', 'AccountController@personalDataUpdate')->name('account.personalDataUpdate');
+        Route::get('/{user_id?}', 'AccountController@index')->where('user_id', '[0-9]*')->name('account');
 
         Route::prefix('startup')->group(function () {
             Route::get('/', 'Account\StartupController@index')->name('account.startup.index');
@@ -110,6 +106,10 @@ Route::middleware('auth')->group(function () {
             Route::put('/update/{id}', 'Account\FreelancerController@update')->name('account.freelancer.update');
             Route::delete('/destroy/{id}', 'Account\FreelancerController@destroy')->name('account.freelancer.destroy');
         });
+
+        Route::get('/personal-data/{user_id?}/{user_name?}', 'AccountController@pesonalData')->name('account.personalData');
+        Route::get('/personal/edit/{user_id}/{user_name?}', 'AccountController@personalDataEdit')->name('account.personalDataEdit');
+        Route::put('personal-data/update/{user_id}', 'AccountController@personalDataUpdate')->name('account.personalDataUpdate');
 
 
     });

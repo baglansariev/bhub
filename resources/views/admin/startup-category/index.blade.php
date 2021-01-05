@@ -9,7 +9,9 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5>Список всех категорий стартапов</h5>
                     <div class="card-actions">
-                        <a href="{{ route('startup-category.create') }}" class="btn btn-success">Добавить</a>
+                        @if (canDo('add_startup_categories'))
+                            <a href="{{ route('startup-category.create') }}" class="btn btn-success">Добавить</a>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">
@@ -48,18 +50,26 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <a href="{{ route('startup.edit', $category->id) }}">{{ $category->name }}</a>
+                                            @if (canDo('edit_startup_categories'))
+                                                <a href="{{ route('startup.edit', $category->id) }}">{{ $category->name }}</a>
+                                            @else
+                                                <span>{{ $category->name }}</span>
+                                            @endif
                                         </td>
                                         <td>{{ $category->code }}</td>
                                         <td>{{ $category->startups->count() }}</td>
                                         <td>{{ $category->created_at }}</td>
                                         <td class="d-flex">
-                                            <a href="{{ route('startup-category.edit', $category->id) }}" class="btn btn-warning mr-1">Изменить</a>
-                                            <form action="{{ route('startup-category.destroy', $category->id) }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-danger">Удалить</button>
-                                            </form>
+                                            @if (canDo('edit_startup_categories'))
+                                                <a href="{{ route('startup-category.edit', $category->id) }}" class="btn btn-warning mr-1">Изменить</a>
+                                            @endif
+                                            @if (canDo('delete_startup_categories'))
+                                                    <form action="{{ route('startup-category.destroy', $category->id) }}" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <button type="submit" class="btn btn-danger">Удалить</button>
+                                                    </form>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

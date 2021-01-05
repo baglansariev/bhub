@@ -17,6 +17,7 @@ class StartupController extends Controller
      */
     public function index()
     {
+        if (!canDo('see_startups')) return redirect(url('/admin'));
         $data = [
             'title' => 'Все стартапы',
             'startups' => Startup::whereNotIn('status', [0, 2])->paginate(25),
@@ -27,6 +28,7 @@ class StartupController extends Controller
 
     public function pending()
     {
+        if (!canDo('see_startups')) return redirect(url('/admin'));
         $data = [
             'title' => 'Ожидающие',
             'startups' => Startup::where('status', 0)->paginate(25),
@@ -41,6 +43,7 @@ class StartupController extends Controller
      */
     public function create()
     {
+        if (!canDo('add_startups')) return redirect(url('/admin'));
         $data = [
             'title' => 'Создать новый стартап',
             'categories' => StartupCategory::all(),
@@ -100,6 +103,7 @@ class StartupController extends Controller
      */
     public function edit($id)
     {
+        if (!canDo('edit_startups')) return redirect(url('/admin'));
         $startup = Startup::findOrFail($id);
 
         $data = [
@@ -160,6 +164,7 @@ class StartupController extends Controller
 
     public function top(Request $request, $id)
     {
+        if (!canDo('edit_startups')) return redirect(url('/admin'));
         $startup = Startup::findOrFail($id);
         if ($startup->top == 1) {
             $startup->top = 0;
@@ -186,6 +191,7 @@ class StartupController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        if (!canDo('delete_startups')) return redirect(url('/admin'));
         $startup = Startup::findOrFail($id);
         $startup_name = $startup->name;
         $user = Auth::user();

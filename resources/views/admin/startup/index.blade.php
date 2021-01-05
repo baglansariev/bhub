@@ -9,7 +9,9 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5>Список всех стартапов</h5>
                     <div class="card-actions">
-                        <a href="{{ route('startup.create') }}" class="btn btn-success">Добавить</a>
+                        @if (canDo('add_startups'))
+                            <a href="{{ route('startup.create') }}" class="btn btn-success">Добавить</a>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">
@@ -50,7 +52,11 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <a href="{{ route('startup.edit', $startup->id) }}">{{ $startup->title }}</a>
+                                            @if (canDo('edit_startups'))
+                                                <a href="{{ route('startup.edit', $startup->id) }}">{{ $startup->title }}</a>
+                                            @else
+                                                <span>{{ $startup->title }}</span>
+                                            @endif
                                         </td>
                                         <td>{{ $startup->phone }}</td>
                                         <td>{{ $startup->category->name ?? 'без группы' }}</td>
@@ -69,16 +75,20 @@
                                                     Действия
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_{{ $loop->iteration }}">
+                                                    @if(canDo('edit_startups'))
                                                     <form action="{{ route('startup.top', $startup->id) }}" method="post">
                                                         @csrf
                                                         <button type="submit" class="dropdown-item">{{ $startup->top == 1 ? 'Убрать из топа' : 'В топ' }}</button>
                                                     </form>
-                                                    <a href="{{ route('startup.edit', $startup->id) }}" class="dropdown-item">Изменить</a>
+                                                        <a href="{{ route('startup.edit', $startup->id) }}" class="dropdown-item">Изменить</a>
+                                                    @endif
+                                                    @if(canDo('delete_startups'))
                                                     <form action="{{ route('startup.destroy', $startup->id) }}" method="post">
                                                         @csrf
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit" class="dropdown-item">Удалить</button>
                                                     </form>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </td>

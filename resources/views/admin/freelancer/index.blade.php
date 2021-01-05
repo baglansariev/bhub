@@ -8,7 +8,9 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5>Список всех фрилансеров</h5>
                 <div class="card-actions">
-                    <a href="{{ route('freelancers.create') }}" class="btn btn-success">Добавить фрилансера</a>
+                    @if (canDo('add_freelancers'))
+                        <a href="{{ route('freelancers.create') }}" class="btn btn-success">Добавить фрилансера</a>
+                    @endif
                 </div>
             </div>
 
@@ -53,13 +55,16 @@
                                         <td>{{ $user->created_at }}</td>
                                         <td>
                                             <form action="{{ route('freelancers.destroy',$user->id) }}" method="POST">
-
-                                                <a class="btn btn-primary" href="{{ route('freelancers.edit',$user->id) }}"><i class="far fa-edit"></i></a>
+                                                @if (canDo('edit_freelancers'))
+                                                    <a class="btn btn-primary" href="{{ route('freelancers.edit',$user->id) }}"><i class="far fa-edit"></i></a>
+                                                @endif
 
                                                 @csrf
                                                 @method('DELETE')
+                                                @if (canDo('delete_freelancers'))
+                                                    <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                                @endif
 
-                                                <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                             </form>
                                         </td>
                                     </tr>

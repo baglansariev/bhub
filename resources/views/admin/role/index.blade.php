@@ -48,25 +48,23 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            @if ($role->isSystemRole())
-                                                <span>{{ $role->name }}</span>
-                                            @else
-                                                <a href="{{ route('role.edit', $role->id) }}">{{ $role->name }}</a>
-                                            @endif
+                                            <span>{{ $role->name }}</span>
                                         </td>
                                         <td>{{ $role->code }}</td>
                                         <td>{{ $role->created_at }}</td>
                                         <td class="d-flex">
-                                            @if ($role->isSystemRole())
-                                                <i style="color: #888;">Действие запрещено</i>
-                                            @else
+{{--                                            @if ($role->isSystemRole() && !$role->isAdmin())--}}
+{{--                                                <a href="{{ route('role.edit', $role->id) }}" class="btn btn-warning mr-1">Изменить</a>--}}
+{{--                                            @elseif($role->isAdmin())--}}
+{{--                                                <i style="color: #888;">Действие запрещено</i>--}}
+{{--                                            @else--}}
                                                 <a href="{{ route('role.edit', $role->id) }}" class="btn btn-warning mr-1">Изменить</a>
                                                 <form action="{{ route('role.destroy', $role->id) }}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <button type="submit" class="btn btn-danger">Удалить</button>
                                                 </form>
-                                            @endif
+{{--                                            @endif--}}
                                         </td>
                                     </tr>
                                 @endforeach

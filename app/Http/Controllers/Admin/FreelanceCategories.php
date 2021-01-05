@@ -16,6 +16,7 @@ class FreelanceCategories extends Controller
      */
     public function index()
     {
+        if (!canDo('see_freelancer_categories')) return redirect(url('/admin'));
         $data = [
             'title' => 'Все категории',
             'categories' => FreelanceCategory::all(),
@@ -43,6 +44,7 @@ class FreelanceCategories extends Controller
      */
     public function store(Request $request)
     {
+        if (!canDo('add_freelancer_categories')) return redirect(url('/admin'));
         $request->validate([
             'title' => 'required',
             'pricing_id' => 'integer'
@@ -77,6 +79,7 @@ class FreelanceCategories extends Controller
      */
     public function edit($id)
     {
+        if (!canDo('edit_freelancer_categories')) return redirect(url('/admin'));
         $category = FreelanceCategory::findOrFail($id);
         $data = [
             'title' => 'Изменение категории ' . $category->title,
@@ -116,6 +119,7 @@ class FreelanceCategories extends Controller
      */
     public function destroy(FreelanceCategory $FreelanceCategory)
     {
+        if (!canDo('delete_freelancer_categories')) return redirect(url('/admin'));
         $FreelanceCategory->delete();
   
         return redirect()->route('freelance-categories.index')

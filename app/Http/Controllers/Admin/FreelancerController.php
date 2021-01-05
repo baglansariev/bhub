@@ -18,6 +18,7 @@ class FreelancerController extends Controller
      */
     public function index()
     {
+        if (!canDo('see_freelancers')) return redirect(url('/admin'));
         $freelancers = Freelancer::all();
         //dd($freelancers);
         return view('admin.freelancer.index', compact('freelancers'));
@@ -30,6 +31,7 @@ class FreelancerController extends Controller
      */
     public function create()
     {
+        if (!canDo('add_freelancers')) return redirect(url('/admin'));
         $categories = FreelanceCategory::pluck('title', 'id');
         //dd($categories);
         return view('admin.freelancer.create', compact('categories'));
@@ -135,6 +137,7 @@ class FreelancerController extends Controller
      */
     public function edit(Freelancer $Freelancer)
     {
+        if (!canDo('edit_freelancers')) return redirect(url('/admin'));
         //dd($Freelancer->freelanceCategory()->where('id', $Freelancer->category_id));
         $category = FreelanceCategory::where('id', $Freelancer->category_id)->first();
         return view('admin.freelancer.edit',compact('Freelancer', 'category'));
@@ -166,6 +169,7 @@ class FreelancerController extends Controller
      */
     public function destroy(Freelancer $Freelancer)
     {
+        if (!canDo('delete_freelancers')) return redirect(url('/admin'));
         $Freelancer->delete();
   
         return redirect()->route('freelancers.index')

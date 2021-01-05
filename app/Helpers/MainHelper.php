@@ -98,3 +98,8 @@ function parseYoutubeVideo($url) {
         return false;
     }
 }
+
+function canDo($action) {
+    $can = Auth::user()->role->permissions()->where('code', $action)->get();
+    return $can->count();
+}

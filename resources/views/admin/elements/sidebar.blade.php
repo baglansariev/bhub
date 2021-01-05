@@ -16,6 +16,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                @if (canDo('see_news'))
                     <li class="nav-item">
 
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-3">
@@ -27,22 +28,26 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('business-news.index') }}">Все новости</a>
                                 </li>
-{{--                                <li class="nav-item">--}}
-{{--                                    <a class="nav-link" href="{{ route('main-news') }}">Главные новости</a>--}}
-{{--                                </li>--}}
+                                {{--                                <li class="nav-item">--}}
+                                {{--                                    <a class="nav-link" href="{{ route('main-news') }}">Главные новости</a>--}}
+                                {{--                                </li>--}}
                             </ul>
                         </div>
 
                     </li>
+                @endif
+                    @if (canDo('see_freelancers'))
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">
                         <i class="fa fa-fw fa-user-circle mr-1"></i>
                         <span class="link-title">Фрилансеры</span>
                     </a>
                     <div id="submenu-3" class="collapse submenu" style="">
                         <ul class="nav flex-column">
-                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/freelance-categories">Категория фрилансеров</a>
-                            </li> 
+                            @if (canDo('see_freelancer_categories'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/freelance-categories">Категория фрилансеров</a>
+                                </li>
+                            @endif
                             <li class="nav-item">
                                 <a class="nav-link" href="{{url('admin/freelancers')}}">Все фрилансеры</a>
                             </li>
@@ -51,6 +56,7 @@
                             </li>
                         </ul>
                     </div>
+                    @endif
 {{--                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">--}}
 {{--                        <i class="fa fa-fw fa-rocket mr-1"></i>--}}
 {{--                        <span class="link-title">Модули</span>--}}
@@ -100,22 +106,24 @@
 {{--                        </ul>--}}
 {{--                    </div>--}}
 {{--                </li>--}}
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5">
-                        <i class="fas fa-question-circle mr-2"></i>
-                        <span class="link-title">Опросник</span>
-                    </a>
-                    <div id="submenu-5" class="collapse submenu" style="">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/quiz">Вопросы</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/quiz-answers">Ответы</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @if (canDo('see_questions'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5">
+                            <i class="fas fa-question-circle mr-2"></i>
+                            <span class="link-title">Опросник</span>
+                        </a>
+                        <div id="submenu-5" class="collapse submenu" style="">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/quiz">Вопросы</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/quiz-answers">Ответы</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 {{--                <li class="nav-item">--}}
 {{--                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5">--}}
 {{--                        <i class="fas fa-fw fa-chart-bar mr-1"></i>--}}
@@ -132,31 +140,38 @@
 {{--                        </ul>--}}
 {{--                    </div>--}}
 {{--                </li>--}}
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7">
-                        <i class="fa fa-fw fa-rocket mr-1"></i>
-                        <span class="link-title">Стартапы</span>
-                    </a>
-                    <div id="submenu-7" class="collapse submenu" style="">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('startup.index') }}">Все стартапы</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('startup.pending') }}">Ожидающие</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('startup-category.index') }}">Категории</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('pricing.index') }}">
-                        <i class="fas fa-tags mr-1"></i>
-                        <span class="link-title">Тарифы</span>
-                    </a>
-                </li>
+                @if (canDo('see_startups'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7">
+                            <i class="fa fa-fw fa-rocket mr-1"></i>
+                            <span class="link-title">Стартапы</span>
+                        </a>
+                        <div id="submenu-7" class="collapse submenu" style="">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('startup.index') }}">Все стартапы</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('startup.pending') }}">Ожидающие</a>
+                                </li>
+                                @if (canDo('edit_startup_categories'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('startup-category.index') }}">Категории</a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </li>
+                @endif
+                @if (canDo('see_pricings'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('pricing.index') }}">
+                            <i class="fas fa-tags mr-1"></i>
+                            <span class="link-title">Тарифы</span>
+                        </a>
+                    </li>
+                @endif
+                @can('see', auth()->user())
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6">
                         <i class="fas fa-users mr-1"></i>
@@ -173,6 +188,7 @@
                         </ul>
                     </div>
                 </li>
+                @endcan
             </ul>
         </div>
     </nav>

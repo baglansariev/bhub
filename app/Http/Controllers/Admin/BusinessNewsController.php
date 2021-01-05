@@ -8,6 +8,7 @@ use App\Models\BusinessNews;
 
 class BusinessNewsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +16,8 @@ class BusinessNewsController extends Controller
      */
     public function index()
     {
+        if (!canDo('see_news')) return redirect(url('/admin'));
+
         $news = BusinessNews::latest()->paginate(3);
         //dd(count($news));
         return view('admin.business-news.index', compact('news'))->with('i', (request()->input('page', 1) - 1) * 3);
@@ -27,6 +30,7 @@ class BusinessNewsController extends Controller
      */
     public function create()
     {
+        if (!canDo('add_news')) return redirect(url('/admin'));
         return view('admin.business-news.create');
     }
 
@@ -60,6 +64,7 @@ class BusinessNewsController extends Controller
      */
     public function show(BusinessNews $BusinessNews)
     {
+        if (!canDo('see_news')) return redirect(url('/admin'));
         return view('admin.business-news.show',compact('BusinessNews'));
     }
 
@@ -71,6 +76,7 @@ class BusinessNewsController extends Controller
      */
     public function edit(BusinessNews $BusinessNews)
     {
+        if (!canDo('edit_news')) return redirect(url('/admin'));
         //dd($BusinessNews);
          return view('admin.business-news.edit',compact('BusinessNews'));
     }
@@ -105,6 +111,7 @@ class BusinessNewsController extends Controller
      */
     public function destroy(BusinessNews $BusinessNews)
     {
+        if (!canDo('delete_news')) return redirect(url('/admin'));
         $BusinessNews->delete();
   
         return redirect()->route('business-news.index')

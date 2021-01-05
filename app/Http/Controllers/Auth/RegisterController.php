@@ -55,6 +55,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role_id' => ['required', 'integer',],
+            'phone' => ['required',],
         ]);
     }
 
@@ -69,6 +70,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
             'role_id' => $data['role_id']
         ]);
@@ -76,9 +78,8 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $role = new Role();
         $data = [
-            'roles' => $role->whereNotIn('code', $role->staffRoles())->get(),
+            'roles' => Role::whereNull('is_staff')->get(),
         ];
         return view('auth.register', $data);
     }

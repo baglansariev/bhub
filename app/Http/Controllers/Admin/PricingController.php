@@ -16,6 +16,7 @@ class PricingController extends Controller
      */
     public function index()
     {
+        if (!canDo('see_pricings')) return redirect(url('/admin'));
         $data = [
             'title' => 'Список тарифов',
             'pricings' => Pricing::all(),
@@ -31,6 +32,7 @@ class PricingController extends Controller
      */
     public function create()
     {
+        if (!canDo('add_pricings')) return redirect(url('/admin'));
         return view('admin.pricing.create', ['title' => 'Создание тарифа']);
     }
 
@@ -95,6 +97,7 @@ class PricingController extends Controller
      */
     public function edit($id)
     {
+        if (!canDo('edit_pricings')) return redirect(url('/admin'));
         $pricing = Pricing::findOrFail($id);
 
         $data = [
@@ -169,6 +172,7 @@ class PricingController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        if (!canDo('delete_pricings')) return redirect(url('/admin'));
         $pricing = Pricing::findOrFail($id);
         $pricing_name = $pricing->name;
 

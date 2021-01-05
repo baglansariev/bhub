@@ -9,12 +9,19 @@ use App\User;
 use App\Models\Role;
 use App\Http\Requests\Admin\UserCreateRequest;
 use App\Http\Requests\Admin\UserEditRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
     public $user_image_dir = 'img/user/';
+
+    public function __construct()
+    {
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +29,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        if (!Auth::user()->can('see', new User())) {
+            return redirect(url('/admin'));
+        }
+
         $data = [
             'title' => 'Список пользователей',
             'users' => User::paginate(25),
@@ -36,6 +47,10 @@ class UserController extends Controller
      */
     public function create()
     {
+        if (!Auth::user()->can('manage', new User())) {
+            return redirect(url('/admin'));
+        }
+
         $data = [
             'title' => 'Создание нового пользователя',
             'roles' => Role::all(),
@@ -102,6 +117,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::user()->can('manage', new User())) {
+            return redirect(url('/admin'));
+        }
+
         $user = User::findOrFail($id);
         $data = [
             'title' => 'Изменение пользователя ' . $user->name,

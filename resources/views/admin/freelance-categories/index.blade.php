@@ -7,9 +7,11 @@
         	<div class="card-header d-flex justify-content-between align-items-center">
         		<h5>Категории фрилансеров</h5>
                 <div class="card-actions">
-                	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                		Добавить категорию
-                	</button>
+                	@if (canDo('add_freelancer_categories'))
+						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+							Добавить категорию
+						</button>
+                	@endif
                 </div>
         	</div>
         	<div class="card-body">
@@ -47,12 +49,16 @@
                                         <td>
                                         	<form action="{{ route('freelance-categories.destroy',$category->id) }}" method="POST">
 
-                                        		<a class="btn btn-primary" href="{{ route('freelance-categories.edit',$category->id) }}"><i class="far fa-edit"></i></a>
+                                        		@if (canDo('edit_freelancer_categories'))
+													<a class="btn btn-primary" href="{{ route('freelance-categories.edit',$category->id) }}"><i class="far fa-edit"></i></a>
+                                        		@endif
 
                                         		@csrf
                                         		@method('DELETE')
 
-                                        		<button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                        		@if (canDo('delete_freelancer_categories'))
+														<button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                        		@endif
                                         	</form>
                                         </td>
                                     </tr>

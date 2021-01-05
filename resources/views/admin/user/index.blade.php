@@ -9,7 +9,9 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5>Список всех пользователей</h5>
                 <div class="card-actions">
-                    <a href="{{ route('user.create') }}" class="btn btn-success">Добавить</a>
+                    @can('manage', auth()->user())
+                        <a href="{{ route('user.create') }}" class="btn btn-success">Добавить</a>
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -52,7 +54,11 @@
                                             @if ($user->isCreator() && !$user->isCreator(Auth::user()->email))
                                                 <span>{{ $user->name }}</span>
                                             @else
-                                                <a href="{{ route('user.edit', $user->id) }}">{{ $user->name }}</a>
+                                                @can('manage', auth()->user())
+                                                    <a href="{{ route('user.edit', $user->id) }}">{{ $user->name }}</a>
+                                                @else
+                                                    <span>{{ $user->name }}</span>
+                                                @endcan
                                             @endif
                                         </td>
                                        {{-- <td>{{ $user->image }}</td> --}}
@@ -63,14 +69,18 @@
                                             @if ($user->isCreator() && !$user->isCreator(Auth::user()->email))
                                                 <i style="color: #888;">Действие запрещено</i>
                                             @else
-                                                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning mr-1">Изменить</a>
-                                                @if (!$user->isAuthUser())
-                                                    <form action="{{ route('user.destroy', $user->id) }}" method="post">
-                                                        @csrf
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        <button type="submit" class="btn btn-danger">Удалить</button>
-                                                    </form>
-                                                @endif
+                                                @can('manage', auth()->user())
+                                                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning mr-1">Изменить</a>
+                                                    @if (!$user->isAuthUser())
+                                                        <form action="{{ route('user.destroy', $user->id) }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="_method" value="DELETE">
+                                                            <button type="submit" class="btn btn-danger">Удалить</button>
+                                                        </form>
+                                                    @endif
+                                                @else
+                                                    <i style="color: #888;">Действие запрещено</i>
+                                                @endcan
                                             @endif
                                         </td>
                                     </tr>

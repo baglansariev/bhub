@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\User;
@@ -27,11 +28,19 @@ class AccountController extends Controller
     public function personalDataEdit(Request $request, $user_id)
     {
     		$user = User::findOrFail($user_id);
+
+//    		devPrint(['user_id' => $user_id, 'auth' => Auth::user()->id], ['exit' => true]);
     		$title = "Изменение личных данных - {$user->name}";
     		$data = [
     			'title' => $title,
     			'user' => $user
     		];
+
+            if ((int)Auth::user()->id !== (int)$user_id) {
+                return redirect(route('account'));
+            }
+
+
     		return view('account.personal-data.edit', $data);
     }
 

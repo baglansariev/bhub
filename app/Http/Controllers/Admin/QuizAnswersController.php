@@ -16,6 +16,7 @@ class QuizAnswersController extends Controller
      */
     public function index()
     {
+        if (!canDo('see_questions')) return redirect(url('/admin'));
         $quiz = Quiz::all();
         $quiz = $quiz->load('quiz_answers');
         return view('admin.quiz-answers.index', compact('quiz'));
@@ -28,6 +29,7 @@ class QuizAnswersController extends Controller
      */
     public function create()
     {
+        if (!canDo('add_questions')) return redirect(url('/admin'));
         $quizs = Quiz::pluck("question", "id");
         return view('admin.quiz-answers.create', compact('quizs'));
     }
@@ -76,6 +78,7 @@ class QuizAnswersController extends Controller
      */
     public function edit($id)
     {
+        if (!canDo('edit_questions')) return redirect(url('/admin'));
         $quizAnswer = QuizAnswer::findOrFail($id);
         return view('admin.quiz-answers.edit', compact('quizAnswer'));
     }
@@ -114,6 +117,7 @@ class QuizAnswersController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        if (!canDo('delete_questions')) return redirect(url('/admin'));
         $quizAnswer = QuizAnswer::findOrFail($id);
 
         if ($quizAnswer->delete()) {

@@ -10,7 +10,9 @@
                         <h2>Бизнес новости</h2>
                     </div>
                     <div class="pull-right">
-                        <a class="btn btn-success" href="{{ route('business-news.create') }}"> Добавить бизнес новость</a>
+                        @if (canDo('add_news'))
+                            <a class="btn btn-success" href="{{ route('business-news.create') }}"> Добавить бизнес новость</a>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">
@@ -40,12 +42,16 @@
 
                                         <a class="btn btn-info" href="{{ route('business-news.show',$item->id) }}"><i class="fas fa-eye"></i></a>
 
-                                        <a class="btn btn-primary" href="{{ route('business-news.edit',$item->id) }}"><i class="far fa-edit"></i></a>
+                                        @if (canDo('edit_news'))
+                                            <a class="btn btn-primary" href="{{ route('business-news.edit',$item->id) }}"><i class="far fa-edit"></i></a>
+                                        @endif
 
                                         @csrf
                                         @method('DELETE')
 
-                                        <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                        @if (canDo('delete_news'))
+                                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                        @endif
                                     </form>
                                 </td>
                             </tr>

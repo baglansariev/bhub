@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\Permission;
@@ -19,6 +20,10 @@ class RoleController extends Controller
      */
     public function index()
     {
+        if (!Auth::user()->can('see', new User())) {
+            return redirect(url('/admin'));
+        }
+
         $data = [
             'title'         => 'Группы',
             'roles'         => Role::all(),
@@ -34,6 +39,9 @@ class RoleController extends Controller
      */
     public function create()
     {
+        if (!Auth::user()->can('manage', new User())) {
+            return redirect(url('/admin'));
+        }
         $data = [
             'title' => 'Создание группы',
             'permissions'   => Permission::all(),
@@ -93,10 +101,14 @@ class RoleController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        if (!Auth::user()->can('manage', new User())) {
+            return redirect(url('/admin'));
+        }
+
         $role = Role::findOrFail($id);
 
-        if ($role->isSystemRole()) {
-            $request->session()->flash('msg_error', 'Ошибка! Вы не можете изменять системную роль!');
+        if ($role->isAdmin()) {
+            $request->session()->flash('msg_error', 'Ошибка! Вы не можете изменять СУПЕР АДМИНА!');
             return redirect(route('role.index'));
         }
 
@@ -154,6 +166,10 @@ class RoleController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        if (!Auth::user()->can('manage', new User())) {
+            return redirect(url('/admin'));
+        }
+
         $role = Role::findOrFail($id);
 
         if ($role->isSystemRole()) {

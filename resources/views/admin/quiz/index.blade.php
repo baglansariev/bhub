@@ -10,7 +10,9 @@
 					<h2>Опросник</h2>
 				</div>
 				<div class="pull-right">
-					<a class="btn btn-success" href="{{ route('quiz.create') }}"> Добавить опрос</a>
+					@if (canDo('add_questions'))
+						<a class="btn btn-success" href="{{ route('quiz.create') }}"> Добавить опрос</a>
+					@endif
 				</div>
 			</div>
 			<div class="card-body">
@@ -50,14 +52,20 @@
 						<td>
 							<form action="{{ route('quiz.destroy',$item->id) }}" method="POST">
 
-								<a class="btn btn-info" href="{{ route('quiz.show',$item->id) }}"><i class="fas fa-eye"></i></a>
+								@if (canDo('see_questions'))
+									<a class="btn btn-info" href="{{ route('quiz.show',$item->id) }}"><i class="fas fa-eye"></i></a>
+								@endif
 
-								<a class="btn btn-primary" href="{{ route('quiz.edit',$item->id) }}"><i class="far fa-edit"></i></a>
+								@if (canDo('edit_questions'))
+										<a class="btn btn-primary" href="{{ route('quiz.edit',$item->id) }}"><i class="far fa-edit"></i></a>
+								@endif
 
 								@csrf
 								@method('DELETE')
 
-								<button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+								@if (canDo('delete_questions'))
+										<button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+								@endif
 							</form>
 						</td>
 					</tr>

@@ -16,6 +16,7 @@ class QuizController extends Controller
      */
     public function index()
     {
+        if (!canDo('see_questions')) return redirect(url('/admin'));
         $quiz = Quiz::all();
         //dd($quiz);
         return view('admin.quiz.index', compact('quiz'));
@@ -28,6 +29,7 @@ class QuizController extends Controller
      */
     public function create()
     {
+        if (!canDo('add_questions')) return redirect(url('/admin'));
         $posts = BusinessNews::pluck('title', 'id');
 
         return view('admin.quiz.create', compact('posts'));
@@ -66,6 +68,7 @@ class QuizController extends Controller
      */
     public function show($id)
     {
+        if (!canDo('see_questions')) return redirect(url('/admin'));
         $quiz = Quiz::find($id);
         $quiz_post = BusinessNews::where('id', $quiz->business_news_id)->first();
         return view('admin.quiz.show', compact('quiz', 'quiz_post'));
@@ -79,6 +82,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
+        if (!canDo('edit_questions')) return redirect(url('/admin'));
         $quiz = Quiz::findOrFail($id);
         $quiz_post = BusinessNews::where('id', $quiz->business_news_id)->first();
         $posts = BusinessNews::all();
@@ -126,6 +130,7 @@ class QuizController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        if (!canDo('delete_questions')) return redirect(url('/admin'));
         $quiz = Quiz::findOrFail($id);
 
         if ($quiz->delete()) {

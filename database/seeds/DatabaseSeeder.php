@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
          $this->call(RoleSeeder::class);
          $this->call(PermissionSeeder::class);
+         $this->call(RolePermissionsSeeder::class);
          $this->call(BusinessNewsTable::class);
          $this->call(StartupCategorySeeder::class);
          $this->call(FreelanceCategoriesSeeder::class);
@@ -20,5 +21,6 @@ class DatabaseSeeder extends Seeder
          $this->call(PortfoliosSeeder::class);
          $this->call(QuizSeeder::class);
          $this->call(QuizAnswersSeeder::class);
+         $this->call(UserSeeder::class);
     }
 }
