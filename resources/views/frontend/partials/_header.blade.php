@@ -110,7 +110,7 @@
 						@guest
 							<button class="btn" type="button" onclick="location.href='/login'">Вход</button>
 						@else
-							<button class="btn" type="button" onclick="location.href='{{ route('account') }}'">{{ Auth::user()->name }}</button>
+							<button class="btn" type="button" onclick="location.href='{{ route('account', Auth::user()->id) }}'">{{ Auth::user()->name }}</button>
 						@endguest
 					</span>
 				</div>	

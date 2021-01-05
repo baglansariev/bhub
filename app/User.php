@@ -13,7 +13,7 @@ use App\Models\Like;
 use App\Models\Startup;
 use App\Models\QuizUserAnswer;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, Followable;
 
@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role_id', 'image'
+        'name', 'email', 'password', 'role_id', 'image', 'phone'
     ];
 
     /**

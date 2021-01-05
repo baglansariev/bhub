@@ -46,7 +46,7 @@ Route::prefix('pricing')->group(function() {
 
 // Backend area
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'staff_roles'])->group(function () {
     Route::prefix('admin')->group(function () {
@@ -87,7 +87,11 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('account')->group(function () {
 
-        Route::get('/', 'AccountController@index')->name('account');
+        Route::get('/{user_id?}', 'AccountController@index')->name('account');
+
+        Route::get('/personal-data/{user_id?}/{user_name?}', 'AccountController@pesonalData')->name('account.personalData');
+        Route::get('/personal/edit/{user_id}/{user_name?}', 'AccountController@personalDataEdit')->name('account.personalDataEdit');
+        Route::put('personal-data/update/{user_id}', 'AccountController@personalDataUpdate')->name('account.personalDataUpdate');
 
         Route::prefix('startup')->group(function () {
             Route::get('/', 'Account\StartupController@index')->name('account.startup.index');

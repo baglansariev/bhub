@@ -22,6 +22,15 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <input class="form-control form-control-lg @error('phone') is-invalid @enderror" type="phone" name="phone" required placeholder="Телефон" value="{{ old('phone') }}">
+
+                    @error('phone')
+                    <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <input class="form-control form-control-lg @error('email') is-invalid @enderror" type="email" name="email" required placeholder="E-mail" value="{{ old('email') }}">
 
                     @error('email')

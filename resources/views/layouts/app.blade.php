@@ -115,6 +115,14 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        <a href="{{ route('account.personalData', ['user_id' => Auth::user()->id, 'user_name' => Auth::user()->name]) }}"><b>Личные данные</b></a>
+                                        <ul class="mt-2">
+                                            <li class="dropdown show">
+                                                <a class="" href="{{ route('account.personalDataEdit', ['user_id' => Auth::user()->id, 'user_name' => Auth::user()->name]) }}">
+                                                    Редактировать
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +132,7 @@
                         <div class="main-content">
                             <div class="card">
                                 <div class="card-header">
-                                    <span>{{ $card_title ?? 'Панель управления' }}</span>
+                                    <a href="{{route('account')}}"><span>{{ $card_title ?? 'Панель управления' }}</span></a>
                                 </div>
                                 <div class="card-body">
                                     @yield('content')

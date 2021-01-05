@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-
-    Панель управления в работе ...
-
+	В разработке...
 @endsection
