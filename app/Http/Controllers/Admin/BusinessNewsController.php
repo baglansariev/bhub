@@ -56,7 +56,7 @@ class BusinessNewsController extends Controller
         $data = $request->all();
 
         if (isset($data['img']) && $file = $data['img']) {
-            $post_dir = getUserImageDir() . 'img/business-news/';
+            $post_dir = 'img/business-news/';
             $file_name = time() . '-' . $file->getClientOriginalName();
             $file->move($post_dir, $file_name);
 
@@ -133,9 +133,8 @@ class BusinessNewsController extends Controller
             $destinationPath = 'img/business-news/'; // upload path
             $profileImage = date('YmdHis') . "-" . $files->getClientOriginalName();
             $files->move($destinationPath, $profileImage);
-            $update['image'] = "$profileImage";
+            $update['img'] = $profileImage;
         }
-        
         $BusinessNews->update($update);
 
         //dd($BusinessNews->update($request->all()));
@@ -173,5 +172,11 @@ class BusinessNewsController extends Controller
         //dd($comment['message']);
         Comment::where('id', $id)->update(['comment' => $comment]);
         return redirect()->route('business-news.index')->with('success', 'Комментарий успешно обновлен');
+    }
+
+    public function postCommentDelete(Request $request, $id, Comment $comment)
+    {
+        $comment->find($id)->delete();
+        return redirect()->route('business-news.index')->with('success', 'Комментарий успешно удален');
     }
 }

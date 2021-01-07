@@ -79,37 +79,47 @@
             @if(isset($BusinessNews->comment) && !empty($BusinessNews->comment) && count($BusinessNews->comment) > 0)
             <strong>Комментарии:</strong>
             @foreach($BusinessNews->comment as $comment)
-            <li>
+            <li style="margin-top: 15px;">
                 <strong>Комментарий № {{$loop->iteration}}:</strong> 
                 <p class="bNewsComment">&nbsp;&nbsp;&nbsp;{{ $comment->comment }}</p>
-                <button type="button" data-toggle="modal" data-target="#comment-modal-{{ $comment->id }}" class="btn btn-sm btn-link text-uppercase">Редактировать</button>
-                
-                <div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <form method="POST" action="{{ route('business-news-comment', $comment->id) }}">
-                                @method('PUT')
-                                @csrf
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Редактировать комментарий</h5>
-                                    <button type="button" class="close" data-dismiss="modal">
-                                        <span>&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="message">Редактировать комментарий:</label>
-                                        <textarea required class="form-control" name="message" rows="3">{{ $comment->comment }}</textarea>
-                                        <!-- <small class="form-text text-muted"><a target="_blank" href="https://help.github.com/articles/basic-writing-and-formatting-syntax">Markdown</a> cheatsheet.</small> -->
+                <div style="display: flex;">
+                    <button style="margin-right: 15px;" type="button" data-toggle="modal" data-target="#comment-modal-{{ $comment->id }}" class="btn btn-primary"><i class="far fa-edit"></i></button>
+
+                    <div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form method="POST" action="{{ route('business-news-comment', $comment->id) }}">
+                                    @method('PUT')
+                                    @csrf
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Редактировать комментарий</h5>
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span>&times;</span>
+                                        </button>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase" data-dismiss="modal">Отмена</button>
-                                    <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">Обновить</button>
-                                </div>
-                            </form>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="message">Редактировать комментарий:</label>
+                                            <textarea required class="form-control" name="message" rows="3">{{ $comment->comment }}</textarea>
+                                            <!-- <small class="form-text text-muted"><a target="_blank" href="https://help.github.com/articles/basic-writing-and-formatting-syntax">Markdown</a> cheatsheet.</small> -->
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase" data-dismiss="modal">Отмена</button>
+                                        <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">Обновить</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
+                    <!-- delete a comment -->
+                    <form action="{{ route('business-news-comment-delete',$comment->id) }}" method="POST">
+
+                        <a class="btn btn-danger" href="{{ route('business-news-comment-delete',$comment->id) }}"><i class="far fa-trash-alt"></i></a>
+
+                        @csrf
+                        @method('DELETE')
+                    </form>
                 </div>
             </li>
             @endforeach

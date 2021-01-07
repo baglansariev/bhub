@@ -63,6 +63,7 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
 
         Route::get('/main-news', 'Admin\BusinessNewsController@mainNews')->name('main-news');
         Route::put('/business-news-comment/{id?}', 'Admin\BusinessNewsController@postComment')->name('business-news-comment');
+        Route::get('/business-news-comment-delete/{id?}', 'Admin\BusinessNewsController@postCommentDelete')->name('business-news-comment-delete');
         Route::resource('/business-news', 'Admin\BusinessNewsController');
         Route::resource('/freelance-categories', 'Admin\FreelanceCategories');
         Route::resource('/freelancers', 'Admin\FreelancerController');
