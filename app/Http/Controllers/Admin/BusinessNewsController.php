@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BusinessNews;
+use Illuminate\Support\Facades\Config;
+use Laravelista\Comments\Commenter;
+use Laravelista\Comments\Comment;
+use App\User;
 
 class BusinessNewsController extends Controller
 {
@@ -64,6 +68,17 @@ class BusinessNewsController extends Controller
      */
     public function show(BusinessNews $BusinessNews)
     {
+        $BusinessNews = BusinessNews::findOrFail($BusinessNews->id)->load('comment');
+        //dd($model);
+        //$model = $request->commentable_type::findOrFail($request->commentable_id);
+        // $commentClass = Config::get('comments.model');
+        // $comment = new $commentClass;
+        // $comment->commentable()->associate($model);
+        //$comments = Comment::where('commentable_id', $model->id)->get();
+        foreach ($BusinessNews->comment as $key => $value) {
+            $BusinessNews->comment[$key]['user_data'] = $value->commenter_type::where('id', $value->commenter_id)->first();
+        }
+        
         if (!canDo('see_news')) return redirect(url('/admin'));
         return view('admin.business-news.show',compact('BusinessNews'));
     }
