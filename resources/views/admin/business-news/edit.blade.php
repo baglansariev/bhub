@@ -45,6 +45,14 @@
                 <div class="form-group">
                     <strong>Картинка:</strong>
                     <input type="file" name="img" value="{{ $BusinessNews->img }}" class="form-control" placeholder="Картинка">
+                    <div id="img_change">
+                        <img src="{{ asset('img/business-news/' . $BusinessNews->img) }}" alt="">
+                    </div>
+                    @error('image')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6">
