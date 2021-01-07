@@ -29,6 +29,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             {{--@comments(['model' => $BusinessNews])--}}
             <div class="form-group">
+                @if(isset($BusinessNews->comment) && !empty($BusinessNews->comment) && count($BusinessNews->comment) > 0)
                 <strong>Комментарии к данной статье:</strong>
                 <ul>
                 @if(isset($BusinessNews->comment) && !empty($BusinessNews->comment))        
@@ -44,6 +45,7 @@
                     @endforeach
                 @endif
                 </ul>
+                @endif
             </div>
             
         </div>

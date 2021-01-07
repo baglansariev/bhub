@@ -49,10 +49,21 @@ class BusinessNewsController extends Controller
         $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'img' => 'required'
+            'image' => 'image|mime:png,jpg,jpeg|max:2048',
+            //'img' => 'required'
         ]);
-  
-        BusinessNews::create($request->all());
+
+        $data = $request->all();
+
+        if (isset($data['img']) && $file = $data['img']) {
+            $post_dir = getUserImageDir() . 'img/business-news/';
+            $file_name = time() . '-' . $file->getClientOriginalName();
+            $file->move($post_dir, $file_name);
+
+            $data['img'] = $file_name;
+        }
+
+        BusinessNews::create($data);
         //dd($request->all());
         //dd(BusinessNews::create($request->all()););
    
@@ -78,7 +89,7 @@ class BusinessNewsController extends Controller
         foreach ($BusinessNews->comment as $key => $value) {
             $BusinessNews->comment[$key]['user_data'] = $value->commenter_type::where('id', $value->commenter_id)->first();
         }
-        
+
         if (!canDo('see_news')) return redirect(url('/admin'));
         return view('admin.business-news.show',compact('BusinessNews'));
     }
@@ -92,8 +103,9 @@ class BusinessNewsController extends Controller
     public function edit(BusinessNews $BusinessNews)
     {
         if (!canDo('edit_news')) return redirect(url('/admin'));
-        //dd($BusinessNews);
-         return view('admin.business-news.edit',compact('BusinessNews'));
+        $BusinessNews = BusinessNews::findOrFail($BusinessNews->id)->load('comment');
+
+        return view('admin.business-news.edit',compact('BusinessNews'));
     }
 
     /**
@@ -109,8 +121,22 @@ class BusinessNewsController extends Controller
             'title' => 'required',
             'body' => 'required',
         ]);
-  
-        $BusinessNews->update($request->all());
+
+        $update = [
+            'title' => $request->title, 
+            'slug' => $request->slug,
+            'video' => $request->video,
+            'body' => $request->body
+        ];
+
+        if ($files = $request->file('img')) {
+            $destinationPath = 'img/business-news/'; // upload path
+            $profileImage = date('YmdHis') . "-" . $files->getClientOriginalName();
+            $files->move($destinationPath, $profileImage);
+            $update['image'] = "$profileImage";
+        }
+        
+        $BusinessNews->update($update);
 
         //dd($BusinessNews->update($request->all()));
   
@@ -139,5 +165,13 @@ class BusinessNewsController extends Controller
             'title' => 'Главные новости',
         ];
         return view('admin.business-news.main-news', $data);
+    }
+
+    public function postComment(Request $request, $id)
+    {
+        $comment = $request->message;
+        //dd($comment['message']);
+        Comment::where('id', $id)->update(['comment' => $comment]);
+        return redirect()->route('business-news.index')->with('success', 'Комментарий успешно обновлен');
     }
 }

@@ -24,7 +24,7 @@
         </div>
     @endif
   
-    <form action="{{ route('business-news.update',$BusinessNews->id) }}" method="POST">
+    <form action="{{ route('business-news.update',$BusinessNews->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
    
@@ -73,5 +73,48 @@
         </div>
    
     </form>
+
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            @if(isset($BusinessNews->comment) && !empty($BusinessNews->comment) && count($BusinessNews->comment) > 0)
+            <strong>Комментарии:</strong>
+            @foreach($BusinessNews->comment as $comment)
+            <li>
+                <strong>Комментарий № {{$loop->iteration}}:</strong> 
+                <p class="bNewsComment">&nbsp;&nbsp;&nbsp;{{ $comment->comment }}</p>
+                <button type="button" data-toggle="modal" data-target="#comment-modal-{{ $comment->id }}" class="btn btn-sm btn-link text-uppercase">Редактировать</button>
+                
+                <div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form method="POST" action="{{ route('business-news-comment', $comment->id) }}">
+                                @method('PUT')
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Редактировать комментарий</h5>
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="message">Редактировать комментарий:</label>
+                                        <textarea required class="form-control" name="message" rows="3">{{ $comment->comment }}</textarea>
+                                        <!-- <small class="form-text text-muted"><a target="_blank" href="https://help.github.com/articles/basic-writing-and-formatting-syntax">Markdown</a> cheatsheet.</small> -->
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase" data-dismiss="modal">Отмена</button>
+                                    <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">Обновить</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            @endforeach
+            @endif
+        </div>
+    </div>
 
 @endsection
