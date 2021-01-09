@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Laravelista\Comments\Commentable;
 use App\Models\Quiz;
+use Laravelista\Comments\Comment;
 
 class BusinessNews extends Model
 {
@@ -17,6 +18,11 @@ class BusinessNews extends Model
     public function quiz()
     {
     	return $this->hasMany(Quiz::class);
+    }
+
+    public function comment()
+    {
+    	return $this->hasMany(Comment::class, 'commentable_id');
     }
 
 }
