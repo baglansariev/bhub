@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Partner;
 use Illuminate\Http\Request;
 use App\Models\BusinessNews;
 
@@ -24,6 +25,7 @@ class FrontController extends Controller
 		$data = [
 		    'title' => 'Главная',
             'latest_post' => BusinessNews::orderBy('id', 'DESC')->first(),
+            'partners' => Partner::orderBy('created_at')->take(4)->get(),
         ];
 
 		return view("frontend.index", $data);

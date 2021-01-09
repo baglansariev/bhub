@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Partner;
 use Illuminate\Http\Request;
 
 class PartnerController extends Controller
@@ -14,7 +15,12 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Список партнеров',
+            'partners' => Partner::all(),
+        ];
+
+        return view('admin.partners.index', $data);
     }
 
     /**
@@ -24,7 +30,11 @@ class PartnerController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => 'Создание нового партнера',
+        ];
+
+        return view('admin.partners.create', $data);
     }
 
     /**
@@ -35,7 +45,32 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->has(['title', 'link'])) {
+
+            $partner = Partner::create([
+                'title' => $request->title,
+                'link' => $request->link,
+                'image' => 'img/defaults/our-partner.png',
+            ]);
+
+            if ($partner && $file = $request->image) {
+                $img_dir = 'img/partners/';
+                $file_path = $img_dir . $file->getClientOriginalName();
+                $file->move($img_dir, $file->getClientOriginalName());
+                $partner->image = $file_path;
+                $partner->save();
+            }
+
+            if ($partner) {
+                $request->session()->flash('msg_success', 'Новый партнер успешно создан!');
+            }
+            else {
+                $request->session()->flash('msg_error', 'Ошибка попробуйте позже!');
+            }
+
+        }
+
+        return redirect()->route('partner.index');
     }
 
     /**
@@ -57,7 +92,12 @@ class PartnerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $partner = Partner::findOrFail($id);
+        $data = [
+            'title' => 'Изменение партнера ' . $partner->title,
+            'partner' => $partner
+        ];
+        return view('admin.partners.edit', $data);
     }
 
     /**
@@ -69,7 +109,33 @@ class PartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->has(['title', 'link'])) {
+            $partner = Partner::findOrFail($id);
+
+            $partner->update([
+                'title' => $request->title,
+                'link' => $request->link,
+            ]);
+
+            if ($partner && $file = $request->image) {
+                if (file_exists($partner->image) && !isDefaultImage($partner->image)) unlink($partner->image);
+
+                $img_dir = 'img/partners/';
+                $file_path = $img_dir . time() . $file->getClientOriginalName();
+                $file->move($img_dir, time() . $file->getClientOriginalName());
+                $partner->image = $file_path;
+            }
+
+            if ($partner->save()) {
+                $request->session()->flash('msg_success', 'Партнер успешно изменен!');
+            }
+            else {
+                $request->session()->flash('msg_error', 'Ошибка попробуйте позже!');
+            }
+
+        }
+
+        return redirect()->route('partner.index');
     }
 
     /**
@@ -78,8 +144,19 @@ class PartnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $partner = Partner::findOrFail($id);
+        if (file_exists($partner->image) && !isDefaultImage($partner->image)) unlink($partner->image);
+
+        if ($partner->delete()) {
+            $request->session()->flash('msg_success', 'Партнер успешно удален!');
+        }
+        else {
+            $request->session()->flash('msg_error', 'Ошибка попробуйте позже!');
+        }
+
+        return redirect()->route('partner.index');
+
     }
 }

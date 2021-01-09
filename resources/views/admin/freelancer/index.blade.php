@@ -51,7 +51,15 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->position }}</td>
-                                        <td>{{ $user->status }}</td>
+                                        <td>
+                                            @if ($user->status == 1)
+                                                Активный
+                                            @elseif($user->status == 2)
+                                                В архиве
+                                            @else
+                                                Ожидает
+                                            @endif
+                                        </td>
                                         <td>{{ $user->created_at }}</td>
                                         <td>
                                             <form action="{{ route('freelancers.destroy',$user->id) }}" method="POST">

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Freelancer;
 use App\Models\FreelanceCategory;
 use App\Models\Portfolio;
+use Illuminate\Support\Facades\Auth;
 
 class FreelancerController extends Controller
 {
@@ -45,77 +46,99 @@ class FreelancerController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'category_id' => 'required',
-            'name' => 'required',
-            'status' => 'required',
-            'position' => 'required',
-            'characteristic' => 'required',
-            'description' => 'required',
-            'image' => 'image|mime:png,jpg,jpeg|max:2048',
-            'facebook' => 'url',
-            'instagramm' => 'url',
-            //'img' => 'mimes:jpeg,jpg,png,gif,svg|max:2048',
-            // 'img' => 'required|mimes:jpeg,jpg,png,gif,svg|max:2048',
-        ]);
-        
-        //dd($validatedData);
-        
-        $user_id = $request->user_id;
-        $img = $request->img;
-        if ($img) {
-            $imgName = time().'-'.$img->getClientOriginalName();
-            $img->move('img/freelancers/', $imgName);
-            $validatedData['img'] = "img/freelancers/" . $imgName;
-        } else {
-            $validatedData['img'] = "img/defaults/no-image.png";
+        $freelancer = new Freelancer();
+        $data       = $request->all();
+
+
+        if (isset($data['name'])) {
+            $freelancer->name = $data['name'];
         }
 
-        if ($user_id) {
-            $validatedData['user_id'] = $user_id;
+        if (isset($data['position'])) {
+            $freelancer->position = $data['position'];
         }
 
-        //dd($validatedData);
+        if (isset($data['instagramm'])) {
+            $freelancer->instagramm = $data['instagramm'];
+        }
 
-        $freelancer = Freelancer::create($validatedData);
-        if ($request->type == 'freelancer-profile') {
-            $inputDataPortfolio = $request->except('_token', 'img');
-            $freelancer = Freelancer::where('id', $freelancer->id)->first();
-            //dd($freelancer);
-            foreach ($inputDataPortfolio['portfolio'] as $portfolio) {
-                if (!is_null($portfolio['title']) && !is_null($portfolio['url']) && !is_null($portfolio['img'])) {
+        if (isset($data['facebook'])) {
+            $freelancer->facebook = $data['facebook'];
+        }
 
-                    $fileName = time().'-'.$portfolio['img']->getClientOriginalName();
-                    $arrPortfolio = [
-                        "freelancer_id" => $freelancer->id,
-                        "title" => $portfolio['title'],
-                        "url" => $portfolio['url'],
-                        "img" => $fileName
-                    ];
-                    //dd($fileName);
-                    $portfolio['img']->move(public_path().'/img/portfolios/', $fileName);
+        if (isset($data['phone'])) {
+            $freelancer->phone = $data['phone'];
+        }
 
-                    $res = Portfolio::create($arrPortfolio);
-                    if ($res) {
-                        $request->session()->flash('msg_success', 'Данные успешно добавлены.');
-                    } else {
-                        $request->session()->flash('msg_error', 'Ошибка, попробуйте позже!');
-                    }        
+        if (isset($data['slug'])) {
+            $freelancer->slug = $data['slug'];
+        }
+
+        if (isset($data['category_id'])) {
+            $freelancer->category_id = $data['category_id'];
+        }
+
+        if (isset($data['characteristic'])) {
+            $freelancer->characteristic = $data['characteristic'];
+        }
+
+        if (isset($data['description'])) {
+            $freelancer->description = $data['description'];
+        }
+
+        if (isset($data['status'])) {
+            $freelancer->status = $data['status'];
+        }
+
+        if (isset($data['img']) && $file = $data['img']) {
+
+            $freelancer_dir = getUserImageDir() . Auth::user()->id . '/freelancers/';
+            $file_path = $freelancer_dir . $file->getClientOriginalName();
+            $file->move($freelancer_dir, $file->getClientOriginalName());
+
+            $freelancer->img = $file_path;
+        }
+
+        $freelancer->user_id = Auth::user()->id;
+
+        if ($freelancer->save()) {
+
+            if (isset($data['portfolios']) && !empty($data['portfolios'])) {
+
+                foreach ($data['portfolios'] as $portfolio) {
+                    if (isset($portfolio['title'])) {
+
+                        $user_portfolio = $freelancer->portfolio()->create([
+                            'title' => $portfolio['title']
+                        ]);
+
+                        if (isset($portfolio['url'])) {
+                            $user_portfolio->url = $portfolio['url'];
+                        }
+
+                        if (isset($portfolio['img']) && $file = $portfolio['img']) {
+                            $portfolio_dir = getUserImageDir() . Auth::user()->id . '/portfolios/';
+                            $file_path = $portfolio_dir . $file->getClientOriginalName();
+                            $file->move($portfolio_dir, $file->getClientOriginalName());
+
+                            $user_portfolio->img = $file_path;
+                        }
+
+                        $user_portfolio->save();
+
+                    }
                 }
+
             }
-            return redirect()->route('freelancers')
-                        ->with('msg_success','Данные успешно добавлены.');        
-        } else {
-            return redirect()->route('freelancers.index')
-                        ->with('msg_success','Данные успешно добавлены.');
+
+            $request->session()->flash('msg_success', 'Данные успешно добавлены. Ожидайте подтверждения модератора');
+
         }
-        // if ($request->type == 'freelancer-profile') {
-        //     return redirect()->route('freelancers')
-        //                 ->with('msg_success','Данные успешно добавлены.');        
-        // } else {
-        //     return redirect()->route('freelancers.index')
-        //                 ->with('msg_success','Данные успешно добавлены.');
-        // }
+        else {
+            $request->session()->flash('msg_error', 'Ошибка, попробуйте позже!');
+        }
+
+        return redirect()->route('freelancers.index');
     }
 
     /**
@@ -135,12 +158,17 @@ class FreelancerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Freelancer $Freelancer)
+    public function edit($id)
     {
         if (!canDo('edit_freelancers')) return redirect(url('/admin'));
-        //dd($Freelancer->freelanceCategory()->where('id', $Freelancer->category_id));
-        $category = FreelanceCategory::where('id', $Freelancer->category_id)->first();
-        return view('admin.freelancer.edit',compact('Freelancer', 'category'));
+
+        $freelancer = Freelancer::findOrFail($id);
+        $data = [
+            'title' => 'Изменение фоилансера ' . $freelancer->name,
+            'categories' => FreelanceCategory::all(),
+            'freelancer' => $freelancer
+        ];
+        return view('admin.freelancer.edit', $data);
     }
 
     /**
@@ -150,15 +178,150 @@ class FreelancerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Freelancer $Freelancer)
+    public function update(Request $request, $id)
     {
 
-        $Freelancer->update($request->all());
+        $freelancer = Freelancer::findOrFail($id);
+        $data       = $request->all();
+        $updates    = 0;
 
-        //dd($BusinessNews->update($request->all()));
+        if (isset($data['name']) && $data['name'] !== $freelancer->name) {
+            $freelancer->name = $data['name'];
+        }
 
-        return redirect()->route('freelancers.index')
-        ->with('success','Данные успешно обновлены');
+        if (isset($data['position']) && $data['position'] !== $freelancer->position) {
+            $freelancer->position = $data['position'];
+        }
+
+        if (isset($data['instagramm']) && $data['instagramm'] !== $freelancer->instagramm) {
+            $freelancer->instagramm = $data['instagramm'];
+        }
+
+        if (isset($data['facebook']) && $data['facebook'] !== $freelancer->facebook) {
+            $freelancer->facebook = $data['facebook'];
+        }
+
+        if (isset($data['phone']) && $data['phone'] !== $freelancer->phone) {
+            $freelancer->phone = $data['phone'];
+        }
+
+        if (isset($data['category_id']) && $data['category_id'] !== $freelancer->category_id) {
+            $freelancer->category_id = $data['category_id'];
+        }
+
+        if (isset($data['characteristic']) && $data['characteristic'] !== $freelancer->characteristic) {
+            $freelancer->characteristic = $data['characteristic'];
+        }
+
+        if (isset($data['description']) && $data['description'] !== $freelancer->description) {
+            $freelancer->description = $data['description'];
+        }
+
+        if (isset($data['status']) && $data['status'] !== $freelancer->status) {
+            $freelancer->status = $data['status'];
+        }
+
+        if (isset($data['img']) && $file = $data['img']) {
+
+            $freelancer_dir = getUserImageDir() . Auth::user()->id . '/freelancers/';
+            $file_path = $freelancer_dir . $file->getClientOriginalName();
+            $file->move($freelancer_dir, $file->getClientOriginalName());
+
+            $freelancer->img = $file_path;
+        }
+
+        if ($freelancer->save()) {
+            $updates++;
+
+            if (isset($data['portfolios']) && !empty($data['portfolios'])) {
+
+                $updates++;
+
+                foreach ($data['portfolios'] as $portfolio) {
+                    if (isset($portfolio['p_id']) && $user_portfolio = Portfolio::find($portfolio['p_id'])) {
+                        $portfolio_changes = 0;
+
+                        if (isset($portfolio['title']) && $portfolio['title'] !== $user_portfolio->title) {
+                            $user_portfolio->title = $portfolio['title'];
+                            $portfolio_changes++;
+                        }
+
+                        if (isset($portfolio['url']) && $portfolio['url'] !== $user_portfolio->url) {
+                            $user_portfolio->url = $portfolio['url'];
+                            $portfolio_changes++;
+                        }
+
+                        if (isset($portfolio['slug']) && $portfolio['slug'] !== $user_portfolio->slug) {
+                            $user_portfolio->slug = $portfolio['slug'];
+                            $portfolio_changes++;
+                        }
+
+                        if (isset($portfolio['img']) && $file = $portfolio['img']) {
+                            $portfolio_dir = getUserImageDir() . Auth::user()->id . '/portfolios/';
+                            $file_path = $portfolio_dir . $file->getClientOriginalName();
+                            $file->move($portfolio_dir, $file->getClientOriginalName());
+
+                            $user_portfolio->img = $file_path;
+                            $portfolio_changes++;
+                        }
+
+                        if ($portfolio_changes > 0) {
+                            $user_portfolio->save();
+                        }
+
+                    }
+                    else {
+
+                        if (isset($portfolio['title'])) {
+
+                            $user_portfolio = $freelancer->portfolio()->create([
+                                'title' => $portfolio['title']
+                            ]);
+
+                            if (isset($portfolio['url'])) {
+                                $user_portfolio->url = $portfolio['url'];
+                            }
+
+                            if (isset($portfolio['slug'])) {
+                                $user_portfolio->slug = $portfolio['slug'];
+                            }
+
+                            if (isset($portfolio['img']) && $file = $portfolio['img']) {
+                                $portfolio_dir = getUserImageDir() . Auth::user()->id . '/portfolios/';
+                                $file_path = $portfolio_dir . $file->getClientOriginalName();
+                                $file->move($portfolio_dir, $file->getClientOriginalName());
+
+                                $user_portfolio->img = $file_path;
+                            }
+
+                            $user_portfolio->save();
+
+                        }
+                    }
+                }
+
+            }
+
+            if (isset($data['deleted_portfolios']) && !empty($data['deleted_portfolios'])) {
+                foreach ($data['deleted_portfolios'] as $delPortfolioId) {
+                    if ($deletedPortfolio = $freelancer->portfolio()->find($delPortfolioId)) {
+                        if (file_exists($deletedPortfolio->img)) {
+                            unlink($deletedPortfolio->img);
+                        }
+                        $deletedPortfolio->delete();
+                    }
+                }
+            }
+
+        }
+
+        if ($updates > 0) {
+            $request->session()->flash('msg_success', 'Данные успешно изменены.');
+        } else {
+            $request->session()->flash('msg_error', 'Ошибка, попробуйте позже!');
+        }
+
+        return redirect()->route('freelancers.index');
     }
 
     /**
@@ -167,10 +330,11 @@ class FreelancerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Freelancer $Freelancer)
+    public function destroy($id)
     {
         if (!canDo('delete_freelancers')) return redirect(url('/admin'));
-        $Freelancer->delete();
+        $freelancer = Freelancer::findOrFail($id);
+        $freelancer->delete();
   
         return redirect()->route('freelancers.index')
                         ->with('success','Данные успешно удалены');

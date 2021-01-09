@@ -122,7 +122,7 @@ class FreelancerController extends Controller
     {
         $freelancer = Freelancer::findOrFail($id);
         $data       = $request->all();
-        $updates    = false;
+        $updates    = 0;
 
 
         if (isset($data['name']) && $data['name'] !== $freelancer->name) {
@@ -168,10 +168,11 @@ class FreelancerController extends Controller
 
         $freelancer->status = 0;
         if ($freelancer->save()) {
+            $updates++;
 
             if (isset($data['portfolios']) && !empty($data['portfolios'])) {
 
-                $updates = true;
+                $updates++;
 
                 foreach ($data['portfolios'] as $portfolio) {
                     if (isset($portfolio['p_id']) && $user_portfolio = $freelancer->portfolio()->find($portfolio['p_id'])) {

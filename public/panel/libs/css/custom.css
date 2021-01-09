@@ -17,3 +17,14 @@
 .plan-advantage {
 	margin-bottom: 10px;
 }
+.freelancer-portfolios .card {
+	border: 1px solid #ebebeb;
+	margin-bottom: 30px;
+}
+.img_change img {
+	width: 100px;
+	margin-top: 10px;
+}
+.td-image {
+	width: 100px;
+}

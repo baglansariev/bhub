@@ -20,10 +20,10 @@
 					<div class="finds-wrap">
 						<div class="row">
 							<div class="col-lg-6 col-md-12">
-								<button type="button" class="btn find-an-investor"><a href="/find-an-investor" target="_blank" title="Найти инвестора">найти инвестора</a></button>
+								<button type="button" class="btn find-an-investor"><a href="{{ route('front-startup.create') }}" target="_blank" title="Найти инвестора">найти инвестора</a></button>
 							</div>
 							<div class="col-lg-6 col-md-12">
-								<button type="button" class="btn find-an-employer"><a href="/find-an-employer" target="_blank" title="Найти работадателя">найти работадателя</a></button>
+								<button type="button" class="btn find-an-employer"><a href="{{ route('front.freelancer.create') }}" target="_blank" title="Найти работадателя">найти работадателя</a></button>
 							</div>
 						</div>
 					</div>
@@ -52,10 +52,10 @@
 						<div class="finds-wrap">
 							<div class="row">
 								<div class="col-lg-6 col-md-12">
-									<button type="button" class="btn find-an-investor">инвест проекты</button>
+									<a href="{{ route('front-startup.index') }}" class="btn find-an-investor">инвест проекты</a>
 								</div>
 								<div class="col-lg-6 col-md-12">
-									<button type="button" class="btn find-an-employer">найти фрилансера</button>
+									<a href="{{ route('front.freelancer.index') }}" class="btn find-an-employer">найти фрилансера</a>
 								</div>
 							</div>
 						</div>
@@ -71,27 +71,22 @@
 		</div>
 	</div>
 </section>
-<section class="our-partners">
-	<div class="container-fluid">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h1 class="title-our-partners">наши <span>партнеры</span></h1>
-				</div>	
-				<div class="col-lg-3 col-md-6 col-sm-12">
-					<div class="our-prtners-owl"><img src="img/our-partner.png" width="219" height="92" /></div>
-				</div>	
-				<div class="col-lg-3 col-md-6 col-sm-12">
-					<div class="our-prtners-owl"><img src="img/our-partner.png" width="219" height="92" /></div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12">
-					<div class="our-prtners-owl"><img src="img/our-partner.png" width="219" height="92" /></div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12">
-					<div class="our-prtners-owl"><img src="img/our-partner.png" width="219" height="92" /></div>
+@if (isset($partners) && $partners->count())
+	<section class="our-partners">
+		<div class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="title-our-partners">наши <span>партнеры</span></h1>
+					</div>
+					@foreach ($partners as $partner)
+						<div class="col-lg-3 col-md-6 col-sm-12">
+							<a href="{{ $partner->link ?? '' }}" class="d-lock our-prtners-owl"><img src="{{ asset($partner->image) }}" width="219" height="92" alt="{{ $partner->title }}" /></a>
+						</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
+@endif
 @endsection
