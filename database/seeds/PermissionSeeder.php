@@ -152,5 +152,9 @@ class PermissionSeeder extends Seeder
             'name' => 'Удалять тарифы',
             'code' => 'delete_pricings',
         ]);
+        Permission::create([
+            'name' => 'Смотреть контакты',
+            'code' => 'see_contacts',
+        ]);
     }
 }

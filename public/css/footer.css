@@ -15,7 +15,8 @@
 
 .footer-contacts-wrapper {
 	font: 24px 'Myriad Pro';
-	text-transform: capitalize;
+	/*text-transform: capitalize;*/
+	text-transform: initial;
 }
 
 .footer-contacts-wrapper li a {

@@ -38,7 +38,7 @@
                               FOOTER
 =========================================================-->
     <section class="footer">
-    	{!! $footer->show() !!}
+    	{!! $footer->show(['footer' => $data ?? '']) !!}
 	</section>
 	<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 

@@ -130,6 +130,12 @@
                         </a>
                     </li>
                 @endif
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('contacts.index') }}">
+                        <i class="fas fa-tags mr-1"></i>
+                        <span class="link-title">Контакты</span>
+                    </a>
+                </li>
                 @can('see', auth()->user())
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6">

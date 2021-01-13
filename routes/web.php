@@ -72,6 +72,8 @@ Route::middleware(['auth', 'staff_roles'])->group(function () {
         Route::resource('/partner', 'Admin\PartnerController');
 
         Route::resource('pricing', 'Admin\PricingController');
+
+        Route::resource('contacts', 'Admin\ContactsController');
     });
 });
 Route::get('/freelancers', "FrontController@freelancers")->name("freelancers");
